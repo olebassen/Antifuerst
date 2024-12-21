@@ -1,10 +1,13 @@
-/* ====== Grundlayout ====== */
-html, body {
-    font-family: Arial, sans-serif;
+/* ====== CSS-Reset ====== */
+* {
     margin: 0;
     padding: 0;
-    height: 100%; /* Sicherstellen, dass html und body volle Höhe haben */
-    overflow-y: auto; /* Ermöglicht vertikales Scrollen */
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: Arial, sans-serif;
 }
 
 /* ====== Header ====== */
@@ -16,40 +19,35 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000; /* Über anderen Inhalten */
+    z-index: 1000;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-}
-
-/* ====== Burger-Menü-Button ====== */
-#burger-menu-button {
-    background: none;
-    border: none;
-    font-size: 24px;
-    color: white;
-    cursor: pointer;
-    display: none; /* Standardmäßig ausblenden */
+    align-items: center;
 }
 
 /* ====== Navigation ====== */
 nav {
-    display: block;
-    position: fixed; /* Menü bleibt an der Seite */
+    position: fixed;
     top: 50px; /* Unter dem Header */
     left: 0;
-    width: 20%; /* Menübreite */
-    height: 100vh; /* Höhe auf gesamte Bildschirmhöhe begrenzen */
+    width: 20%;
+    height: calc(100% - 50px); /* Höhe auf sichtbaren Bereich beschränken */
     overflow-y: auto; /* Scrollen aktivieren */
-    overflow-x: hidden; /* Horizontales Scrollen verhindern */
-    background-color: #003366; /* Dunkelblauer Hintergrund */
-    z-index: 1000; /* Über dem Hauptinhalt */
+    background-color: #003366; /* Dunkelblau */
+    z-index: 1000; /* Über dem Inhalt */
 }
 
-/* Navigation Elemente */
+/* ====== Hauptinhalt ====== */
+main {
+    margin-left: 20%; /* Platz für Navigation schaffen */
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ====== Navigation Links ====== */
 nav ul {
     list-style-type: none;
-    margin: 0;
     padding: 0;
 }
 
@@ -62,7 +60,6 @@ nav ul li a {
     color: white;
     text-decoration: none;
     padding: 10px;
-    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 nav ul li a:hover {
@@ -70,77 +67,20 @@ nav ul li a:hover {
     color: #003366;
 }
 
-.active {
-    background-color: #ffffff;
-    color: #003366;
-}
-
-/* Dropdown-Menüs */
-nav ul li ul {
-    display: none;
-    position: absolute;
-    left: 100%; /* Rechts neben dem Hauptmenü */
-    top: 0;
-    background-color: #003366; /* Dunkelblauer Hintergrund */
-    opacity: 1;
-    overflow-y: auto; /* Scrollen aktivieren */
-    max-height: 100vh;
-}
-
-/* Sichtbare Dropdown-Menüs */
-nav ul li ul.open {
-    display: block; /* Dropdown anzeigen */
-}
-
-/* ====== Desktop-Ansicht ====== */
-@media (min-width: 768px) {
-    nav {
-        display: block; /* Menü immer sichtbar */
-        position: fixed; /* Fixiert an der linken Seite */
-        top: 50px;
-        left: 0;
-        width: 20%; /* Menübreite */
-        height: 100vh; /* Bildschirmhöhe */
-        overflow-y: auto; /* Scrollen aktivieren */
-        overflow-x: hidden; /* Horizontales Scrollen verhindern */
-        background-color: #003366; /* Dunkelblauer Hintergrund */
-    }
-
-    #burger-menu-button {
-        display: none; /* Burger-Menü auf Desktop ausblenden */
-    }
-
-    main {
-        margin-left: 20%; /* Platz für das Menü schaffen */
-        z-index: 1; /* Hauptinhalt bleibt unter dem Menü */
-    }
-}
-
-/* ====== Mobile-Ansicht ====== */
+/* ====== Mobile Ansicht ====== */
 @media (max-width: 767px) {
     nav {
-        position: absolute; /* Menü über anderen Elementen */
+        position: absolute;
         top: 50px;
         left: 0;
-        width: 100%; /* Menü über die gesamte Breite */
-        height: auto; /* Automatische Höhe basierend auf Inhalt */
-        max-height: calc(100vh - 50px); /* Maximale Höhe auf Bildschirmgröße beschränken */
-        overflow-y: auto; /* Scrollen aktivieren */
-        background-color: #003366; /* Dunkelblauer Hintergrund */
-    }
-
-    #burger-menu-button {
-        display: block; /* Burger-Menü auf mobilen Geräten anzeigen */
+        width: 100%;
+        height: auto;
+        max-height: calc(100vh - 50px);
+        overflow-y: auto;
+        background-color: #003366;
     }
 
     main {
-        margin-left: 0; /* Kein zusätzlicher Platz für das Menü */
+        margin-left: 0;
     }
-}
-
-/* ====== Allgemeine Resets ====== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
 }
