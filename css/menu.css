@@ -1,0 +1,126 @@
+/* ====== Grundlayout ====== */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* ====== Header ====== */
+header {
+    background-color: #003366;
+    color: white;
+    padding: 10px;
+    position: relative;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* ====== Burger-Menü-Button ====== */
+#burger-menu-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    display: none; /* Standardmäßig ausblenden */
+}
+
+/* ====== Navigation ====== */
+nav {
+    display: none; /* Versteckt das Menü standardmäßig */
+    background-color: #003366;
+    width: 100%;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    z-index: 1000;
+    text-align: left;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    border-bottom: 1px solid #ffffff33;
+}
+
+nav ul li a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #ffffff;
+    color: #003366;
+}
+
+.active {
+    background-color: #ffffff;
+    color: #003366;
+}
+
+/* ====== Dropdown-Menüs ====== */
+nav ul li ul {
+    display: none;
+    margin-left: 20px;
+    background-color: #003366;
+}
+
+/* ====== Desktop-Ansicht ====== */
+@media (min-width: 768px) {
+    nav {
+        display: block; /* Menü immer sichtbar */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 20%;
+        height: 100%;
+    }
+
+    #burger-menu-button {
+        display: none; /* Burger-Button auf Desktops ausblenden */
+    }
+
+    main {
+        margin-left: 20%; /* Platz für die Navigation schaffen */
+    }
+
+/* Untermenüs (Dropdowns) */
+nav ul li ul {
+    display: none; /* Standardmäßig ausgeblendet */
+    margin-left: 20px;
+    background-color: #003366;
+}
+
+/* Sichtbare Untermenüs */
+nav ul li ul.open {
+    display: block; /* Zeige das Untermenü */
+}
+}
+
+
+/* ====== Mobile-Ansicht ====== */
+@media (max-width: 767px) {
+    #burger-menu-button {
+        display: block; /* Burger-Button anzeigen */
+    }
+
+    nav {
+        position: absolute;
+        top: 50px;
+        left: 0;
+        width: 100%;
+        height: auto;
+    }
+}
