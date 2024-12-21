@@ -86,6 +86,8 @@ nav ul li ul {
         left: 0;
         width: 20%; /* Breite des Menüs */
         height: 100%; /* Höhe auf den gesamten Bildschirm begrenzt */
+        overflow-y: auto; /* Scrollen aktivieren */
+        overflow-x: hidden; /* Horizontales Scrollen verhindern */
     }
 
     #burger-menu-button {
