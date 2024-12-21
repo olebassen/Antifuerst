@@ -81,11 +81,11 @@ nav ul li ul {
 @media (min-width: 768px) {
     nav {
         display: block; /* Menü immer sichtbar */
-        position: auto;
+        position: fixed; /* Fixiert an der linken Seite */
         top: 0;
         left: 0;
-        width: 20%;
-        height: 100%;
+        width: 20%; /* Breite des Menüs */
+        height: 100%; /* Höhe auf den gesamten Bildschirm begrenzt */
     }
 
     #burger-menu-button {
