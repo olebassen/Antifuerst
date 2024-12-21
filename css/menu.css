@@ -29,6 +29,8 @@ header {
     color: white;
     cursor: pointer;
     display: none; /* Standardmäßig ausblenden */
+    background-color: #003366; /* Dunkelblau, deckend */
+    opacity: 1; /* Sicherstellen, dass keine Transparenz vorliegt */
 }
 
 /* ====== Navigation ====== */
@@ -40,6 +42,8 @@ nav {
     width: 20%;
     height: 100%;
     overflow-y: auto; /* Scrollen aktivieren */
+    background-color: #003366; /* Dunkelblau, deckend */
+    opacity: 1; /* Sicherstellen, dass keine Transparenz vorliegt */
 }
 
 nav ul {
