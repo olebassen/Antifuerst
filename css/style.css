@@ -5,6 +5,8 @@ body {
     background: linear-gradient(to bottom, #f0f8ff, #ffffff);
     color: #333;
     line-height: 1.6;
+    height: auto; /* Alternativ: 100% */
+    overflow-y: auto; /* Ermöglicht vertikales Scrollen */
 }
 
 header {
