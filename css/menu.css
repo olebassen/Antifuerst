@@ -5,7 +5,7 @@ html, body {
     padding: 0;
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: auto;
     overflow-y: auto; /* Ermöglicht vertikales Scrollen */
 }
 
