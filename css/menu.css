@@ -33,14 +33,13 @@ header {
 
 /* ====== Navigation ====== */
 nav {
-    display: none; /* Versteckt das Menü standardmäßig */
-    background-color: #003366;
-    width: 100%;
-    position: absolute;
-    top: 50px;
+    display: block;
+    position: fixed;
+    top: 0;
     left: 0;
-    z-index: 1000;
-    text-align: left;
+    width: 20%;
+    height: 100%;
+    overflow-y: auto; /* Scrollen aktivieren */
 }
 
 nav ul {
@@ -82,7 +81,7 @@ nav ul li ul {
 @media (min-width: 768px) {
     nav {
         display: block; /* Menü immer sichtbar */
-        position: fixed;
+        position: auto;
         top: 0;
         left: 0;
         width: 20%;
@@ -99,9 +98,8 @@ nav ul li ul {
 
 /* Untermenüs (Dropdowns) */
 nav ul li ul {
-    display: none; /* Standardmäßig ausgeblendet */
-    margin-left: 20px;
-    background-color: #003366;
+    display: none;
+    overflow-y: auto; /* Scrollen für Untermenüs aktivieren */
 }
 
 /* Sichtbare Untermenüs */
@@ -113,15 +111,14 @@ nav ul li ul.open {
 
 /* ====== Mobile-Ansicht ====== */
 @media (max-width: 767px) {
-    #burger-menu-button {
-        display: block; /* Burger-Button anzeigen */
-    }
-
     nav {
         position: absolute;
         top: 50px;
         left: 0;
         width: 100%;
-        height: auto;
+        height: auto; /* Automatische Höhe, basierend auf Inhalt */
+        max-height: calc(100vh - 50px); /* Maximale Höhe auf Bildschirmgröße beschränken */
+        overflow-y: auto; /* Scrollen aktivieren */
     }
 }
+
