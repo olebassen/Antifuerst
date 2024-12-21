@@ -29,8 +29,6 @@ header {
     color: white;
     cursor: pointer;
     display: none; /* Standardmäßig ausblenden */
-    background-color: #003366; /* Dunkelblau, deckend */
-    opacity: 1; /* Sicherstellen, dass keine Transparenz vorliegt */
 }
 
 /* ====== Navigation ====== */
@@ -39,11 +37,13 @@ nav {
     position: fixed;
     top: 0;
     left: 0;
-    width: 20%;
-    height: 100%;
+    width: 20%; /* Menübreite */
+    height: 100%; /* Vollständig sichtbar auf Desktop */
     overflow-y: auto; /* Scrollen aktivieren */
-    background-color: #003366; /* Dunkelblau, deckend */
-    opacity: 1; /* Sicherstellen, dass keine Transparenz vorliegt */
+    overflow-x: hidden; /* Horizontales Scrollen verhindern */
+    background-color: #003366; /* Dunkelblauer Hintergrund */
+    opacity: 1; /* Keine Transparenz */
+    z-index: 1000; /* Über dem Hauptinhalt */
 }
 
 nav ul {
@@ -78,7 +78,14 @@ nav ul li a:hover {
 nav ul li ul {
     display: none;
     margin-left: 20px;
-    background-color: #003366;
+    background-color: #003366; /* Dunkelblauer Hintergrund */
+    opacity: 1; /* Keine Transparenz */
+    overflow-y: auto; /* Scrollen für Dropdowns aktivieren */
+}
+
+/* Sichtbare Dropdown-Menüs */
+nav ul li ul.open {
+    display: block; /* Dropdown anzeigen */
 }
 
 /* ====== Desktop-Ansicht ====== */
@@ -88,43 +95,47 @@ nav ul li ul {
         position: fixed; /* Fixiert an der linken Seite */
         top: 0;
         left: 0;
-        width: 20%; /* Breite des Menüs */
-        height: 100%; /* Höhe auf den gesamten Bildschirm begrenzt */
+        width: 20%; /* Menübreite */
+        height: 100%; /* Bildschirmhöhe */
         overflow-y: auto; /* Scrollen aktivieren */
         overflow-x: hidden; /* Horizontales Scrollen verhindern */
+        background-color: #003366; /* Dunkelblauer Hintergrund */
     }
 
     #burger-menu-button {
-        display: none; /* Burger-Button auf Desktops ausblenden */
+        display: none; /* Burger-Menü auf Desktop ausblenden */
     }
 
     main {
-        margin-left: 20%; /* Platz für die Navigation schaffen */
+        margin-left: 20%; /* Platz für das Menü schaffen */
     }
-
-/* Untermenüs (Dropdowns) */
-nav ul li ul {
-    display: none;
-    overflow-y: auto; /* Scrollen für Untermenüs aktivieren */
 }
-
-/* Sichtbare Untermenüs */
-nav ul li ul.open {
-    display: block; /* Zeige das Untermenü */
-}
-}
-
 
 /* ====== Mobile-Ansicht ====== */
 @media (max-width: 767px) {
     nav {
-        position: absolute;
+        position: absolute; /* Menü über anderen Elementen */
         top: 50px;
         left: 0;
-        width: 100%;
-        height: auto; /* Automatische Höhe, basierend auf Inhalt */
+        width: 100%; /* Menü über die gesamte Breite */
+        height: auto; /* Automatische Höhe basierend auf Inhalt */
         max-height: calc(100vh - 50px); /* Maximale Höhe auf Bildschirmgröße beschränken */
         overflow-y: auto; /* Scrollen aktivieren */
+        background-color: #003366; /* Dunkelblauer Hintergrund */
+    }
+
+    #burger-menu-button {
+        display: block; /* Burger-Menü auf mobilen Geräten anzeigen */
+    }
+
+    main {
+        margin-left: 0; /* Kein zusätzlicher Platz für das Menü */
     }
 }
 
+/* ====== Allgemeine Resets ====== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
