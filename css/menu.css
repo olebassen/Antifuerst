@@ -1,13 +1,12 @@
-/* ====== CSS-Reset ====== */
-* {
+/* ====== Grundlayout ====== */
+html, body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-html, body {
-    height: 100%;
-    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    overflow-y: auto; /* Ermöglicht vertikales Scrollen */
 }
 
 /* ====== Header ====== */
@@ -15,39 +14,41 @@ header {
     background-color: #003366;
     color: white;
     padding: 10px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
+    position: relative;
     z-index: 1000;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+}
+
+/* ====== Burger-Menü-Button ====== */
+#burger-menu-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    display: none; /* Standardmäßig ausblenden */
 }
 
 /* ====== Navigation ====== */
 nav {
+    display: block;
     position: fixed;
-    top: 50px; /* Unter dem Header */
+    top: 0;
     left: 0;
-    width: 20%;
-    height: calc(100% - 50px); /* Höhe auf sichtbaren Bereich beschränken */
+    width: 20%; /* Menübreite */
+    height: 100%; /* Vollständig sichtbar auf Desktop */
     overflow-y: auto; /* Scrollen aktivieren */
-    background-color: #003366; /* Dunkelblau */
-    z-index: 1000; /* Über dem Inhalt */
+    overflow-x: hidden; /* Horizontales Scrollen verhindern */
+    background-color: #003366; /* Dunkelblauer Hintergrund */
+    opacity: 1; /* Keine Transparenz */
+    z-index: 1000; /* Über dem Hauptinhalt */
 }
 
-/* ====== Hauptinhalt ====== */
-main {
-    margin-left: 20%; /* Platz für Navigation schaffen */
-    padding: 20px;
-    position: relative;
-    z-index: 1;
-}
-
-/* ====== Navigation Links ====== */
 nav ul {
     list-style-type: none;
+    margin: 0;
     padding: 0;
 }
 
@@ -60,6 +61,7 @@ nav ul li a {
     color: white;
     text-decoration: none;
     padding: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 nav ul li a:hover {
@@ -67,20 +69,73 @@ nav ul li a:hover {
     color: #003366;
 }
 
-/* ====== Mobile Ansicht ====== */
-@media (max-width: 767px) {
+.active {
+    background-color: #ffffff;
+    color: #003366;
+}
+
+/* ====== Dropdown-Menüs ====== */
+nav ul li ul {
+    display: none;
+    margin-left: 20px;
+    background-color: #003366; /* Dunkelblauer Hintergrund */
+    opacity: 1; /* Keine Transparenz */
+    overflow-y: auto; /* Scrollen für Dropdowns aktivieren */
+}
+
+/* Sichtbare Dropdown-Menüs */
+nav ul li ul.open {
+    display: block; /* Dropdown anzeigen */
+}
+
+/* ====== Desktop-Ansicht ====== */
+@media (min-width: 768px) {
     nav {
-        position: absolute;
-        top: 50px;
+        display: block; /* Menü immer sichtbar */
+        position: fixed; /* Fixiert an der linken Seite */
+        top: 0;
         left: 0;
-        width: 100%;
-        height: auto;
-        max-height: calc(100vh - 50px);
-        overflow-y: auto;
-        background-color: #003366;
+        width: 20%; /* Menübreite */
+        height: 100%; /* Bildschirmhöhe */
+        overflow-y: auto; /* Scrollen aktivieren */
+        overflow-x: hidden; /* Horizontales Scrollen verhindern */
+        background-color: #003366; /* Dunkelblauer Hintergrund */
+    }
+
+    #burger-menu-button {
+        display: none; /* Burger-Menü auf Desktop ausblenden */
     }
 
     main {
-        margin-left: 0;
+        margin-left: 20%; /* Platz für das Menü schaffen */
     }
+}
+
+/* ====== Mobile-Ansicht ====== */
+@media (max-width: 767px) {
+    nav {
+        position: absolute; /* Menü über anderen Elementen */
+        top: 50px;
+        left: 0;
+        width: 100%; /* Menü über die gesamte Breite */
+        height: auto; /* Automatische Höhe basierend auf Inhalt */
+        max-height: calc(100vh - 50px); /* Maximale Höhe auf Bildschirmgröße beschränken */
+        overflow-y: auto; /* Scrollen aktivieren */
+        background-color: #003366; /* Dunkelblauer Hintergrund */
+    }
+
+    #burger-menu-button {
+        display: block; /* Burger-Menü auf mobilen Geräten anzeigen */
+    }
+
+    main {
+        margin-left: 0; /* Kein zusätzlicher Platz für das Menü */
+    }
+}
+
+/* ====== Allgemeine Resets ====== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
