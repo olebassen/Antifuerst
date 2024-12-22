@@ -1,23 +1,95 @@
-/* ====== Grundlayout ====== */
-body {
-    font-family: Arial, sans-serif;
+html, body {
+    font-family: 'Roboto', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+    background: linear-gradient(to bottom, #f0f8ff, #ffffff);
+    color: #333;
+    line-height: 1.6;
+    height: auto; /* Alternativ: 100% */
+    overflow-y: auto; /* Ermöglicht vertikales Scrollen */
 }
 
-/* ====== Header ====== */
 header {
     background-color: #003366;
-    color: white;
-    padding: 10px;
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+}
+
+main h1 {
+    font-family: 'Merriweather', serif;
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+main {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+}
+
+p {
+    margin-bottom: 1.5rem;
+}
+
+ol {
+    margin-left: 1.5rem;
+    padding-left: 1rem;
+}
+
+ol li {
+    margin-bottom: 0.5rem;
+}
+
+footer {
+    background-color: #003366;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 0;
     position: relative;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    bottom: 0;
+    width: 100%;
+}
+
+footer a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    main {
+        padding: 10px;
+    }
+}
+
+.infobox {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.infobox h3 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.infobox p {
+    margin: 5px 0 0;
+    font-size: 0.7em;
+    color: #666;
 }
 
 /* ====== Burger-Menü-Button ====== */
@@ -32,14 +104,17 @@ header {
 
 /* ====== Navigation ====== */
 nav {
-    display: none; /* Versteckt das Menü standardmäßig */
-    background-color: #003366;
-    width: 100%;
-    position: absolute;
-    top: 50px;
+    display: block;
+    position: fixed;
+    top: 0;
     left: 0;
-    z-index: 1000;
-    text-align: left;
+    width: 20%; /* Menübreite */
+    height: 100%; /* Vollständig sichtbar auf Desktop */
+    overflow-y: auto; /* Scrollen aktivieren */
+    overflow-x: hidden; /* Horizontales Scrollen verhindern */
+    background-color: #003366; /* Dunkelblauer Hintergrund */
+    opacity: 1; /* Keine Transparenz */
+    z-index: 1000; /* Über dem Hauptinhalt */
 }
 
 nav ul {
@@ -74,53 +149,64 @@ nav ul li a:hover {
 nav ul li ul {
     display: none;
     margin-left: 20px;
-    background-color: #003366;
+    background-color: #003366; /* Dunkelblauer Hintergrund */
+    opacity: 1; /* Keine Transparenz */
+    overflow-y: auto; /* Scrollen für Dropdowns aktivieren */
+}
+
+/* Sichtbare Dropdown-Menüs */
+nav ul li ul.open {
+    display: block; /* Dropdown anzeigen */
 }
 
 /* ====== Desktop-Ansicht ====== */
 @media (min-width: 768px) {
     nav {
         display: block; /* Menü immer sichtbar */
-        position: fixed;
+        position: fixed; /* Fixiert an der linken Seite */
         top: 0;
         left: 0;
-        width: 20%;
-        height: 100%;
+        width: 20%; /* Menübreite */
+        height: 100%; /* Bildschirmhöhe */
+        overflow-y: auto; /* Scrollen aktivieren */
+        overflow-x: hidden; /* Horizontales Scrollen verhindern */
+        background-color: #003366; /* Dunkelblauer Hintergrund */
     }
 
     #burger-menu-button {
-        display: none; /* Burger-Button auf Desktops ausblenden */
+        display: none; /* Burger-Menü auf Desktop ausblenden */
     }
 
     main {
-        margin-left: 20%; /* Platz für die Navigation schaffen */
+        margin-left: 20%; /* Platz für das Menü schaffen */
     }
-
-/* Untermenüs (Dropdowns) */
-nav ul li ul {
-    display: none; /* Standardmäßig ausgeblendet */
-    margin-left: 20px;
-    background-color: #003366;
 }
-
-/* Sichtbare Untermenüs */
-nav ul li ul.open {
-    display: block; /* Zeige das Untermenü */
-}
-}
-
 
 /* ====== Mobile-Ansicht ====== */
 @media (max-width: 767px) {
-    #burger-menu-button {
-        display: block; /* Burger-Button anzeigen */
-    }
-
     nav {
-        position: absolute;
+        position: absolute; /* Menü über anderen Elementen */
         top: 50px;
         left: 0;
-        width: 100%;
-        height: auto;
+        width: 100%; /* Menü über die gesamte Breite */
+        height: auto; /* Automatische Höhe basierend auf Inhalt */
+        max-height: calc(100vh - 50px); /* Maximale Höhe auf Bildschirmgröße beschränken */
+        overflow-y: auto; /* Scrollen aktivieren */
+        background-color: #003366; /* Dunkelblauer Hintergrund */
     }
+
+    #burger-menu-button {
+        display: block; /* Burger-Menü auf mobilen Geräten anzeigen */
+    }
+
+    main {
+        margin-left: 0; /* Kein zusätzlicher Platz für das Menü */
+    }
+}
+
+/* ====== Allgemeine Resets ====== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
