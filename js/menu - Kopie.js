@@ -25,11 +25,22 @@ document.addEventListener("DOMContentLoaded", () => {
                 link.classList.add("active");
 
                 // Inhalt von der URL laden
-                loadPage(url);
-
-                if (window.innerWidth <= 767) {
-                    burgerMenu.style.display = "none"; // Menü schließen, wenn auf mobilen Geräten
-                }
+                fetch(url)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP-Error: ${response.status}`);
+                        }
+                        return response.text();
+                    })
+                    .then(html => {
+                        contentArea.innerHTML = html;
+                        if (window.innerWidth <= 767) {
+                            burgerMenu.style.display = "none"; // Menü schließen, wenn auf mobilen Geräten
+                        }
+                    })
+                    .catch(error => {
+                        contentArea.innerHTML = `<p>Fehler beim Laden der Seite: ${error.message}</p>`;
+                    });
             }
         });
     });
@@ -58,25 +69,8 @@ document.addEventListener("DOMContentLoaded", () => {
             burgerMenu.style.display = "none"; // Menü auf Mobilgeräten ausblenden
         }
     });
-
-    // Lade die Startseite (home.html)
-    loadPage('home.html');
 });
 
-// Funktion zum Laden von Seiten
-function loadPage(url) {
-    const contentArea = document.getElementById("content");
-    fetch(url)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP-Error: ${response.status}`);
-            }
-            return response.text();
-        })
-        .then(html => {
-            contentArea.innerHTML = html;
-        })
-        .catch(error => {
-            contentArea.innerHTML = `<p>Fehler beim Laden der Seite: ${error.message}</p>`;
-        });
-}
+document.addEventListener('DOMContentLoaded', function() {
+    loadPage('home.html');
+});
