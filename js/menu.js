@@ -70,3 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    loadPage('home.html');
+});
