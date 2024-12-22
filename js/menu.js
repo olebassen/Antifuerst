@@ -71,6 +71,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+function loadPage(url) {
+    const contentArea = document.getElementById("content");
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP-Error: ${response.status}`);
+            }
+            return response.text();
+        })
+        .then(html => {
+            contentArea.innerHTML = html;
+        })
+        .catch(error => {
+            contentArea.innerHTML = `<p>Fehler beim Laden der Seite: ${error.message}</p>`;
+        });
+}
+
+
 document.addEventListener('DOMContentLoaded', function() {
     loadPage('home.html');
 });
