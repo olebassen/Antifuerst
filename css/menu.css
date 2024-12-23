@@ -91,6 +91,19 @@ footer a:hover {
     font-size: 0.7em;
     color: #666;
 }
+div {
+    display: flex; /* Flexbox aktivieren */
+    align-items: center; /* Elemente vertikal zentrieren */
+    justify-content: space-between; /* Platz zwischen Button und Titel aufteilen */
+    padding: 10px; /* Optionale Abstände für das Styling */
+    background-color: black; /* Hintergrundfarbe */
+}
+
+div span {
+    color: white;
+    font-size: 18px; /* Schriftgröße des Textes */
+    font-weight: bold;
+}
 
 /* ====== Burger-Menü-Button ====== */
 #burger-menu-button {
