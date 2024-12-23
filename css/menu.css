@@ -73,8 +73,7 @@ footer a:hover {
 
 .sticky-div {
     position: sticky; /* Aktiviert das Sticky-Verhalten */
-    top: 10px; /* Abstand von oben, ab dem das Div sticky wird */
-    background-color: lightblue; /* Für bessere Sichtbarkeit */
+    top: 0; /* Abstand von oben, ab dem das Div sticky wird */
     padding: 10px;
     z-index: 1000; /* Optional: Stellt sicher, dass das Div über anderen Elementen liegt */
 }
