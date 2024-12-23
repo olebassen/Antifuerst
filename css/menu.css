@@ -10,7 +10,7 @@ html, body {
 }
 
 header {
-    background-color: #003366;
+    background-color: #111111;
     color: #ffffff;
     padding: 20px;
     text-align: center;
@@ -42,7 +42,7 @@ ol li {
 }
 
 footer {
-    background-color: #003366;
+    background-color: #111111;
     color: #ffffff;
     text-align: center;
     padding: 10px 0;
@@ -75,7 +75,7 @@ footer a:hover {
     border: 1px solid #ccc;
     padding: 10px;
     margin: 10px 0;
-    background-color: #f9f9f9;
+    background-color: #aaaaaa;
     border-radius: 5px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -125,7 +125,7 @@ nav {
     height: 100%; /* Vollständig sichtbar auf Desktop */
     overflow-y: auto; /* Scrollen aktivieren */
     overflow-x: hidden; /* Horizontales Scrollen verhindern */
-    background-color: #003366; /* Dunkelblauer Hintergrund */
+    background-color: #111111; /* Dunkelblauer Hintergrund */
     opacity: 1; /* Keine Transparenz */
     z-index: 1000; /* Über dem Hauptinhalt */
 }
@@ -150,19 +150,19 @@ nav ul li a {
 
 nav ul li a:hover {
     background-color: #ffffff;
-    color: #003366;
+    color: #111111;
 }
 
 .active {
     background-color: #ffffff;
-    color: #003366;
+    color: #111111;
 }
 
 /* ====== Dropdown-Menüs ====== */
 nav ul li ul {
     display: none;
     margin-left: 20px;
-    background-color: #003366; /* Dunkelblauer Hintergrund */
+    background-color: #111111; /* Dunkelblauer Hintergrund */
     opacity: 1; /* Keine Transparenz */
     overflow-y: auto; /* Scrollen für Dropdowns aktivieren */
 }
@@ -183,7 +183,7 @@ nav ul li ul.open {
         height: 100%; /* Bildschirmhöhe */
         overflow-y: auto; /* Scrollen aktivieren */
         overflow-x: hidden; /* Horizontales Scrollen verhindern */
-        background-color: #003366; /* Dunkelblauer Hintergrund */
+        background-color: #111111; /* Dunkelblauer Hintergrund */
     }
 
     #burger-menu-button {
@@ -205,7 +205,7 @@ nav ul li ul.open {
         height: auto; /* Automatische Höhe basierend auf Inhalt */
         max-height: calc(100vh - 50px); /* Maximale Höhe auf Bildschirmgröße beschränken */
         overflow-y: auto; /* Scrollen aktivieren */
-        background-color: #003366; /* Dunkelblauer Hintergrund */
+        background-color: #111111; /* Dunkelblauer Hintergrund */
     }
 
     #burger-menu-button {
