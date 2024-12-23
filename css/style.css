@@ -10,7 +10,7 @@ html, body {
 }
 
 header {
-    background-color: #003366;
+    background-color: #111111;
     color: #ffffff;
     padding: 20px;
     text-align: center;
@@ -42,7 +42,7 @@ ol li {
 }
 
 footer {
-    background-color: #003366;
+    background-color: #111111;
     color: #ffffff;
     text-align: center;
     padding: 10px 0;
