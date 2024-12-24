@@ -78,27 +78,6 @@ footer a:hover {
     z-index: 1000; /* Optional: Stellt sicher, dass das Div über anderen Elementen liegt */
 }
 
-
-.infobox {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin: 10px 0;
-    background-color: #c1c1c1;
-    border-radius: 5px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.infobox h3 {
-    margin: 0;
-    font-size: 1.2em;
-    color: #333;
-}
-
-.infobox p {
-    margin: 5px 0 0;
-    font-size: 0.7em;
-    color: #666;
-}
 div {
     display: flex; /* Flexbox aktivieren */
     align-items: center; /* Elemente vertikal zentrieren */
