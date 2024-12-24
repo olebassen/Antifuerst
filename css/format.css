@@ -239,7 +239,7 @@ column-count: 1
 }
 
 .toggle-button {
-    float: right;
+    width: 100%;
     margin-bottom: 10px;
-display: block;
+    display: block;
 }
