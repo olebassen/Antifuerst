@@ -1,0 +1,238 @@
+/* ====== Allgemeine Stile für HTML und Body ====== */
+html, body {
+    font-family: 'Roboto', Arial, sans-serif; /* Schriftart für die gesamte Seite */
+    margin: 0; /* Kein äußerer Abstand */
+    padding: 0; /* Kein innerer Abstand */
+    background: linear-gradient(to bottom, #f0f8ff, #ffffff); /* Farbverlauf als Hintergrund */
+    color: #333; /* Textfarbe */
+    line-height: 1.6; /* Zeilenhöhe für bessere Lesbarkeit */
+    height: auto; /* Höhe automatisch anpassen */
+    overflow-y: auto; /* Vertikales Scrollen erlauben */
+}
+
+/* ====== Header ====== */
+header {
+    background-color: #111111; /* Hintergrundfarbe des Headers */
+    color: #ffffff; /* Schriftfarbe */
+    padding: 20px; /* Innenabstand */
+    text-align: center; /* Zentrierter Text */
+}
+
+/* ====== Hauptüberschrift im Main-Bereich ====== */
+main h1 {
+    font-family: 'Merriweather', serif; /* Alternative Schriftart für H1 */
+    margin: 0; /* Kein äußerer Abstand */
+    font-size: 2.5rem; /* Schriftgröße */
+}
+
+/* ====== Hauptinhalt ====== */
+main {
+    padding: 20px; /* Innenabstand */
+    max-width: 800px; /* Maximale Breite des Inhalts */
+    margin: auto; /* Zentrierung auf der Seite */
+}
+
+/* ====== Absätze ====== */
+p {
+    margin-bottom: 1.5rem; /* Abstand nach unten */
+}
+
+/* ====== Geordnete Listen ====== */
+ol {
+    margin-left: 1.5rem; /* Linker Abstand */
+    padding-left: 1rem; /* Innerer linker Abstand */
+}
+
+ol li {
+    margin-bottom: 0.5rem; /* Abstand zwischen Listenelementen */
+}
+
+/* ====== Footer ====== */
+footer {
+    background-color: #111111; /* Hintergrundfarbe */
+    color: #ffffff; /* Schriftfarbe */
+    text-align: center; /* Zentrierter Text */
+    padding: 10px 0; /* Vertikaler Innenabstand */
+    position: relative; /* Position des Footers */
+    bottom: 0; /* Am unteren Rand des Containers */
+    width: 100%; /* Volle Breite */
+}
+
+/* ====== Links im Footer ====== */
+footer a {
+    color: #ffffff; /* Linkfarbe */
+    text-decoration: none; /* Keine Unterstreichung */
+    margin: 0 10px; /* Abstand zwischen Links */
+}
+
+footer a:hover {
+    text-decoration: underline; /* Unterstreichung beim Hover */
+}
+
+/* ====== Responsiver Header für kleinere Bildschirme ====== */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 2rem; /* Kleinere Schriftgröße für Header */
+    }
+
+    main {
+        padding: 10px; /* Weniger Innenabstand */
+    }
+}
+
+/* ====== Sticky Div ====== */
+.sticky-div {
+    position: sticky; /* Festkleben am oberen Rand beim Scrollen */
+    top: 0; /* Abstand vom oberen Rand */
+    padding: 10px; /* Innenabstand */
+    z-index: 1000; /* Über anderen Elementen anzeigen */
+}
+
+/* ====== Flexbox-Div ====== */
+div {
+    display: flex; /* Flexbox-Layout aktivieren */
+    align-items: center; /* Vertikale Zentrierung */
+    justify-content: space-between; /* Elemente verteilen */
+    padding: 10px; /* Innenabstand */
+    background-color: black; /* Hintergrundfarbe */
+}
+
+div span {
+    color: white; /* Schriftfarbe */
+    font-size: 18px; /* Schriftgröße */
+    font-weight: bold; /* Fettschrift */
+}
+
+/* ====== Burger-Menü-Button ====== */
+#burger-menu-button {
+    background: none; /* Kein Hintergrund */
+    border: none; /* Kein Rahmen */
+    font-size: 24px; /* Schriftgröße */
+    color: white; /* Schriftfarbe */
+    cursor: pointer; /* Zeiger anzeigen */
+    display: none; /* Standardmäßig versteckt */
+}
+
+/* ====== Navigation ====== */
+nav {
+    display: block; /* Navigation sichtbar */
+    position: fixed; /* Fixiert an der Seite */
+    top: 0; /* Oben beginnen */
+    left: 0; /* Linksbündig */
+    width: 20%; /* Breite der Navigation */
+    height: 100%; /* Höhe über den gesamten Bildschirm */
+    overflow-y: auto; /* Vertikales Scrollen aktivieren */
+    overflow-x: hidden; /* Horizontales Scrollen deaktivieren */
+    background-color: #111111; /* Hintergrundfarbe */
+    opacity: 1; /* Keine Transparenz */
+    z-index: 1000; /* Über anderen Elementen anzeigen */
+}
+
+/* ====== Listen in der Navigation ====== */
+nav ul {
+    list-style-type: none; /* Keine Standardpunkte */
+    margin: 0; /* Kein äußerer Abstand */
+    padding: 0; /* Kein innerer Abstand */
+}
+
+nav ul li {
+    border-bottom: 1px solid #ffffff33; /* Trennlinien zwischen Elementen */
+}
+
+nav ul li a {
+    display: block; /* Block-Level für Links */
+    color: white; /* Schriftfarbe */
+    text-decoration: none; /* Keine Unterstreichung */
+    padding: 10px; /* Innenabstand */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Hover-Effekte */
+}
+
+nav ul li a:hover {
+    background-color: #ffffff; /* Hintergrundfarbe beim Hover */
+    color: #111111; /* Schriftfarbe beim Hover */
+}
+
+/* ====== Aktive Links ====== */
+.active {
+    background-color: #ffffff; /* Hintergrundfarbe des aktiven Links */
+    color: #111111; /* Schriftfarbe des aktiven Links */
+}
+
+/* ====== Dropdown-Menüs in der Navigation ====== */
+nav ul li ul {
+    display: none; /* Dropdown standardmäßig verstecken */
+    margin-left: 20px; /* Linker Abstand */
+    background-color: #111111; /* Hintergrundfarbe */
+    opacity: 1; /* Keine Transparenz */
+    overflow-y: auto; /* Scrollen im Dropdown aktivieren */
+}
+
+nav ul li ul.open {
+    display: block; /* Dropdown sichtbar */
+}
+
+/* ====== Desktop-Ansicht der Navigation ====== */
+@media (min-width: 768px) {
+    nav {
+        display: block; /* Immer sichtbar auf großen Bildschirmen */
+        position: fixed; /* Fixierte Position */
+        width: 20%; /* Navigation nimmt 20% Breite ein */
+    }
+
+    #burger-menu-button {
+        display: none; /* Burger-Menü ausblenden */
+    }
+
+    main {
+        margin-left: 20%; /* Platz für Navigation schaffen */
+    }
+}
+
+/* ====== Mobile-Ansicht der Navigation ====== */
+@media (max-width: 767px) {
+    nav {
+        position: absolute; /* Über anderen Elementen */
+        top: 50px; /* Abstand von oben */
+        width: 100%; /* Navigation füllt die Breite aus */
+        height: auto; /* Höhe dynamisch basierend auf Inhalt */
+        max-height: calc(100vh - 50px); /* Maximale Höhe beschränken */
+        overflow-y: auto; /* Scrollen erlauben */
+    }
+
+    #burger-menu-button {
+        display: block; /* Burger-Menü sichtbar */
+    }
+
+    main {
+        margin-left: 0; /* Kein zusätzlicher Abstand */
+    }
+}
+
+/* ====== Infobox ====== */
+.infobox {
+    border: 1px solid #ccc; /* Rahmen */
+    padding: 10px; /* Innenabstand */
+    margin: 10px 0; /* Abstand nach oben und unten */
+    background-color: #f9f9f9; /* Hintergrundfarbe */
+    border-radius: 5px; /* Abgerundete Ecken */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Schatteneffekt */
+}
+
+.infobox h3 {
+    margin: 0; /* Kein äußerer Abstand */
+    font-size: 1.2em; /* Schriftgröße */
+    color: #333; /* Textfarbe */
+}
+
+.infobox p {
+    margin: 5px 0 0; /* Abstand nur oben */
+    font-size: 0.7em; /* Schriftgröße */
+    color: #666; /* Textfarbe */
+}
+
+/* ====== Allgemeine Resets ====== */
+* {
+    margin: 0; /* Standardabstände entfernen */
+    padding: 0; /* Standard-Innenabstände entfernen */
+    box-sizing: border-box; /* Box-Modell auf Inhalt und Padding beschränken */
+}
