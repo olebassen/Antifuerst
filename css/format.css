@@ -237,3 +237,7 @@ column-count: 1
     padding: 0; /* Standard-Innenabstände entfernen */
     box-sizing: border-box; /* Box-Modell auf Inhalt und Padding beschränken */
 }
+
+.toggle-button {
+    align: right;
+}
