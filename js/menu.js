@@ -81,13 +81,13 @@ function loadPage(url) {
         });
 }
 
-document.querySelectorAll(".toggle-button").forEach(button => {
-    button.addEventListener("click", function () {
-        const infobox = this.nextElementSibling; // Nächstes Geschwisterelement
+document.addEventListener("click", function (event) {
+    if (event.target && event.target.classList.contains("toggle-button")) {
+        const infobox = event.target.nextElementSibling;
         if (infobox && infobox.style.display === "none") {
-            infobox.style.display = "block"; // Infobox sichtbar machen
+            infobox.style.display = "block"; // Infobox einblenden
         } else if (infobox) {
-            infobox.style.display = "none"; // Infobox verstecken
+            infobox.style.display = "none"; // Infobox ausblenden
         }
-    });
+    }
 });
