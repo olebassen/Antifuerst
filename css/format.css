@@ -239,5 +239,5 @@ column-count: 1
 }
 
 .toggle-button {
-    align: right;
+    float: right;
 }
