@@ -240,4 +240,5 @@ column-count: 1
 
 .toggle-button {
     float: right;
+    margin-bottom: 10px;
 }
