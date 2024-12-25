@@ -243,3 +243,18 @@ column-count: 1
     margin-bottom: 10px;
     display: block;
 }
+
+table {
+            border-collapse: collapse;
+            width: 100%;
+            color: #fff;
+            background-color: #333;
+        }
+        th, td {
+            border: 1px solid #444;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #222;
+        }
