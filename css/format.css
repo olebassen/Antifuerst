@@ -197,6 +197,7 @@ nav ul li ul.open {
         height: auto; /* Höhe dynamisch basierend auf Inhalt */
         max-height: calc(100vh - 50px); /* Maximale Höhe beschränken */
         overflow-y: auto; /* Scrollen erlauben */
+        display: none;
     }
 
     #burger-menu-button {
