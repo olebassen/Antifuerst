@@ -115,7 +115,7 @@ div span {
 
 /* ====== Navigation ====== */
 nav {
-    display: block; /* Navigation sichtbar */
+    display: none; /* Navigation sichtbar */
     position: fixed; /* Fixiert an der Seite */
     top: 0; /* Oben beginnen */
     left: 0; /* Linksbündig */
