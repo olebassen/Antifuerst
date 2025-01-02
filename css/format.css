@@ -20,7 +20,7 @@ header {
 
 /* ====== Hauptüberschrift im Main-Bereich ====== */
 main h1 {
-    font-family: 'Merriweather', serif; /* Alternative Schriftart für H1 */
+    font-family: 'Verdana', sans-serif; /* Alternative Schriftart für H1 */
     margin: 0; /* Kein äußerer Abstand */
     font-size: 2.5rem; /* Schriftgröße */
 }
