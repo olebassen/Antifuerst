@@ -3,10 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Antifürst</title>
+    <title>Mein Blog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        article {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        article:last-child {
+            border-bottom: none;
+        }
+        h2 {
+            color: #333;
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <h1>Mein Blog</h1>
+    </header>
+    <div class="container">
+        <!-- Blogposts werden hier geladen -->
+    </div>
 
-</main>
+    <script>
+        // URL zur JSON-Datei auf GitHub
+        const jsonUrl = "https://raw.githubusercontent.com/USERNAME/REPOSITORY/BRANCH/json/blogposts.json";
+
+        // Container, in dem die Blogposts angezeigt werden
+        const container = document.querySelector('.container');
+
+        // JSON-Daten abrufen und Blogposts einfügen
+        fetch(jsonUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Fehler beim Laden der JSON-Datei");
+                }
+                return response.json();
+            })
+            .then(blogPosts => {
+                blogPosts.forEach(post => {
+                    const article = document.createElement('article');
+                    article.innerHTML = `
+                        <h2>${post.title}</h2>
+                        <p><small>Veröffentlicht am ${post.date}</small></p>
+                        <p>${post.content}</p>
+                    `;
+                    container.appendChild(article);
+                });
+            })
+            .catch(error => {
+                console.error("Fehler:", error);
+                container.innerHTML = "<p>Die Blogposts konnten nicht geladen werden.</p>";
+            });
+    </script>
 </body>
 </html>
