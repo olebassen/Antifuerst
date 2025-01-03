@@ -119,7 +119,7 @@ document.addEventListener("click", function (event) {
                 article.innerHTML = `
                     <h2>${post.title}</h2>
                     <p><small>Veröffentlicht am ${post.date}</small></p>
-                    <p>${post.content}</p>
+                    <p>${post.content1}</p>
                 `;
                 container.appendChild(article);
             });
