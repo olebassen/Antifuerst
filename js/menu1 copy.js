@@ -4,6 +4,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const burgerMenu = document.querySelector("nav");
     const contentArea = document.getElementById("content");
 
+    // Beim Laden der Seite die zuletzt geladene Seite anzeigen
+    const savedPage = sessionStorage.getItem("currentPage");
+    if (savedPage) {
+        loadPage(savedPage);
+    } else {
+        loadPage('home.html'); // Standardseite laden
+    }
+
     // Umschalten des Burger-Menüs (für mobile Geräte)
     burgerButton.addEventListener("click", () => {
         if (burgerMenu.style.display === "block") {
@@ -25,22 +33,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 link.classList.add("active");
 
                 // Inhalt von der URL laden
-                fetch(url)
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error(`HTTP-Error: ${response.status}`);
-                        }
-                        return response.text();
-                    })
-                    .then(html => {
-                        contentArea.innerHTML = html;
-                        if (window.innerWidth <= 767) {
-                            burgerMenu.style.display = "none"; // Menü schließen, wenn auf mobilen Geräten
-                        }
-                    })
-                    .catch(error => {
-                        contentArea.innerHTML = `<p>Fehler beim Laden der Seite: ${error.message}</p>`;
-                    });
+                loadPage(url);
+
+                // Die aktuelle Seite in Session Storage speichern
+                sessionStorage.setItem("currentPage", url);
+
+                if (window.innerWidth <= 767) {
+                    burgerMenu.style.display = "none"; // Menü schließen, wenn auf mobilen Geräten
+                }
             }
         });
     });
@@ -71,6 +71,31 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    loadPage('home.html');
+// Funktion zum Laden von Seiten
+function loadPage(url) {
+    const contentArea = document.getElementById("content");
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP-Error: ${response.status}`);
+            }
+            return response.text();
+        })
+        .then(html => {
+            contentArea.innerHTML = html;
+        })
+        .catch(error => {
+            contentArea.innerHTML = `<p>Fehler beim Laden der Seite: ${error.message}</p>`;
+        });
+}
+
+document.addEventListener("click", function (event) {
+    if (event.target && event.target.classList.contains("toggle-button")) {
+        const infobox = event.target.nextElementSibling;
+        if (infobox && infobox.style.display === "none") {
+            infobox.style.display = "block"; // Infobox einblenden
+        } else if (infobox) {
+            infobox.style.display = "none"; // Infobox ausblenden
+        }
+    }
 });
