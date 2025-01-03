@@ -27,39 +27,26 @@
     <header>
         <h1>Blog</h1>
     </header>
-    <div id="main-content">
-        <!-- Hier wird die gefetchte Seite eingefügt -->
+    <div class="container">
+        <!-- Blogposts werden hier geladen -->
     </div>
 
     <script>
-        // URL zur Hauptseite (HTML) und zur JSON-Datei
-        const htmlUrl = "blog.html"; // Beispiel: Hauptseite
+        // URL zur JSON-Datei auf GitHub
         const jsonUrl = "https://raw.githubusercontent.com/olebassen/Antifuerst/main/json/blogposts.json";
 
-        // Hauptseite laden
-        fetch(htmlUrl)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`Fehler beim Laden der Hauptseite: ${response.status}`);
-                }
-                return response.text();
-            })
-            .then(html => {
-                // Hauptseite in den DOM einfügen
-                document.getElementById('main-content').innerHTML = html;
+        // Container, in dem die Blogposts angezeigt werden
+        const container = document.querySelector('.container');
 
-                // JSON-Daten laden
-                return fetch(jsonUrl);
-            })
+        // JSON-Daten abrufen und Blogposts einfügen
+        fetch(jsonUrl)
             .then(response => {
                 if (!response.ok) {
-                    throw new Error(`Fehler beim Laden der JSON-Daten: ${response.status}`);
+                    throw new Error("Fehler beim Laden der JSON-Datei");
                 }
                 return response.json();
             })
             .then(blogPosts => {
-                // JSON-Daten in die Seite einfügen
-                const container = document.querySelector('.container');
                 blogPosts.forEach(post => {
                     const article = document.createElement('article');
                     article.innerHTML = `
@@ -71,14 +58,8 @@
                 });
             })
             .catch(error => {
-                // Fehlerbehandlung
                 console.error("Fehler:", error);
-                const container = document.querySelector('.container');
-                if (container) {
-                    container.innerHTML = "<p>Inhalt konnte nicht geladen werden.</p>";
-                } else {
-                    document.getElementById('main-content').innerHTML = "<p>Die Seite konnte nicht geladen werden.</p>";
-                }
+                container.innerHTML = "<p>Die Blogposts konnten nicht geladen werden.</p>";
             });
     </script>
 </body>
