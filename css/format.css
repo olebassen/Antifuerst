@@ -275,6 +275,7 @@ table {
             margin-bottom: 20px;
             padding-bottom: 20px;
             border-bottom: 1px solid #ddd;
+            background-color: #eee;
         }
         article:last-child {
             border-bottom: none;
