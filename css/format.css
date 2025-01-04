@@ -241,8 +241,11 @@ column-count: 1
 
 .toggle-button {
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     display: block;
+    background-color: #111111;
+    color: #eeeeee;
+    font-family: monospace;
 }
 
 table {
@@ -250,6 +253,7 @@ table {
             width: 100%;
             color: #fff;
             background-color: #333;
+            margin-bottom: 1.5rem;
         }
         th, td {
             border: 1px solid #444;
