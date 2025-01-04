@@ -400,6 +400,7 @@ th {
     color: #111;
     column-count: 1;
     display: flex;
+    flex-direction: column;
 }
 
 blockquote {
