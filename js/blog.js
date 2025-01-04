@@ -1,4 +1,5 @@
-    // URL zur JSON-Datei auf GitHub
+document.addEventListener('DOMContentLoaded', () => {
+// URL zur JSON-Datei auf GitHub
     const jsonUrl = "https://raw.githubusercontent.com/olebassen/Antifuerst/main/json/blogposts.json";
 
     // Container, in dem die Blogposts angezeigt werden
@@ -27,3 +28,4 @@
             console.error("Fehler:", error);
             container.innerHTML = "<p>Die Blogposts konnten nicht geladen werden.</p>";
         });
+    });
