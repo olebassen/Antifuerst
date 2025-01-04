@@ -1,31 +1,47 @@
-document.addEventListener('DOMContentLoaded', () => {
-// URL zur JSON-Datei auf GitHub
-    const jsonUrl = "https://raw.githubusercontent.com/olebassen/Antifuerst/main/json/blogposts.json";
+// Pfad zur JSON-Datei
+const jsonFilePath = "json/blogposts.json";
 
-    // Container, in dem die Blogposts angezeigt werden
-    const container = document.querySelector('.container');
+// Container für die Blogeinträge
+const blogContainer = document.getElementById("blogContainer");
 
-    // JSON-Daten abrufen und Blogposts einfügen
-    fetch(jsonUrl)
+// Funktion zum Laden und Anzeigen der Blogeinträge
+function loadBlogPosts() {
+    fetch(jsonFilePath)
         .then(response => {
             if (!response.ok) {
-                throw new Error("Fehler beim Laden der JSON-Datei");
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
             return response.json();
         })
-        .then(blogPosts => {
-            blogPosts.forEach(post => {
-                const article = document.createElement('article');
-                article.innerHTML = `
-                    <h2>${post.title}</h2>
-                    <p><small>Veröffentlicht am ${post.date}</small></p>
-                    <p>${post.content}</p>
-                `;
-                container.appendChild(article);
+        .then(data => {
+            data.forEach(post => {
+                const blogPost = document.createElement("div");
+                blogPost.className = "blog-post";
+
+                const title = document.createElement("h2");
+                title.textContent = post.title;
+
+                const date = document.createElement("div");
+                date.className = "date";
+                date.textContent = new Date(post.date).toLocaleDateString();
+
+                const content = document.createElement("p");
+                content.textContent = post.content;
+
+                blogPost.appendChild(title);
+                blogPost.appendChild(date);
+                blogPost.appendChild(content);
+
+                blogContainer.appendChild(blogPost);
             });
         })
         .catch(error => {
-            console.error("Fehler:", error);
-            container.innerHTML = "<p>Die Blogposts konnten nicht geladen werden.</p>";
+            console.error("Error loading blog posts:", error);
+            const errorMessage = document.createElement("p");
+            errorMessage.textContent = "Fehler beim Laden der Blogeinträge.";
+            blogContainer.appendChild(errorMessage);
         });
-    });
+}
+
+// Blogeinträge laden, sobald die Seite geladen ist
+document.addEventListener("DOMContentLoaded", loadBlogPosts);
