@@ -398,6 +398,7 @@ th {
     border-bottom: 1px solid #ddd;
     background-color: #eee;
     color: #111;
+    column-count: 1;
 }
 
 blockquote {
