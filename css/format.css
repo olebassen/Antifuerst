@@ -218,6 +218,8 @@ nav ul li ul.open {
     border-radius: 5px; /* Abgerundete Ecken */
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Schatteneffekt */
 column-count: 1
+font-size: 0.7em; /* Schriftgröße */
+color: #666; /* Textfarbe */
 }
 
 .infobox h3 {
@@ -228,8 +230,6 @@ column-count: 1
 
 .infobox p {
     margin: 5px 0 0; /* Abstand nur oben */
-    font-size: 0.7em; /* Schriftgröße */
-    color: #666; /* Textfarbe */
 }
 
 /* ====== Allgemeine Resets ====== */
