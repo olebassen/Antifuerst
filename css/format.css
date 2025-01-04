@@ -399,6 +399,7 @@ th {
     background-color: #eee;
     color: #111;
     column-count: 1;
+    display: flex;
 }
 
 blockquote {
