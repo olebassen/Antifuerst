@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 // URL zur JSON-Datei auf GitHub
-    const jsonUrl = "https://raw.githubusercontent.com/olebassen/Antifuerst/main/json/blogposts.json?callback=?";
+    const jsonUrl = "https://raw.githubusercontent.com/olebassen/Antifuerst/main/json/blogposts.json";
 
     // Container, in dem die Blogposts angezeigt werden
     const container = document.querySelector('.container');
