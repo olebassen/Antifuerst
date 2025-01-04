@@ -232,6 +232,9 @@ color: #666; /* Textfarbe */
     margin: 5px 0 0; /* Abstand nur oben */
 }
 
+.infobox ul {
+    margin-left: 10px;
+}
 /* ====== Allgemeine Resets ====== */
 * {
     margin: 0; /* Standardabstände entfernen */
