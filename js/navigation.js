@@ -115,7 +115,7 @@ const chapters = [
 ];
 
 // Ermittle die aktuelle Seite anhand der URL
-const currentPath = window.location.pathname.split("/").pop(); // Der aktuelle Dateiname
+const currentPath = window.location.pathname.replace(/^.*[\\/]/, ''); // Nur Dateiname ohne Verzeichnis
 const currentIndex = chapters.indexOf(currentPath);            // Index der aktuellen Seite in der Kapitel-Liste
 
 // Vorheriges Kapitel
