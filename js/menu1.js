@@ -6,11 +6,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Beim Laden der Seite die zuletzt geladene Seite anzeigen
     const savedPage = sessionStorage.getItem("currentPage");
-    if (savedPage) {
-        loadPage(savedPage);
-    } else {
-        loadPage('home.html'); // Standardseite laden
+if (savedPage) {
+    const savedIndex = chapters.indexOf(savedPage);
+    if (savedIndex !== -1) {
+        currentIndex = savedIndex;
+        sessionStorage.setItem("currentIndex", currentIndex); // Synchronisiere Index
     }
+    loadPage(savedPage);
+} else {
+    loadPage('home.html'); // Standardseite laden
+}
+
 
     // Umschalten des Burger-Menüs (für mobile Geräte)
     burgerButton.addEventListener("click", () => {
