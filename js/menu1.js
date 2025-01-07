@@ -6,16 +6,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Beim Laden der Seite die zuletzt geladene Seite anzeigen
     const savedPage = sessionStorage.getItem("currentPage");
-if (savedPage) {
-    const savedIndex = chapters.indexOf(savedPage);
-    if (savedIndex !== -1) {
-        currentIndex = savedIndex;
-        sessionStorage.setItem("currentIndex", currentIndex); // Synchronisiere Index
+    if (savedPage) {
+        const savedIndex = chapters.indexOf(savedPage);
+        if (savedIndex !== -1) {
+            currentIndex = savedIndex;
+            sessionStorage.setItem("currentIndex", currentIndex); // Synchronisiere Index
+        }
+        loadPage(savedPage);
+    } else {
+        loadPage('home.html'); // Standardseite laden
     }
-    loadPage(savedPage);
-} else {
-    loadPage('home.html'); // Standardseite laden
-}
 
 
     // Umschalten des Burger-Menüs (für mobile Geräte)
@@ -35,10 +35,10 @@ if (savedPage) {
             const url = link.getAttribute("href");
             if (url && url !== "#") {
                 const newIndex = chapters.indexOf(url);
-            if (newIndex !== -1) {
-                currentIndex = newIndex;
-                sessionStorage.setItem("currentIndex", currentIndex); // Speichere den neuen Index
-            }
+                if (newIndex !== -1) {
+                    currentIndex = newIndex;
+                    sessionStorage.setItem("currentIndex", currentIndex); // Speichere den neuen Index
+                }
                 // Aktivieren des aktuellen Links
                 document.querySelectorAll("nav a").forEach(a => a.classList.remove("active"));
                 link.classList.add("active");
@@ -88,7 +88,7 @@ if (savedPage) {
             }
         });
     });
-    
+
 
     // Automatische Anpassung des Menüs bei Größenänderung
     window.addEventListener("resize", () => {
@@ -126,8 +126,8 @@ function loadPage(url) {
         .catch(error => {
             contentArea.innerHTML = `<p>Fehler beim Laden der Seite: ${error.message}</p>`;
         });
-        console.log(`Aktueller Index: ${currentIndex}`);
-        console.log(`Aktuelles Kapitel: ${chapters[currentIndex]}`);
+    console.log(`Aktueller Index: ${currentIndex}`);
+    console.log(`Aktuelles Kapitel: ${chapters[currentIndex]}`);
 
 
 }
@@ -145,117 +145,117 @@ document.addEventListener("click", function (event) {
 });
 // Liste der Kapitel in der richtigen Reihenfolge
 const chapters = [
-"home.html",
-"kapitel1_1.html",
-"kapitel1_2_1.html",
-"kapitel1_2_2.html",
-"kapitel1_2_3.html",
-"kapitel1_2_4.html",
-"kapitel1_2_5.html",
-"kapitel2_1.html",
-"kapitel2_2.html",
-"kapitel2_3.html",
-"kapitel2_4.html",
-"kapitel2_5.html",
-"kapitel2_6.html",
-"kapitel3_1.html",
-"kapitel3_2.html",
-"kapitel3_3.html",
-"kapitel3_4.html",
-"kapitel3_5.html",
-"kapitel3_6.html",
-"kapitel3_7.html",
-"kapitel3_8.html",
-"kapitel3_9.html",
-"kapitel3_10.html",
-"kapitel3_11.html",
-"kapitel3_12.html",
-"kapitel3_13.html",
-"kapitel4_1.html",
-"kapitel4_1_1.html",
-"kapitel4_1_2.html",
-"kapitel4_1_3.html",
-"kapitel4_2_1.html",
-"kapitel4_2_2.html",
-"kapitel4_2_3.html",
-"kapitel4_2_4.html",
-"kapitel4_2_5.html",
-"kapitel4_2_6.html",
-"kapitel4_2_7.html",
-"kapitel4_3.html",
-"kapitel4_4.html",
-"kapitel4_5.html",
-"kapitel4_6.html",
-"kapitel4_7.html",
-"kapitel4_8.html",
-"kapitel5_1.html",
-"kapitel5_2.html",
-"kapitel5_3.html",
-"kapitel5_4.html",
-"kapitel5_5.html",
-"kapitel5_6.html",
-"kapitel5_7.html",
-"kapitel6_1.html",
-"kapitel6_2.html",
-"kapitel6_3.html",
-"kapitel6_3_1.html",
-"kapitel6_3_2.html",
-"kapitel6_3_3.html",
-"kapitel6_3_4.html",
-"kapitel6_3_5.html",
-"kapitel6_3_6.html",
-"kapitel6_3_7.html",
-"kapitel6_4.html",
-"kapitel6_5_1.html",
-"kapitel6_5_2.html",
-"kapitel6_5_3.html",
-"kapitel6_5_4.html",
-"kapitel6_5_5.html",
-"kapitel6_6.html",
-"kapitel7_1.html",
-"kapitel7_2.html",
-"kapitel7_3.html",
-"kapitel7_4.html",
-"kapitel7_5.html",
-"kapitel7_6.html",
-"kapitel7_7.html",
-"kapitel7_8.html",
-"kapitel8_1.html",
-"kapitel8_2.html",
-"kapitel8_3.html",
-"kapitel8_4.html",
-"kapitel8_5.html",
-"kapitel8_6.html",
-"kapitel8_7.html",
-"kapitel8_8.html",
-"kapitel8_9.html",
-"kapitel9_0.html",
-"kapitel9_1.html",
-"kapitel9_2.html",
-"kapitel9_3.html",
-"kapitel9_4.html",
-"kapitel9_5.html",
-"kapitel9_6.html",
-"kapitel9_7.html",
-"kapitel9_8.html",
-"kapitel9_9.html",
-"kapitel9_10.html",
-"kapitel9_11.html",
-"kapitel9_12.html",
-"kapitel10_1.html",
-"kapitel10_2.html",
-"kapitel10_3.html",
-"kapitel10_4.html",
-"kapitel10_5.html",
-"kapitel10_6.html",
-"kapitel10_7.html",
-"kapitel10_8.html",
-"kapitel11_1.html",
-"kapitel11_2.html",
-"kapitel11_3.html",
-"kapitel11_4.html",
-"kapitel12.html",
-"blog.html"
+    "home.html",
+    "kapitel1_1.html",
+    "kapitel1_2_1.html",
+    "kapitel1_2_2.html",
+    "kapitel1_2_3.html",
+    "kapitel1_2_4.html",
+    "kapitel1_2_5.html",
+    "kapitel2_1.html",
+    "kapitel2_2.html",
+    "kapitel2_3.html",
+    "kapitel2_4.html",
+    "kapitel2_5.html",
+    "kapitel2_6.html",
+    "kapitel3_1.html",
+    "kapitel3_2.html",
+    "kapitel3_3.html",
+    "kapitel3_4.html",
+    "kapitel3_5.html",
+    "kapitel3_6.html",
+    "kapitel3_7.html",
+    "kapitel3_8.html",
+    "kapitel3_9.html",
+    "kapitel3_10.html",
+    "kapitel3_11.html",
+    "kapitel3_12.html",
+    "kapitel3_13.html",
+    "kapitel4_1.html",
+    "kapitel4_1_1.html",
+    "kapitel4_1_2.html",
+    "kapitel4_1_3.html",
+    "kapitel4_2_1.html",
+    "kapitel4_2_2.html",
+    "kapitel4_2_3.html",
+    "kapitel4_2_4.html",
+    "kapitel4_2_5.html",
+    "kapitel4_2_6.html",
+    "kapitel4_2_7.html",
+    "kapitel4_3.html",
+    "kapitel4_4.html",
+    "kapitel4_5.html",
+    "kapitel4_6.html",
+    "kapitel4_7.html",
+    "kapitel4_8.html",
+    "kapitel5_1.html",
+    "kapitel5_2.html",
+    "kapitel5_3.html",
+    "kapitel5_4.html",
+    "kapitel5_5.html",
+    "kapitel5_6.html",
+    "kapitel5_7.html",
+    "kapitel6_1.html",
+    "kapitel6_2.html",
+    "kapitel6_3.html",
+    "kapitel6_3_1.html",
+    "kapitel6_3_2.html",
+    "kapitel6_3_3.html",
+    "kapitel6_3_4.html",
+    "kapitel6_3_5.html",
+    "kapitel6_3_6.html",
+    "kapitel6_3_7.html",
+    "kapitel6_4.html",
+    "kapitel6_5_1.html",
+    "kapitel6_5_2.html",
+    "kapitel6_5_3.html",
+    "kapitel6_5_4.html",
+    "kapitel6_5_5.html",
+    "kapitel6_6.html",
+    "kapitel7_1.html",
+    "kapitel7_2.html",
+    "kapitel7_3.html",
+    "kapitel7_4.html",
+    "kapitel7_5.html",
+    "kapitel7_6.html",
+    "kapitel7_7.html",
+    "kapitel7_8.html",
+    "kapitel8_1.html",
+    "kapitel8_2.html",
+    "kapitel8_3.html",
+    "kapitel8_4.html",
+    "kapitel8_5.html",
+    "kapitel8_6.html",
+    "kapitel8_7.html",
+    "kapitel8_8.html",
+    "kapitel8_9.html",
+    "kapitel9_0.html",
+    "kapitel9_1.html",
+    "kapitel9_2.html",
+    "kapitel9_3.html",
+    "kapitel9_4.html",
+    "kapitel9_5.html",
+    "kapitel9_6.html",
+    "kapitel9_7.html",
+    "kapitel9_8.html",
+    "kapitel9_9.html",
+    "kapitel9_10.html",
+    "kapitel9_11.html",
+    "kapitel9_12.html",
+    "kapitel10_1.html",
+    "kapitel10_2.html",
+    "kapitel10_3.html",
+    "kapitel10_4.html",
+    "kapitel10_5.html",
+    "kapitel10_6.html",
+    "kapitel10_7.html",
+    "kapitel10_8.html",
+    "kapitel11_1.html",
+    "kapitel11_2.html",
+    "kapitel11_3.html",
+    "kapitel11_4.html",
+    "kapitel12.html",
+    "blog.html"
     // Füge hier weitere Kapitel ein, falls notwendig
 ];
 
@@ -317,8 +317,8 @@ function updateChapterNavigation(newIndex) {
         nextLink.onclick = null;
     }
     console.log(`Aktuelles Kapitel: ${chapters[currentIndex]}`);
-console.log(`Sichtbarkeit prev: ${document.getElementById("prev-chapter").style.visibility}`);
-console.log(`Sichtbarkeit next: ${document.getElementById("next-chapter").style.visibility}`);
+    console.log(`Sichtbarkeit prev: ${document.getElementById("prev-chapter").style.visibility}`);
+    console.log(`Sichtbarkeit next: ${document.getElementById("next-chapter").style.visibility}`);
 }
 
 const burgerButton = document.getElementById("burger-menu-button");
