@@ -83,7 +83,12 @@ if (savedPage) {
 });
 
 // Funktion zum Laden von Seiten
+let currentPage = null;
+
 function loadPage(url) {
+    if (currentPage === url) return; // Verhindere erneutes Laden derselben Seite
+    currentPage = url;
+
     const contentArea = document.getElementById("content");
     fetch(url)
         .then(response => {
@@ -99,6 +104,7 @@ function loadPage(url) {
             contentArea.innerHTML = `<p>Fehler beim Laden der Seite: ${error.message}</p>`;
         });
 }
+
 
 document.addEventListener("click", function (event) {
     if (event.target && event.target.classList.contains("toggle-button")) {
