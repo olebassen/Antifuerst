@@ -240,4 +240,3 @@ if (currentIndex < chapters.length - 1) {
 console.log("Current Path:", currentPath);
 console.log("Current Index:", currentIndex);
 console.log("window.location.pathname:", window.location.href);
-console.log("currentPath:", currentPath);
