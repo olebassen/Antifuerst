@@ -57,19 +57,24 @@ if (savedPage) {
     });
 
     // Umschalten von Dropdown-Untermenüs
-    document.querySelectorAll("nav a.dropdown").forEach(dropdown => {
-        dropdown.addEventListener("click", (e) => {
-            e.preventDefault(); // Standardverhalten verhindern
-            const parent = dropdown.parentElement;
-
-            // Öffne oder schließe das aktuelle Untermenü
-            const subMenu = parent.querySelector("ul");
-            if (subMenu) {
-                const isVisible = subMenu.style.display === "block";
-                subMenu.style.display = isVisible ? "none" : "block";
+    document.querySelectorAll("nav a:not(.dropdown)").forEach(link => {
+        link.addEventListener("click", (e) => {
+            e.preventDefault();
+    
+            const url = link.getAttribute("href");
+            if (url && url !== "#") {
+                document.querySelectorAll("nav a").forEach(a => a.classList.remove("active"));
+                link.classList.add("active");
+    
+                loadPage(url); // Index wird hier automatisch in der Funktion aktualisiert
+    
+                if (window.innerWidth <= 767) {
+                    burgerMenu.style.display = "none"; // Menü schließen
+                }
             }
         });
     });
+    
 
     // Automatische Anpassung des Menüs bei Größenänderung
     window.addEventListener("resize", () => {
@@ -85,6 +90,14 @@ if (savedPage) {
 // Funktion zum Laden von Seiten
 function loadPage(url) {
     const contentArea = document.getElementById("content");
+    const newIndex = chapters.indexOf(url);
+
+    if (newIndex !== -1) {
+        // Aktualisiere den Index
+        currentIndex = newIndex;
+        sessionStorage.setItem("currentIndex", currentIndex);
+    }
+
     fetch(url)
         .then(response => {
             if (!response.ok) {
@@ -94,11 +107,13 @@ function loadPage(url) {
         })
         .then(html => {
             contentArea.innerHTML = html;
+            updateChapterNavigation(currentIndex); // Navigation aktualisieren
         })
         .catch(error => {
             contentArea.innerHTML = `<p>Fehler beim Laden der Seite: ${error.message}</p>`;
         });
 }
+
 
 document.addEventListener("click", function (event) {
     if (event.target && event.target.classList.contains("toggle-button")) {
@@ -235,27 +250,25 @@ if (isNaN(currentIndex) || currentIndex < 0 || currentIndex >= chapters.length) 
 
 // Vorheriges Kapitel
 if (currentIndex > 0) {
-    const prevChapter = chapters[currentIndex - 1];
     const prevLink = document.getElementById("prev-chapter");
     prevLink.addEventListener("click", (e) => {
         e.preventDefault();
-        loadPage(prevChapter);
-        updateChapterNavigation(currentIndex - 1);
+        loadPage(chapters[currentIndex - 1]); // Index wird automatisch aktualisiert
     });
     prevLink.style.visibility = "visible";
 }
 
+
 // Nächstes Kapitel
 if (currentIndex < chapters.length - 1) {
-    const nextChapter = chapters[currentIndex + 1];
     const nextLink = document.getElementById("next-chapter");
     nextLink.addEventListener("click", (e) => {
         e.preventDefault();
-        loadPage(nextChapter);
-        updateChapterNavigation(currentIndex + 1);
+        loadPage(chapters[currentIndex + 1]); // Index wird automatisch aktualisiert
     });
     nextLink.style.visibility = "visible";
 }
+
 function updateChapterNavigation(newIndex) {
     sessionStorage.setItem("currentIndex", newIndex);
 
