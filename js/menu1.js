@@ -112,6 +112,10 @@ function loadPage(url) {
         .catch(error => {
             contentArea.innerHTML = `<p>Fehler beim Laden der Seite: ${error.message}</p>`;
         });
+        console.log(`Aktueller Index: ${currentIndex}`);
+        console.log(`Aktuelles Kapitel: ${chapters[currentIndex]}`);
+
+
 }
 
 
