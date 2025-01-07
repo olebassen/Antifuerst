@@ -215,83 +215,32 @@ const chapters = [
     // Füge hier weitere Kapitel ein, falls notwendig
 ];
 
-// Ermittle die aktuelle Seite anhand der URL
-let currentPath = window.location.href.split('/').pop();// Fallback, wenn der aktuelle Pfad leer ist
-if (currentPath === "" || currentPath === "/") {
-    currentPath = "home.html"; // Standardseite definieren
+// Ermittle den aktuellen Index aus sessionStorage
+let currentIndex = parseInt(sessionStorage.getItem("currentIndex"), 10);
+if (isNaN(currentIndex)) {
+    currentIndex = 0; // Fallback auf das erste Kapitel (home.html)
 }
-const currentIndex = chapters.indexOf(currentPath);            // Index der aktuellen Seite in der Kapitel-Liste
 
 // Vorheriges Kapitel
 if (currentIndex > 0) {
-    const prevChapter = chapters[currentIndex - 1]; // Kapitel davor
-    const prevLink = document.getElementById("prev-chapter"); // HTML-Element für vorherigen Link
-
+    const prevChapter = chapters[currentIndex - 1];
+    const prevLink = document.getElementById("prev-chapter");
     prevLink.addEventListener("click", (e) => {
-        e.preventDefault(); // Standardverhalten verhindern
-        loadPage(prevChapter); // Vorheriges Kapitel laden
-        updateChapterNavigation(currentIndex - 1); // Kapitelnavigation aktualisieren
+        e.preventDefault();
+        loadPage(prevChapter);
+        updateChapterNavigation(currentIndex - 1);
     });
-    prevLink.style.visibility = "visible"; // Zeige den Link an
+    prevLink.style.visibility = "visible";
 }
 
 // Nächstes Kapitel
 if (currentIndex < chapters.length - 1) {
-    const nextChapter = chapters[currentIndex + 1]; // Kapitel danach
-    const nextLink = document.getElementById("next-chapter"); // HTML-Element für nächsten Link
-
-    nextLink.addEventListener("click", (e) => {
-        e.preventDefault(); // Standardverhalten verhindern
-        loadPage(nextChapter); // Nächstes Kapitel laden
-        updateChapterNavigation(currentIndex + 1); // Kapitelnavigation aktualisieren
-    });
-    nextLink.style.visibility = "visible"; // Zeige den Link an
-}
-function updateChapterNavigation(newIndex) {
-    // Aktualisiere den aktuellen Index
-    const prevLink = document.getElementById("prev-chapter");
+    const nextChapter = chapters[currentIndex + 1];
     const nextLink = document.getElementById("next-chapter");
-
-    // Vorheriges Kapitel
-    if (newIndex > 0) {
-        const prevChapter = chapters[newIndex - 1];
-        prevLink.style.visibility = "visible";
-        prevLink.addEventListener("click", (e) => {
-            e.preventDefault();
-            loadPage(prevChapter);
-            updateChapterNavigation(newIndex - 1);
-        });
-    } else {
-        prevLink.style.visibility = "hidden";
-    }
-
-    // Nächstes Kapitel
-    if (newIndex < chapters.length - 1) {
-        const nextChapter = chapters[newIndex + 1];
-        nextLink.style.visibility = "visible";
-        nextLink.addEventListener("click", (e) => {
-            e.preventDefault();
-            loadPage(nextChapter);
-            updateChapterNavigation(newIndex + 1);
-        });
-    } else {
-        nextLink.style.visibility = "hidden";
-    }
-
-    // Speichere das neue Kapitel in Session Storage
-    sessionStorage.setItem("currentPage", chapters[newIndex]);
+    nextLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        loadPage(nextChapter);
+        updateChapterNavigation(currentIndex + 1);
+    });
+    nextLink.style.visibility = "visible";
 }
-document.addEventListener("DOMContentLoaded", () => {
-    // Ermittle den aktuellen Index
-    const savedPage = sessionStorage.getItem("currentPage") || "home.html";
-    const currentIndex = chapters.indexOf(savedPage);
-
-    if (currentIndex >= 0) {
-        loadPage(savedPage); // Lade die gespeicherte Seite
-        updateChapterNavigation(currentIndex); // Initialisiere die Kapitel-Navigation
-    }
-});
-
-console.log("Current Path:", currentPath);
-console.log("Current Index:", currentIndex);
-console.log("window.location.pathname:", window.location.href);
