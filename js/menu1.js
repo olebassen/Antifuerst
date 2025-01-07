@@ -255,3 +255,33 @@ if (currentIndex < chapters.length - 1) {
     });
     nextLink.style.visibility = "visible";
 }
+function updateChapterNavigation(newIndex) {
+    // Aktualisiere den aktuellen Kapitelindex im Session Storage
+    sessionStorage.setItem("currentIndex", newIndex);
+
+    // Aktualisiere die Sichtbarkeit der "Vorheriges Kapitel"- und "Nächstes Kapitel"-Links
+    const prevLink = document.getElementById("prev-chapter");
+    const nextLink = document.getElementById("next-chapter");
+
+    if (newIndex > 0) {
+        prevLink.style.visibility = "visible"; // Zeige "Vorheriges Kapitel"
+        prevLink.addEventListener("click", (e) => {
+            e.preventDefault();
+            loadPage(chapters[newIndex - 1]); // Lade das vorherige Kapitel
+            updateChapterNavigation(newIndex - 1); // Aktualisiere den Index
+        });
+    } else {
+        prevLink.style.visibility = "hidden"; // Verstecke "Vorheriges Kapitel"
+    }
+
+    if (newIndex < chapters.length - 1) {
+        nextLink.style.visibility = "visible"; // Zeige "Nächstes Kapitel"
+        nextLink.addEventListener("click", (e) => {
+            e.preventDefault();
+            loadPage(chapters[newIndex + 1]); // Lade das nächste Kapitel
+            updateChapterNavigation(newIndex + 1); // Aktualisiere den Index
+        });
+    } else {
+        nextLink.style.visibility = "hidden"; // Verstecke "Nächstes Kapitel"
+    }
+}
