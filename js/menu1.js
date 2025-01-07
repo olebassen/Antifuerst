@@ -228,9 +228,10 @@ const chapters = [
 
 // Ermittle den aktuellen Index aus sessionStorage
 let currentIndex = parseInt(sessionStorage.getItem("currentIndex"), 10);
-if (isNaN(currentIndex)) {
+if (isNaN(currentIndex) || currentIndex < 0 || currentIndex >= chapters.length) {
     currentIndex = 0; // Fallback auf das erste Kapitel (home.html)
 }
+
 
 // Vorheriges Kapitel
 if (currentIndex > 0) {
@@ -256,10 +257,8 @@ if (currentIndex < chapters.length - 1) {
     nextLink.style.visibility = "visible";
 }
 function updateChapterNavigation(newIndex) {
-    // Speichere den aktuellen Index
     sessionStorage.setItem("currentIndex", newIndex);
 
-    // Aktualisiere die Sichtbarkeit der Links
     const prevLink = document.getElementById("prev-chapter");
     const nextLink = document.getElementById("next-chapter");
 
@@ -272,6 +271,7 @@ function updateChapterNavigation(newIndex) {
         };
     } else {
         prevLink.style.visibility = "hidden";
+        prevLink.onclick = null;
     }
 
     if (newIndex < chapters.length - 1) {
@@ -283,5 +283,20 @@ function updateChapterNavigation(newIndex) {
         };
     } else {
         nextLink.style.visibility = "hidden";
+        nextLink.onclick = null;
     }
 }
+
+const burgerButton = document.getElementById("burger-menu-button");
+if (burgerButton) {
+    burgerButton.addEventListener("click", () => {
+        if (burgerMenu.style.display === "block") {
+            burgerMenu.style.display = "none";
+        } else {
+            burgerMenu.style.display = "block";
+        }
+    });
+}
+console.log(`Aktuelles Kapitel: ${chapters[currentIndex]}`);
+console.log(`Sichtbarkeit prev: ${document.getElementById("prev-chapter").style.visibility}`);
+console.log(`Sichtbarkeit next: ${document.getElementById("next-chapter").style.visibility}`);
