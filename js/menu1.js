@@ -256,32 +256,32 @@ if (currentIndex < chapters.length - 1) {
     nextLink.style.visibility = "visible";
 }
 function updateChapterNavigation(newIndex) {
-    // Aktualisiere den aktuellen Kapitelindex im Session Storage
+    // Speichere den aktuellen Index
     sessionStorage.setItem("currentIndex", newIndex);
 
-    // Aktualisiere die Sichtbarkeit der "Vorheriges Kapitel"- und "Nächstes Kapitel"-Links
+    // Aktualisiere die Sichtbarkeit der Links
     const prevLink = document.getElementById("prev-chapter");
     const nextLink = document.getElementById("next-chapter");
 
     if (newIndex > 0) {
-        prevLink.style.visibility = "visible"; // Zeige "Vorheriges Kapitel"
-        prevLink.addEventListener("click", (e) => {
+        prevLink.style.visibility = "visible";
+        prevLink.onclick = (e) => {
             e.preventDefault();
-            loadPage(chapters[newIndex - 1]); // Lade das vorherige Kapitel
-            updateChapterNavigation(newIndex - 1); // Aktualisiere den Index
-        });
+            loadPage(chapters[newIndex - 1]);
+            updateChapterNavigation(newIndex - 1);
+        };
     } else {
-        prevLink.style.visibility = "hidden"; // Verstecke "Vorheriges Kapitel"
+        prevLink.style.visibility = "hidden";
     }
 
     if (newIndex < chapters.length - 1) {
-        nextLink.style.visibility = "visible"; // Zeige "Nächstes Kapitel"
-        nextLink.addEventListener("click", (e) => {
+        nextLink.style.visibility = "visible";
+        nextLink.onclick = (e) => {
             e.preventDefault();
-            loadPage(chapters[newIndex + 1]); // Lade das nächste Kapitel
-            updateChapterNavigation(newIndex + 1); // Aktualisiere den Index
-        });
+            loadPage(chapters[newIndex + 1]);
+            updateChapterNavigation(newIndex + 1);
+        };
     } else {
-        nextLink.style.visibility = "hidden"; // Verstecke "Nächstes Kapitel"
+        nextLink.style.visibility = "hidden";
     }
 }
