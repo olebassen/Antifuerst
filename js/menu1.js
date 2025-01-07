@@ -61,6 +61,15 @@ document.addEventListener("DOMContentLoaded", () => {
         link.addEventListener("click", (e) => {
             e.preventDefault();
 
+            const subMenu = link.nextElementSibling; // Gehe zum direkt nachfolgenden <ul>
+            if (subMenu && subMenu.tagName === "UL") {
+                const isVisible = subMenu.style.display === "block";
+                subMenu.style.display = isVisible ? "none" : "block";
+            }
+            if (window.innerWidth <= 767) {
+                burgerMenu.style.display = "none"; // Menü schließen, wenn auf mobilen Geräten
+            }
+
             const url = link.getAttribute("href");
             if (url && url !== "#") {
                 const newIndex = chapters.indexOf(url);
@@ -77,14 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 // Die aktuelle Seite in Session Storage speichern
                 sessionStorage.setItem("currentPage", url);
-                const subMenu = parent.querySelector("ul");
-                if (subMenu) {
-                    const isVisible = subMenu.style.display === "block";
-                    subMenu.style.display = isVisible ? "none" : "block";
-                }
-                if (window.innerWidth <= 767) {
-                    burgerMenu.style.display = "none"; // Menü schließen, wenn auf mobilen Geräten
-                }
+                
             }
         });
     });
