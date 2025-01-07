@@ -101,7 +101,6 @@ document.addEventListener("click", function (event) {
 });
 // Liste der Kapitel in der richtigen Reihenfolge
 const chapters = [
-    "blog.html",
 "home.html",
 "kapitel1_1.html",
 "kapitel1_2_1.html",
@@ -212,6 +211,7 @@ const chapters = [
 "kapitel11_3.html",
 "kapitel11_4.html",
 "kapitel12.html",
+"blog.html"
     // Füge hier weitere Kapitel ein, falls notwendig
 ];
 
@@ -240,3 +240,5 @@ if (currentIndex < chapters.length - 1) {
 }
 console.log("Current Path:", currentPath);
 console.log("Current Index:", currentIndex);
+console.log("window.location.pathname:", window.location.pathname);
+console.log("currentPath:", currentPath);
