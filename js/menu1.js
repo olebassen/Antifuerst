@@ -60,16 +60,26 @@ if (savedPage) {
     document.querySelectorAll("nav a:not(.dropdown)").forEach(link => {
         link.addEventListener("click", (e) => {
             e.preventDefault();
-    
+
             const url = link.getAttribute("href");
             if (url && url !== "#") {
+                const newIndex = chapters.indexOf(url);
+                if (newIndex !== -1) {
+                    currentIndex = newIndex;
+                    sessionStorage.setItem("currentIndex", currentIndex); // Speichere den neuen Index
+                }
+                // Aktivieren des aktuellen Links
                 document.querySelectorAll("nav a").forEach(a => a.classList.remove("active"));
                 link.classList.add("active");
-    
-                loadPage(url); // Index wird hier automatisch in der Funktion aktualisiert
-    
+
+                // Inhalt von der URL laden
+                loadPage(url);
+
+                // Die aktuelle Seite in Session Storage speichern
+                sessionStorage.setItem("currentPage", url);
+
                 if (window.innerWidth <= 767) {
-                    burgerMenu.style.display = "none"; // Menü schließen
+                    burgerMenu.style.display = "none"; // Menü schließen, wenn auf mobilen Geräten
                 }
             }
         });
