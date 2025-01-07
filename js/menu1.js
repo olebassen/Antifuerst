@@ -216,24 +216,38 @@ const chapters = [
 ];
 
 // Ermittle die aktuelle Seite anhand der URL
-
-const currentIndex = chapters.indexOf(savedPage);            // Index der aktuellen Seite in der Kapitel-Liste
+let currentPath = window.location.href.split('/').pop();// Fallback, wenn der aktuelle Pfad leer ist
+if (currentPath === "" || currentPath === "/") {
+    currentPath = "home.html"; // Standardseite definieren
+}
+const currentIndex = chapters.indexOf(currentPath);            // Index der aktuellen Seite in der Kapitel-Liste
 
 // Vorheriges Kapitel
 if (currentIndex > 0) {
-    const prevChapter = chapters[currentIndex - 1];            // Kapitel davor
-    const prevLink = document.getElementById("prev-chapter");  // HTML-Element für vorherigen Link
-    prevLink.href = prevChapter;                               // Setze den Link
-    prevLink.style.visibility = "visible";                    // Zeige den Link an
+    const prevChapter = chapters[currentIndex - 1]; // Kapitel davor
+    const prevLink = document.getElementById("prev-chapter"); // HTML-Element für vorherigen Link
+
+    prevLink.addEventListener("click", (e) => {
+        e.preventDefault(); // Standardverhalten verhindern
+        loadPage(prevChapter); // Vorheriges Kapitel laden
+        updateChapterNavigation(currentIndex - 1); // Kapitelnavigation aktualisieren
+    });
+    prevLink.style.visibility = "visible"; // Zeige den Link an
 }
 
 // Nächstes Kapitel
 if (currentIndex < chapters.length - 1) {
-    const nextChapter = chapters[currentIndex + 1];            // Kapitel danach
-    const nextLink = document.getElementById("next-chapter");  // HTML-Element für nächsten Link
-    nextLink.href = nextChapter;                               // Setze den Link
-    nextLink.style.visibility = "visible";                    // Zeige den Link an
+    const nextChapter = chapters[currentIndex + 1]; // Kapitel danach
+    const nextLink = document.getElementById("next-chapter"); // HTML-Element für nächsten Link
+
+    nextLink.addEventListener("click", (e) => {
+        e.preventDefault(); // Standardverhalten verhindern
+        loadPage(nextChapter); // Nächstes Kapitel laden
+        updateChapterNavigation(currentIndex + 1); // Kapitelnavigation aktualisieren
+    });
+    nextLink.style.visibility = "visible"; // Zeige den Link an
 }
-console.log("Current Path:", savedPage);
+
+console.log("Current Path:", currentPath);
 console.log("Current Index:", currentIndex);
 console.log("window.location.pathname:", window.location.href);
