@@ -285,6 +285,9 @@ function updateChapterNavigation(newIndex) {
         nextLink.style.visibility = "hidden";
         nextLink.onclick = null;
     }
+    console.log(`Aktuelles Kapitel: ${chapters[currentIndex]}`);
+console.log(`Sichtbarkeit prev: ${document.getElementById("prev-chapter").style.visibility}`);
+console.log(`Sichtbarkeit next: ${document.getElementById("next-chapter").style.visibility}`);
 }
 
 const burgerButton = document.getElementById("burger-menu-button");
@@ -297,6 +300,3 @@ if (burgerButton) {
         }
     });
 }
-console.log(`Aktuelles Kapitel: ${chapters[currentIndex]}`);
-console.log(`Sichtbarkeit prev: ${document.getElementById("prev-chapter").style.visibility}`);
-console.log(`Sichtbarkeit next: ${document.getElementById("next-chapter").style.visibility}`);
