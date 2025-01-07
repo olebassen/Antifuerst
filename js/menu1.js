@@ -217,7 +217,7 @@ const chapters = [
 
 // Ermittle die aktuelle Seite anhand der URL
 
-const currentIndex = chapters.indexOf(currentPage);            // Index der aktuellen Seite in der Kapitel-Liste
+const currentIndex = chapters.indexOf(savedPage);            // Index der aktuellen Seite in der Kapitel-Liste
 
 // Vorheriges Kapitel
 if (currentIndex > 0) {
@@ -234,6 +234,6 @@ if (currentIndex < chapters.length - 1) {
     nextLink.href = nextChapter;                               // Setze den Link
     nextLink.style.visibility = "visible";                    // Zeige den Link an
 }
-console.log("Current Path:", currentPage);
+console.log("Current Path:", savedPage);
 console.log("Current Index:", currentIndex);
 console.log("window.location.pathname:", window.location.href);
