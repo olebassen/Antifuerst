@@ -247,6 +247,50 @@ if (currentIndex < chapters.length - 1) {
     });
     nextLink.style.visibility = "visible"; // Zeige den Link an
 }
+function updateChapterNavigation(newIndex) {
+    // Aktualisiere den aktuellen Index
+    const prevLink = document.getElementById("prev-chapter");
+    const nextLink = document.getElementById("next-chapter");
+
+    // Vorheriges Kapitel
+    if (newIndex > 0) {
+        const prevChapter = chapters[newIndex - 1];
+        prevLink.style.visibility = "visible";
+        prevLink.addEventListener("click", (e) => {
+            e.preventDefault();
+            loadPage(prevChapter);
+            updateChapterNavigation(newIndex - 1);
+        });
+    } else {
+        prevLink.style.visibility = "hidden";
+    }
+
+    // Nächstes Kapitel
+    if (newIndex < chapters.length - 1) {
+        const nextChapter = chapters[newIndex + 1];
+        nextLink.style.visibility = "visible";
+        nextLink.addEventListener("click", (e) => {
+            e.preventDefault();
+            loadPage(nextChapter);
+            updateChapterNavigation(newIndex + 1);
+        });
+    } else {
+        nextLink.style.visibility = "hidden";
+    }
+
+    // Speichere das neue Kapitel in Session Storage
+    sessionStorage.setItem("currentPage", chapters[newIndex]);
+}
+document.addEventListener("DOMContentLoaded", () => {
+    // Ermittle den aktuellen Index
+    const savedPage = sessionStorage.getItem("currentPage") || "home.html";
+    const currentIndex = chapters.indexOf(savedPage);
+
+    if (currentIndex >= 0) {
+        loadPage(savedPage); // Lade die gespeicherte Seite
+        updateChapterNavigation(currentIndex); // Initialisiere die Kapitel-Navigation
+    }
+});
 
 console.log("Current Path:", currentPath);
 console.log("Current Index:", currentIndex);
