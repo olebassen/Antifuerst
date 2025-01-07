@@ -1,61 +1,312 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // Referenzen auf wichtige Elemente
     const burgerButton = document.getElementById("burger-menu-button");
     const burgerMenu = document.querySelector("nav");
     const contentArea = document.getElementById("content");
-    let currentPage = null;
-
-    // Burger-Menü
-    if (burgerButton && burgerMenu) {
-        burgerButton.addEventListener("click", () => {
-            burgerMenu.style.display = burgerMenu.style.display === "block" ? "none" : "block";
-        });
-    }
 
     // Beim Laden der Seite die zuletzt geladene Seite anzeigen
     const savedPage = sessionStorage.getItem("currentPage");
-    if (savedPage && chapters.includes(savedPage)) {
-        const savedIndex = chapters.indexOf(savedPage);
+if (savedPage) {
+    const savedIndex = chapters.indexOf(savedPage);
+    if (savedIndex !== -1) {
         currentIndex = savedIndex;
-        sessionStorage.setItem("currentIndex", currentIndex);
-        loadPage(savedPage);
-    } else {
-        loadPage("home.html");
+        sessionStorage.setItem("currentIndex", currentIndex); // Synchronisiere Index
     }
+    loadPage(savedPage);
+} else {
+    loadPage('home.html'); // Standardseite laden
+}
 
-    // Dynamisches Laden von Kapiteln
+
+    // Umschalten des Burger-Menüs (für mobile Geräte)
+    burgerButton.addEventListener("click", () => {
+        if (burgerMenu.style.display === "block") {
+            burgerMenu.style.display = "none"; // Menü schließen
+        } else {
+            burgerMenu.style.display = "block"; // Menü öffnen
+        }
+    });
+
+    // Dynamisches Laden von Inhalten
     document.querySelectorAll("nav a:not(.dropdown)").forEach(link => {
         link.addEventListener("click", (e) => {
             e.preventDefault();
-            const url = link.getAttribute("href");
-            if (url && url !== currentPage && chapters.includes(url)) {
-                const newIndex = chapters.indexOf(url);
-                currentIndex = newIndex;
-                sessionStorage.setItem("currentIndex", currentIndex);
-                loadPage(url);
 
+            const url = link.getAttribute("href");
+            if (url && url !== "#") {
+                const newIndex = chapters.indexOf(url);
+            if (newIndex !== -1) {
+                currentIndex = newIndex;
+                sessionStorage.setItem("currentIndex", currentIndex); // Speichere den neuen Index
+            }
+                // Aktivieren des aktuellen Links
                 document.querySelectorAll("nav a").forEach(a => a.classList.remove("active"));
                 link.classList.add("active");
 
-                if (window.innerWidth <= 767) burgerMenu.style.display = "none";
+                // Inhalt von der URL laden
+                loadPage(url);
+
+                // Die aktuelle Seite in Session Storage speichern
+                sessionStorage.setItem("currentPage", url);
+
+                if (window.innerWidth <= 767) {
+                    burgerMenu.style.display = "none"; // Menü schließen, wenn auf mobilen Geräten
+                }
             }
         });
     });
 
-    // Dropdown-Menüs
+    // Umschalten von Dropdown-Untermenüs
     document.querySelectorAll("nav a.dropdown").forEach(dropdown => {
         dropdown.addEventListener("click", (e) => {
-            e.preventDefault();
-            const subMenu = dropdown.parentElement.querySelector("ul");
-            if (subMenu) subMenu.classList.toggle("open");
+            e.preventDefault(); // Standardverhalten verhindern
+            const parent = dropdown.parentElement;
+
+            // Öffne oder schließe das aktuelle Untermenü
+            const subMenu = parent.querySelector("ul");
+            if (subMenu) {
+                const isVisible = subMenu.style.display === "block";
+                subMenu.style.display = isVisible ? "none" : "block";
+            }
         });
     });
 
-    // Kapitel-Navigation
-    updateChapterNavigation(currentIndex);
-
-    // Automatische Anpassung bei Größenänderung
+    // Automatische Anpassung des Menüs bei Größenänderung
     window.addEventListener("resize", () => {
-        if (window.innerWidth >= 768) burgerMenu.style.display = "block";
-        else burgerMenu.style.display = "none";
+        if (window.innerWidth >= 768) {
+            burgerMenu.style.display = "block"; // Menü immer sichtbar auf Desktops
+            document.querySelectorAll("nav ul ul").forEach(ul => ul.style.display = "none"); // Untermenüs schließen
+        } else {
+            burgerMenu.style.display = "none"; // Menü auf Mobilgeräten ausblenden
+        }
     });
 });
+
+// Funktion zum Laden von Seiten
+let currentPage = null;
+
+function loadPage(url) {
+    if (currentPage === url) return; // Verhindere erneutes Laden derselben Seite
+    currentPage = url;
+
+    const contentArea = document.getElementById("content");
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP-Error: ${response.status}`);
+            }
+            return response.text();
+        })
+        .then(html => {
+            contentArea.innerHTML = html;
+        })
+        .catch(error => {
+            contentArea.innerHTML = `<p>Fehler beim Laden der Seite: ${error.message}</p>`;
+        });
+}
+
+
+document.addEventListener("click", function (event) {
+    if (event.target && event.target.classList.contains("toggle-button")) {
+        const infobox = event.target.nextElementSibling;
+        if (infobox && infobox.style.display === "none") {
+            infobox.style.display = "block"; // Infobox einblenden
+        } else if (infobox) {
+            infobox.style.display = "none"; // Infobox ausblenden
+        }
+    }
+});
+// Liste der Kapitel in der richtigen Reihenfolge
+const chapters = [
+"home.html",
+"kapitel1_1.html",
+"kapitel1_2_1.html",
+"kapitel1_2_2.html",
+"kapitel1_2_3.html",
+"kapitel1_2_4.html",
+"kapitel1_2_5.html",
+"kapitel2_1.html",
+"kapitel2_2.html",
+"kapitel2_3.html",
+"kapitel2_4.html",
+"kapitel2_5.html",
+"kapitel2_6.html",
+"kapitel3_1.html",
+"kapitel3_2.html",
+"kapitel3_3.html",
+"kapitel3_4.html",
+"kapitel3_5.html",
+"kapitel3_6.html",
+"kapitel3_7.html",
+"kapitel3_8.html",
+"kapitel3_9.html",
+"kapitel3_10.html",
+"kapitel3_11.html",
+"kapitel3_12.html",
+"kapitel3_13.html",
+"kapitel4_1.html",
+"kapitel4_1_1.html",
+"kapitel4_1_2.html",
+"kapitel4_1_3.html",
+"kapitel4_2_1.html",
+"kapitel4_2_2.html",
+"kapitel4_2_3.html",
+"kapitel4_2_4.html",
+"kapitel4_2_5.html",
+"kapitel4_2_6.html",
+"kapitel4_2_7.html",
+"kapitel4_3.html",
+"kapitel4_4.html",
+"kapitel4_5.html",
+"kapitel4_6.html",
+"kapitel4_7.html",
+"kapitel4_8.html",
+"kapitel5_1.html",
+"kapitel5_2.html",
+"kapitel5_3.html",
+"kapitel5_4.html",
+"kapitel5_5.html",
+"kapitel5_6.html",
+"kapitel5_7.html",
+"kapitel6_1.html",
+"kapitel6_2.html",
+"kapitel6_3.html",
+"kapitel6_3_1.html",
+"kapitel6_3_2.html",
+"kapitel6_3_3.html",
+"kapitel6_3_4.html",
+"kapitel6_3_5.html",
+"kapitel6_3_6.html",
+"kapitel6_3_7.html",
+"kapitel6_4.html",
+"kapitel6_5_1.html",
+"kapitel6_5_2.html",
+"kapitel6_5_3.html",
+"kapitel6_5_4.html",
+"kapitel6_5_5.html",
+"kapitel6_6.html",
+"kapitel7_1.html",
+"kapitel7_2.html",
+"kapitel7_3.html",
+"kapitel7_4.html",
+"kapitel7_5.html",
+"kapitel7_6.html",
+"kapitel7_7.html",
+"kapitel7_8.html",
+"kapitel8_1.html",
+"kapitel8_2.html",
+"kapitel8_3.html",
+"kapitel8_4.html",
+"kapitel8_5.html",
+"kapitel8_6.html",
+"kapitel8_7.html",
+"kapitel8_8.html",
+"kapitel8_9.html",
+"kapitel9_0.html",
+"kapitel9_1.html",
+"kapitel9_2.html",
+"kapitel9_3.html",
+"kapitel9_4.html",
+"kapitel9_5.html",
+"kapitel9_6.html",
+"kapitel9_7.html",
+"kapitel9_8.html",
+"kapitel9_9.html",
+"kapitel9_10.html",
+"kapitel9_11.html",
+"kapitel9_12.html",
+"kapitel10_1.html",
+"kapitel10_2.html",
+"kapitel10_3.html",
+"kapitel10_4.html",
+"kapitel10_5.html",
+"kapitel10_6.html",
+"kapitel10_7.html",
+"kapitel10_8.html",
+"kapitel11_1.html",
+"kapitel11_2.html",
+"kapitel11_3.html",
+"kapitel11_4.html",
+"kapitel12.html",
+"blog.html"
+    // Füge hier weitere Kapitel ein, falls notwendig
+];
+
+// Ermittle den aktuellen Index aus sessionStorage
+let currentIndex = parseInt(sessionStorage.getItem("currentIndex"), 10);
+if (isNaN(currentIndex) || currentIndex < 0 || currentIndex >= chapters.length) {
+    currentIndex = 0; // Fallback auf das erste Kapitel (home.html)
+}
+
+
+// Vorheriges Kapitel
+if (currentIndex > 0) {
+    const prevChapter = chapters[currentIndex - 1];
+    const prevLink = document.getElementById("prev-chapter");
+    prevLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        loadPage(prevChapter);
+        updateChapterNavigation(currentIndex - 1);
+    });
+    prevLink.style.visibility = "visible";
+}
+
+// Nächstes Kapitel
+if (currentIndex < chapters.length - 1) {
+    const nextChapter = chapters[currentIndex + 1];
+    const nextLink = document.getElementById("next-chapter");
+    nextLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        loadPage(nextChapter);
+        updateChapterNavigation(currentIndex + 1);
+    });
+    nextLink.style.visibility = "visible";
+}
+function updateChapterNavigation(newIndex) {
+    sessionStorage.setItem("currentIndex", newIndex);
+
+    const prevLink = document.getElementById("prev-chapter");
+    const nextLink = document.getElementById("next-chapter");
+
+    // Vorheriger Link
+    if (newIndex > 0) {
+        prevLink.style.visibility = "visible";
+        prevLink.onclick = (e) => {
+            e.preventDefault();
+            loadPage(chapters[newIndex - 1]);
+            updateChapterNavigation(newIndex - 1);
+        };
+    } else {
+        prevLink.style.visibility = "hidden";
+        prevLink.onclick = null; // Entferne vorherige Aktionen
+    }
+
+    // Nächster Link
+    if (newIndex < chapters.length - 1) {
+        nextLink.style.visibility = "visible";
+        nextLink.onclick = (e) => {
+            e.preventDefault();
+            loadPage(chapters[newIndex + 1]);
+            updateChapterNavigation(newIndex + 1);
+        };
+    } else {
+        nextLink.style.visibility = "hidden";
+        nextLink.onclick = null; // Entferne vorherige Aktionen
+    }
+
+    console.log(`Aktuelles Kapitel: ${chapters[newIndex]}`);
+    console.log(`Sichtbarkeit prev: ${prevLink.style.visibility}`);
+    console.log(`Sichtbarkeit next: ${nextLink.style.visibility}`);
+}
+
+
+const burgerButton = document.getElementById("burger-menu-button");
+if (burgerButton) {
+    burgerButton.addEventListener("click", () => {
+        if (burgerMenu.style.display === "block") {
+            burgerMenu.style.display = "none";
+        } else {
+            burgerMenu.style.display = "block";
+        }
+    });
+}
