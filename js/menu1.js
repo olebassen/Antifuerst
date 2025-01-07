@@ -234,3 +234,5 @@ if (currentIndex < chapters.length - 1) {
     nextLink.href = nextChapter;                               // Setze den Link
     nextLink.style.visibility = "visible";                    // Zeige den Link an
 }
+console.log("Current Path:", currentPath);
+console.log("Current Index:", currentIndex);
