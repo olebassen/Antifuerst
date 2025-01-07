@@ -28,6 +28,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const url = link.getAttribute("href");
             if (url && url !== "#") {
+                const newIndex = chapters.indexOf(url);
+            if (newIndex !== -1) {
+                currentIndex = newIndex;
+                sessionStorage.setItem("currentIndex", currentIndex); // Speichere den neuen Index
+            }
                 // Aktivieren des aktuellen Links
                 document.querySelectorAll("nav a").forEach(a => a.classList.remove("active"));
                 link.classList.add("active");
