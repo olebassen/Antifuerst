@@ -216,8 +216,7 @@ const chapters = [
 ];
 
 // Ermittle die aktuelle Seite anhand der URL
-let currentPath = window.location.pathname.replace(/^.*[\\/]/, '');
-// Fallback, wenn der aktuelle Pfad leer ist
+let currentPath = window.location.href.split('/').pop();// Fallback, wenn der aktuelle Pfad leer ist
 if (currentPath === "" || currentPath === "/") {
     currentPath = "home.html"; // Standardseite definieren
 }
@@ -240,5 +239,5 @@ if (currentIndex < chapters.length - 1) {
 }
 console.log("Current Path:", currentPath);
 console.log("Current Index:", currentIndex);
-console.log("window.location.pathname:", window.location.pathname);
+console.log("window.location.pathname:", window.location.href);
 console.log("currentPath:", currentPath);
