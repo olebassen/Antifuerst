@@ -63,7 +63,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const subMenu = link.parentElement.querySelector("ul");
             if (subMenu) {
-                const isVisible = subMenu.style.display === "block";
+                const computedStyle = window.getComputedStyle(subMenu);
+const isVisible = computedStyle.display === "block";
                 subMenu.style.display = isVisible ? "none" : "block";
             }
 
