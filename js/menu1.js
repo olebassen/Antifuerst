@@ -57,12 +57,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Umschalten von Dropdown-Untermenüs
-    document.querySelectorAll(".dropdown").forEach(link => {
+    document.querySelectorAll("nav a:not(.dropdown)").forEach(link => {
         link.addEventListener("click", (e) => {
             e.preventDefault();
-            const subMenu = link.nextElementSibling;
-            if (subMenu && subMenu.classList.contains("dropdown-menu")) {
-                subMenu.classList.toggle("show");
+            const subMenu = link.parentElement.querySelector("ul");
+            if (subMenu) {
+                const isVisible = subMenu.style.display === "block";
+                subMenu.style.display = isVisible ? "none" : "block";
             }
 
             if (window.innerWidth <= 767) {
