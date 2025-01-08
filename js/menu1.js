@@ -57,16 +57,39 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Umschalten von Dropdown-Untermenüs
-    document.querySelectorAll(".dropdown").forEach(link => {
+    document.querySelectorAll("nav a:not(.dropdown)").forEach(link => {
         link.addEventListener("click", (e) => {
             e.preventDefault();
-            const subMenu = link.nextElementSibling;
-            if (subMenu && subMenu.classList.contains("dropdown-menu")) {
-                subMenu.classList.toggle("show");
+            const subMenu = link.parentElement.querySelector("ul");
+            if (subMenu) {
+                const isVisible = subMenu.style.display === "block";
+                subMenu.style.display = isVisible ? "none" : "block";
+            }
+
+            if (window.innerWidth <= 767) {
+                burgerMenu.style.display = "none"; // Menü schließen, wenn auf mobilen Geräten
+            }
+
+            const url = link.getAttribute("href");
+            if (url && url !== "#") {
+                const newIndex = chapters.indexOf(url);
+                if (newIndex !== -1) {
+                    currentIndex = newIndex;
+                    sessionStorage.setItem("currentIndex", currentIndex); // Speichere den neuen Index
+                }
+                // Aktivieren des aktuellen Links
+                document.querySelectorAll("nav a").forEach(a => a.classList.remove("active"));
+                link.classList.add("active");
+
+                // Inhalt von der URL laden
+                loadPage(url);
+
+                // Die aktuelle Seite in Session Storage speichern
+                sessionStorage.setItem("currentPage", url);
+
             }
         });
     });
-    
 
 
     // Automatische Anpassung des Menüs bei Größenänderung
