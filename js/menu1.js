@@ -3,10 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const burgerButton = document.getElementById("burger-menu-button");
     const burgerMenu = document.querySelector("nav");
     const contentArea = document.getElementById("content");
-    const prevLinkTop = document.getElementById("prev-chapter-top");
-    const nextLinkTop = document.getElementById("next-chapter-top");
-    const prevLinkBottom = document.getElementById("prev-chapter-bottom");
-    const nextLinkBottom = document.getElementById("next-chapter-bottom");
 
     // Beim Laden der Seite die zuletzt geladene Seite anzeigen
     const savedPage = sessionStorage.getItem("currentPage");
@@ -270,57 +266,28 @@ let currentIndex = parseInt(sessionStorage.getItem("currentIndex"), 10);
 if (isNaN(currentIndex) || currentIndex < 0 || currentIndex >= chapters.length) {
     currentIndex = 0; // Fallback auf das erste Kapitel (home.html)
 }
-// Vorherige und nächste Kapitel aktualisieren
-function updateChapterNavigation(newIndex) {
-    sessionStorage.setItem("currentIndex", newIndex);
 
-    // Vorheriges Kapitel: Oben und Unten
-    if (newIndex > 0) {
-        const prevChapterUrl = chapters[newIndex - 1];
-        prevLinkTop.style.visibility = "visible";
-        prevLinkBottom.style.visibility = "visible";
 
-        prevLinkTop.onclick = (e) => {
-            e.preventDefault();
-            loadPage(prevChapterUrl);
-            updateChapterNavigation(newIndex - 1);
-        };
-        prevLinkBottom.onclick = (e) => {
-            e.preventDefault();
-            loadPage(prevChapterUrl);
-            updateChapterNavigation(newIndex - 1);
-        };
-    } else {
-        prevLinkTop.style.visibility = "hidden";
-        prevLinkBottom.style.visibility = "hidden";
-        prevLinkTop.onclick = null;
-        prevLinkBottom.onclick = null;
-    }
-
-    // Nächstes Kapitel: Oben und Unten
-    if (newIndex < chapters.length - 1) {
-        const nextChapterUrl = chapters[newIndex + 1];
-        nextLinkTop.style.visibility = "visible";
-        nextLinkBottom.style.visibility = "visible";
-
-        nextLinkTop.onclick = (e) => {
-            e.preventDefault();
-            loadPage(nextChapterUrl);
-            updateChapterNavigation(newIndex + 1);
-        };
-        nextLinkBottom.onclick = (e) => {
-            e.preventDefault();
-            loadPage(nextChapterUrl);
-            updateChapterNavigation(newIndex + 1);
-        };
-    } else {
-        nextLinkTop.style.visibility = "hidden";
-        nextLinkBottom.style.visibility = "hidden";
-        nextLinkTop.onclick = null;
-        nextLinkBottom.onclick = null;
-    }
+// Vorheriges Kapitel
+if (currentIndex > 0) {
+    const prevLink = document.getElementById("prev-chapter");
+    prevLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        loadPage(chapters[currentIndex - 1]); // Index wird automatisch aktualisiert
+    });
+    prevLink.style.visibility = "visible";
 }
 
+
+// Nächstes Kapitel
+if (currentIndex < chapters.length - 1) {
+    const nextLink = document.getElementById("next-chapter");
+    nextLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        loadPage(chapters[currentIndex + 1]); // Index wird automatisch aktualisiert
+    });
+    nextLink.style.visibility = "visible";
+}
 
 function updateChapterNavigation(newIndex) {
     sessionStorage.setItem("currentIndex", newIndex);
@@ -366,5 +333,3 @@ if (burgerButton) {
         }
     });
 }
-    // Initialisiere Navigation
-    updateChapterNavigation(currentIndex);

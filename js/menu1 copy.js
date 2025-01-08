@@ -3,10 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const burgerButton = document.getElementById("burger-menu-button");
     const burgerMenu = document.querySelector("nav");
     const contentArea = document.getElementById("content");
-    const prevLinkTop = document.getElementById("prev-chapter-top");
-    const nextLinkTop = document.getElementById("next-chapter-top");
-    const prevLinkBottom = document.getElementById("prev-chapter-bottom");
-    const nextLinkBottom = document.getElementById("next-chapter-bottom");
 
     // Beim Laden der Seite die zuletzt geladene Seite anzeigen
     const savedPage = sessionStorage.getItem("currentPage");
