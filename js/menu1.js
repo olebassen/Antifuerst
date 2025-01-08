@@ -268,9 +268,9 @@ if (isNaN(currentIndex) || currentIndex < 0 || currentIndex >= chapters.length) 
 }
 
 
-// Vorheriges Kapitel
+// Vorheriges Kapitel Oben
 if (currentIndex > 0) {
-    const prevLink = document.getElementById("prev-chapter");
+    const prevLink = document.getElementById("prev-chapter-top");
     prevLink.addEventListener("click", (e) => {
         e.preventDefault();
         loadPage(chapters[currentIndex - 1]); // Index wird automatisch aktualisiert
@@ -279,9 +279,9 @@ if (currentIndex > 0) {
 }
 
 
-// Nächstes Kapitel
+// Nächstes Kapitel Oben
 if (currentIndex < chapters.length - 1) {
-    const nextLink = document.getElementById("next-chapter");
+    const nextLink = document.getElementById("next-chapter-top");
     nextLink.addEventListener("click", (e) => {
         e.preventDefault();
         loadPage(chapters[currentIndex + 1]); // Index wird automatisch aktualisiert
@@ -289,47 +289,23 @@ if (currentIndex < chapters.length - 1) {
     nextLink.style.visibility = "visible";
 }
 
-function updateChapterNavigation(newIndex) {
-    sessionStorage.setItem("currentIndex", newIndex);
-
-    const prevLink = document.getElementById("prev-chapter");
-    const nextLink = document.getElementById("next-chapter");
-
-    if (newIndex > 0) {
-        prevLink.style.visibility = "visible";
-        prevLink.onclick = (e) => {
-            e.preventDefault();
-            loadPage(chapters[newIndex - 1]);
-            updateChapterNavigation(newIndex - 1);
-        };
-    } else {
-        prevLink.style.visibility = "hidden";
-        prevLink.onclick = null;
-    }
-
-    if (newIndex < chapters.length - 1) {
-        nextLink.style.visibility = "visible";
-        nextLink.onclick = (e) => {
-            e.preventDefault();
-            loadPage(chapters[newIndex + 1]);
-            updateChapterNavigation(newIndex + 1);
-        };
-    } else {
-        nextLink.style.visibility = "hidden";
-        nextLink.onclick = null;
-    }
-    console.log(`Aktuelles Kapitel: ${chapters[currentIndex]}`);
-    console.log(`Sichtbarkeit prev: ${document.getElementById("prev-chapter").style.visibility}`);
-    console.log(`Sichtbarkeit next: ${document.getElementById("next-chapter").style.visibility}`);
+// Vorheriges Kapitel Unten
+if (currentIndex > 0) {
+    const prevLink = document.getElementById("prev-chapter-bottom");
+    prevLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        loadPage(chapters[currentIndex - 1]); // Index wird automatisch aktualisiert
+    });
+    prevLink.style.visibility = "visible";
 }
 
-const burgerButton = document.getElementById("burger-menu-button");
-if (burgerButton) {
-    burgerButton.addEventListener("click", () => {
-        if (burgerMenu.style.display === "block") {
-            burgerMenu.style.display = "none";
-        } else {
-            burgerMenu.style.display = "block";
-        }
+
+// Nächstes Kapitel Unten
+if (currentIndex < chapters.length - 1) {
+    const nextLink = document.getElementById("next-chapter-bottom");
+    nextLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        loadPage(chapters[currentIndex + 1]); // Index wird automatisch aktualisiert
     });
+    nextLink.style.visibility = "visible";
 }
