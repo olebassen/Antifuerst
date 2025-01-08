@@ -267,45 +267,33 @@ if (isNaN(currentIndex) || currentIndex < 0 || currentIndex >= chapters.length) 
     currentIndex = 0; // Fallback auf das erste Kapitel (home.html)
 }
 
+function updateChapterNavigation(newIndex) {
+    sessionStorage.setItem("currentIndex", newIndex);
 
-// Vorheriges Kapitel Oben
-if (currentIndex > 0) {
-    const prevLink = document.getElementById("prev-chapter-top");
-    prevLink.addEventListener("click", (e) => {
+    const prevChapterUrl = newIndex > 0 ? chapters[newIndex - 1] : chapters[0];
+    const nextChapterUrl = newIndex < chapters.length - 1 ? chapters[newIndex + 1] : chapters[chapters.length - 1];
+
+    prevLinkTop.onclick = (e) => {
         e.preventDefault();
-        loadPage(chapters[currentIndex - 1]); // Index wird automatisch aktualisiert
-    });
-    prevLink.style.visibility = "visible";
-}
-
-
-// Nächstes Kapitel Oben
-if (currentIndex < chapters.length - 1) {
-    const nextLink = document.getElementById("next-chapter-top");
-    nextLink.addEventListener("click", (e) => {
+        loadPage(prevChapterUrl);
+        updateChapterNavigation(newIndex > 0 ? newIndex - 1 : 0);
+    };
+    prevLinkBottom.onclick = (e) => {
         e.preventDefault();
-        loadPage(chapters[currentIndex + 1]); // Index wird automatisch aktualisiert
-    });
-    nextLink.style.visibility = "visible";
-}
+        loadPage(prevChapterUrl);
+        updateChapterNavigation(newIndex > 0 ? newIndex - 1 : 0);
+    };
 
-// Vorheriges Kapitel Unten
-if (currentIndex > 0) {
-    const prevLink = document.getElementById("prev-chapter-bottom");
-    prevLink.addEventListener("click", (e) => {
+    nextLinkTop.onclick = (e) => {
         e.preventDefault();
-        loadPage(chapters[currentIndex - 1]); // Index wird automatisch aktualisiert
-    });
-    prevLink.style.visibility = "visible";
-}
-
-
-// Nächstes Kapitel Unten
-if (currentIndex < chapters.length - 1) {
-    const nextLink = document.getElementById("next-chapter-bottom");
-    nextLink.addEventListener("click", (e) => {
+        loadPage(nextChapterUrl);
+        updateChapterNavigation(newIndex < chapters.length - 1 ? newIndex + 1 : chapters.length - 1);
+    };
+    nextLinkBottom.onclick = (e) => {
         e.preventDefault();
-        loadPage(chapters[currentIndex + 1]); // Index wird automatisch aktualisiert
-    });
-    nextLink.style.visibility = "visible";
+        loadPage(nextChapterUrl);
+        updateChapterNavigation(newIndex < chapters.length - 1 ? newIndex + 1 : chapters.length - 1);
+    };
+
+    console.log(`Aktuelles Kapitel: ${chapters[newIndex]}`);
 }
