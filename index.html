@@ -1,207 +1,225 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Antifürst</title>
     <link rel="stylesheet" href="css/format.css"> <!-- CSS-Datei für das Design -->
 </head>
+
 <body>
+    </div>
     <!-- Navigation -->
     <div style="background-color: #111111">
-        <button id="burger-menu-button" aria-label="Menü öffnen">&#9776;</button> Antifürst 
+        <button id="burger-menu-button" aria-label="Menü öffnen">&#9776;</button>
+        <div id="chapter-navigation">
+            <a id="prev-chapter" href="#" style="visibility: hidden;">&#8592; Vorheriges Kapitel</a>
+            Antifürst
+            <a id="next-chapter" href="#" style="visibility: hidden;">Nächstes Kapitel &#8594;</a>
+        </div>
         <nav id="burger-menu">
-                <ul>
-                    <li>
-                        <a href="blog.html">Blog</a>
-                    </li>
-                    <li>
-                        <a href="home.html">Home</a>
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown">Kapitel I: Krisen</a>
-                        <ul>
-                            <li><a href="kapitel1_1.html">1. Klimakrise und Zusammenhalt</a></li>
-                            <li><a href="kapitel1_2_1.html">2. Krisen des Zusammenhalts: Individualisierung</a></li>
-                            <li><a href="kapitel1_2_2.html">2. Krisen des Zusammenhalts: Demographischer Wandel</a></li>
-                            <li><a href="kapitel1_2_3.html">2. Krisen des Zusammenhalts: Ungleichheit und Polarisierung</a></li>
-                            <li><a href="kapitel1_2_4.html">2. Krisen des Zusammenhalts: Segregation und Radikalisierung</a></li>
-                            <li><a href="kapitel1_2_5.html">2. Krisen des Zusammenhalts: Gruppenbezogene Menschenfeindlichkeit</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown">Kapitel II: Die dunkle Tetrade</a>
-                        <ul>
-                            <li><a href="kapitel2_1.html">1. My tapeworm tells me what to do</a></li>
-                            <li><a href="kapitel2_2.html">2. Wie Einzelne den Zusammenhalt gefährden</a></li>
-                            <li><a href="kapitel2_3.html">3. Sozialpsychologie des "Bösen"</a></li>
-                            <li><a href="kapitel2_4.html">4. Antisoziale Persönlichkeiten oder Psychopathen</a></li>
-                            <li><a href="kapitel2_5.html">5. Die dunkle Tetrade</a></li>
-                            <li><a href="kapitel2_6.html">6. Die Tetrade in der Gesellschaft</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown">Kapitel III: Gesellschaftliche Effekte der Hybris</a>
-                        <ul>
-                            <li><a href="kapitel3_1.html">1. Eltern-Kind-Beziehung</a></li>
-                            <li><a href="kapitel3_2.html">2. Intime Partnerbeziehungen</a></li>
-                            <li><a href="kapitel3_3.html">3. Politik</a></li>
-                            <li><a href="kapitel3_4.html">4. Wirtschaft</a></li>
-                            <li><a href="kapitel3_5.html">5. Recht</a></li>
-                            <li><a href="kapitel3_6.html">6. Medizin</a></li>
-                            <li><a href="kapitel3_7.html">7. Medien</a></li>
-                            <li><a href="kapitel3_8.html">8. Kunst</a></li>
-                            <li><a href="kapitel3_9.html">9. Religion</a></li>
-                            <li><a href="kapitel3_10.html">10. Erziehung</a></li>
-                            <li><a href="kapitel3_11.html">11. Wissenschaft</a></li>
-                            <li><a href="kapitel3_12.html">12. Sport</a></li>
-                            <li><a href="kapitel3_13.html">13. Kultur des Wegschauens</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown">Kapitel IV: Praktiken der Hybris</a>
-                        <ul>
-                            <li><a href="kapitel4_1.html">1. Jenseits der Tetrade</a></li>
-                            <li><a href="kapitel4_1_1.html">1. Jenseits der Tetrade: Autoritarismus und Narzissmus</a></li>
-                            <li><a href="kapitel4_1_2.html">1. Jenseits der Tetrade: Typologien des Autoritarismus</a></li>
-                            <li><a href="kapitel4_1_3.html">1. Jenseits der Tetrade: Entstehung der Syndrome</a></li>
-                            <li><a href="kapitel4_2_1.html">2. Brückendiskurse: Psychopathie als Lebensstrategie</a></li>
-                            <li><a href="kapitel4_2_2.html">2. Brückendiskurse: Der gemeine Machiavellismus</a></li>
-                            <li><a href="kapitel4_2_3.html">2. Brückendiskurse: Eingehegter Sadismus</a></li>
-                            <li><a href="kapitel4_2_4.html">2. Brückendiskurse: Der Sadismus der Online-Trolle</a></li>
-                            <li><a href="kapitel4_2_5.html">2. Brückendiskurse: Die narzisstische Gesellschaft</a></li>
-                            <li><a href="kapitel4_2_6.html">2. Brückendiskurse: Objektiver Narzissmus</a></li>
-                            <li><a href="kapitel4_2_7.html">2. Brückendiskurse: Notwendigkeit einer systematischen Soziologisierung</a></li>
-                            <li><a href="kapitel4_3.html">3. Anomie und Devianz</a></li>
-                            <li><a href="kapitel4_4.html">4. Die Ausdifferenzierung gesellschaftlicher Ziele</a></li>
-                            <li><a href="kapitel4_5.html">5. Die dunkle Tetrade als Hybris</a></li>
-                            <li><a href="kapitel4_6.html">6. Theorie der Praktiken der Hybris</a></li>
-                            <li><a href="kapitel4_7.html">7. Kartierung der Hybris</a></li>
-                            <li><a href="kapitel4_8.html">8. Eine Karte des Raums der Hybris</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown">Kapitel V: Die Hybris einhegen</a>
-                        <ul>
-                            <li><a href="kapitel5_1.html">1. Strafe, Gefängnis, Rehabilitation</a></li>
-                            <li><a href="kapitel5_2.html">2. Kultur der Demut</a></li>
-                            <li><a href="kapitel5_3.html">3. Das Scherbengericht</a></li>
-                            <li><a href="kapitel5_4.html">4. Demütige Sorge für Kinder</a></li>
-                            <li><a href="kapitel5_5.html">5. Hoffnung</a></li>
-                            <li><a href="kapitel5_6.html">6. Psychopathen in der Postknappheitsgesellschaft</a></li>
-                            <li><a href="kapitel5_7.html">7. Pull the tapeworm out of your ass</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown">Kapitel VI: Demut</a>
-                        <ul>
-                            <li><a href="kapitel6_1.html">1. Demut als Sklavenmoral</a></li>
-                            <li><a href="kapitel6_2.html">2. Diskurse der Demut</a></li>
-                            <li><a href="kapitel6_3.html">3. Demütige Kollaboration </a></li>
-                            <li><a href="kapitel6_3_1.html">3. Demütige Kollaboration: Das Konzept der Kollaboration </a></li>
-                            <li><a href="kapitel6_3_2.html">3. Demütige Kollaboration: Der unkritische Kollaborations-Diskurs</a></li>
-                            <li><a href="kapitel6_3_3.html">3. Demütige Kollaboration: Versuch der positiven Aneignung </a></li>
-                            <li><a href="kapitel6_3_4.html">3. Demütige Kollaboration: Generalisierung des Interaktionsmodus </a></li>
-                            <li><a href="kapitel6_3_5.html">3. Demütige Kollaboration: Erläuterungen zum Kollaborationsbegriff </a></li>
-                            <li><a href="kapitel6_3_6.html">3. Demütige Kollaboration: Kollaboration als utopisches Projekt </a></li>
-                            <li><a href="kapitel6_3_7.html">3. Demütige Kollaboration: Die Grenzen demütiger Kollaboration </a></li>
-                            <li><a href="kapitel6_4.html">4. Askese</a></li>
-                            <li><a href="kapitel6_5_1.html">5. Demut und Universalismus: Universalismus statt Identitätspolitik</a></li>
-                            <li><a href="kapitel6_5_2.html">5. Demut und Universalismus: Universalismus der Demut</a></li>
-                            <li><a href="kapitel6_5_3.html">5. Demut und Universalismus: Sexuelle Selbstbestimmung</a></li>
-                            <li><a href="kapitel6_5_4.html">5. Demut und Universalismus: Eine politische Bewegung für die Demut</a></li>
-                            <li><a href="kapitel6_5_5.html">5. Demut und Universalismus: Phronesis</a></li>
-                            <li><a href="kapitel6_6.html">6. Demokratie als demütige Lebensform</a></li>
-                        </ul>
-        
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown">Kapitel VII: Wille und Einsicht</a>
-                        <ul>
-                            <li><a href="kapitel7_1.html">1. Einsicht</a></li>
-                            <li><a href="kapitel7_2.html">2. Nah dran</a></li>
-                            <li><a href="kapitel7_3.html">3. Intuition</a></li>
-                            <li><a href="kapitel7_4.html">4. Die Spinne</a></li>
-                            <li><a href="kapitel7_5.html">5. Mystische Erfahrungen</a></li>
-                            <li><a href="kapitel7_6.html">6. Emotionen der Demut</a></li>
-                            <li><a href="kapitel7_7.html">7. Klassenbewusstsein</a></li>
-                            <li><a href="kapitel7_8.html">8. Kollektive Einsicht</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown">Kapitel VIII: Zusammenhalt</a>
-                        <ul>
-                            <li><a href="kapitel8_1.html">1. Normativer Zusammenhalt</a></li>
-                            <li><a href="kapitel8_2.html">2. Doing cohesion</a></li>
-                            <li><a href="kapitel8_3.html">3. Zusammenhaltsorientierung</a></li>
-                            <li><a href="kapitel8_4.html">4. Die diskursive Ebene des Zusammenhalts</a></li>
-                            <li><a href="kapitel8_5.html">5. Zusammenhalt in Deutschland</a></li>
-                            <li><a href="kapitel8_6.html">6. Die Gesellschaft als Mosaik sozialer Welten</a></li>
-                            <li><a href="kapitel8_7.html">7. Die Einbettung von Individuen in die Gesamtgesellschaft</a></li>
-                            <li><a href="kapitel8_8.html">8. Verbindungen zwischen sozialen Welten</a></li>
-                            <li><a href="kapitel8_9.html">9. Trägheit der Zusammenhaltskrisen</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown">Kapitel IX: Antifragilität</a>
-                        <ul>
-                            <li><a href="kapitel9_0.html">Antifragilität</a></li>
-                            <li><a href="kapitel9_1.html">1. Die kurzfristige Antifragilität und langfristige Fragilität des Individualismus</a></li>
-                            <li><a href="kapitel9_2.html">2. Antifragilität als Lernprozess</a></li>
-                            <li><a href="kapitel9_3.html">3. Soziale Welten als Lebensformen</a></li>
-                            <li><a href="kapitel9_4.html">4. Irrationales und rationales Lernen</a></li>
-                            <li><a href="kapitel9_5.html">5. Interkultur</a></li>
-                            <li><a href="kapitel9_6.html">6. Interkultur als soziale Innovation</a></li>
-                            <li><a href="kapitel9_7.html">7. Vorsorge als Bedingung für Resilienz und Lernfähigkeit</a></li>
-                            <li><a href="kapitel9_8.html">8. Vorsorge, nicht Prognose</a></li>
-                            <li><a href="kapitel9_9.html">9. Demokratische Kultur</a></li>
-                            <li><a href="kapitel9_10.html">10. Institutionelles Lernen</a></li>
-                            <li><a href="kapitel9_11.html">11. Regieren als Experimentieren</a></li>
-                            <li><a href="kapitel9_12.html">12. Fragilität der Herrschaft</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown">Kapitel X: Antifragiler Zusammenhalt durch Demut</a>
-                        <ul>
-                            <li><a href="kapitel10_1.html">1. Antifragilität als politisches Programm</a></li>
-                            <li><a href="kapitel10_2.html">2. Mobilisierung</a></li>
-                            <li><a href="kapitel10_3.html">3. Medien als vierte Gewalt</a></li>
-                            <li><a href="kapitel10_4.html">4. Soziale Medien als Infrastruktur</a></li>
-                            <li><a href="kapitel10_5.html">5. Medienbildung</a></li>
-                            <li><a href="kapitel10_6.html">6. Interkultur und Zivilgesellschaft</a></li>
-                            <li><a href="kapitel10_7.html">7. Partizipationskultur</a></li>
-                            <li><a href="kapitel10_8.html">8. Neue Koalitionen für die Antifragilität</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown">Kapitel XI: Theorie der Demut</a>
-                        <ul>
-                            <li><a href="kapitel11_1.html">1. Ursprüngliche Bedingungen</a></li>
-                            <li><a href="kapitel11_2.html">2. Kontexte</a></li>
-                            <li><a href="kapitel11_3.html">3. Strategien</a></li>
-                            <li><a href="kapitel11_4.html">4. Konsequenzen</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="kapitel12.html">Kapitel XII: Schluss</a>
-                    </li>
-                </ul>
-            </nav>
-    </div>
-    <div id="chapter-navigation">
+            <ul>
+                <li>
+                    <a href="blog.html">Blog</a>
+                </li>
+                <li>
+                    <a href="home.html">Home</a>
+                </li>
+                <li>
+                    <a href="#" class="dropdown">Kapitel I: Krisen</a>
+                    <ul>
+                        <li><a href="kapitel1_1.html">1. Klimakrise und Zusammenhalt</a></li>
+                        <li><a href="kapitel1_2_1.html">2. Krisen des Zusammenhalts: Individualisierung</a></li>
+                        <li><a href="kapitel1_2_2.html">2. Krisen des Zusammenhalts: Demographischer Wandel</a></li>
+                        <li><a href="kapitel1_2_3.html">2. Krisen des Zusammenhalts: Ungleichheit und Polarisierung</a>
+                        </li>
+                        <li><a href="kapitel1_2_4.html">2. Krisen des Zusammenhalts: Segregation und Radikalisierung</a>
+                        </li>
+                        <li><a href="kapitel1_2_5.html">2. Krisen des Zusammenhalts: Gruppenbezogene
+                                Menschenfeindlichkeit</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown">Kapitel II: Die dunkle Tetrade</a>
+                    <ul>
+                        <li><a href="kapitel2_1.html">1. My tapeworm tells me what to do</a></li>
+                        <li><a href="kapitel2_2.html">2. Wie Einzelne den Zusammenhalt gefährden</a></li>
+                        <li><a href="kapitel2_3.html">3. Sozialpsychologie des "Bösen"</a></li>
+                        <li><a href="kapitel2_4.html">4. Antisoziale Persönlichkeiten oder Psychopathen</a></li>
+                        <li><a href="kapitel2_5.html">5. Die dunkle Tetrade</a></li>
+                        <li><a href="kapitel2_6.html">6. Die Tetrade in der Gesellschaft</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown">Kapitel III: Gesellschaftliche Effekte der Hybris</a>
+                    <ul>
+                        <li><a href="kapitel3_1.html">1. Eltern-Kind-Beziehung</a></li>
+                        <li><a href="kapitel3_2.html">2. Intime Partnerbeziehungen</a></li>
+                        <li><a href="kapitel3_3.html">3. Politik</a></li>
+                        <li><a href="kapitel3_4.html">4. Wirtschaft</a></li>
+                        <li><a href="kapitel3_5.html">5. Recht</a></li>
+                        <li><a href="kapitel3_6.html">6. Medizin</a></li>
+                        <li><a href="kapitel3_7.html">7. Medien</a></li>
+                        <li><a href="kapitel3_8.html">8. Kunst</a></li>
+                        <li><a href="kapitel3_9.html">9. Religion</a></li>
+                        <li><a href="kapitel3_10.html">10. Erziehung</a></li>
+                        <li><a href="kapitel3_11.html">11. Wissenschaft</a></li>
+                        <li><a href="kapitel3_12.html">12. Sport</a></li>
+                        <li><a href="kapitel3_13.html">13. Kultur des Wegschauens</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown">Kapitel IV: Praktiken der Hybris</a>
+                    <ul>
+                        <li><a href="kapitel4_1.html">1. Jenseits der Tetrade</a></li>
+                        <li><a href="kapitel4_1_1.html">1. Jenseits der Tetrade: Autoritarismus und Narzissmus</a></li>
+                        <li><a href="kapitel4_1_2.html">1. Jenseits der Tetrade: Typologien des Autoritarismus</a></li>
+                        <li><a href="kapitel4_1_3.html">1. Jenseits der Tetrade: Entstehung der Syndrome</a></li>
+                        <li><a href="kapitel4_2_1.html">2. Brückendiskurse: Psychopathie als Lebensstrategie</a></li>
+                        <li><a href="kapitel4_2_2.html">2. Brückendiskurse: Der gemeine Machiavellismus</a></li>
+                        <li><a href="kapitel4_2_3.html">2. Brückendiskurse: Eingehegter Sadismus</a></li>
+                        <li><a href="kapitel4_2_4.html">2. Brückendiskurse: Der Sadismus der Online-Trolle</a></li>
+                        <li><a href="kapitel4_2_5.html">2. Brückendiskurse: Die narzisstische Gesellschaft</a></li>
+                        <li><a href="kapitel4_2_6.html">2. Brückendiskurse: Objektiver Narzissmus</a></li>
+                        <li><a href="kapitel4_2_7.html">2. Brückendiskurse: Notwendigkeit einer systematischen
+                                Soziologisierung</a></li>
+                        <li><a href="kapitel4_3.html">3. Anomie und Devianz</a></li>
+                        <li><a href="kapitel4_4.html">4. Die Ausdifferenzierung gesellschaftlicher Ziele</a></li>
+                        <li><a href="kapitel4_5.html">5. Die dunkle Tetrade als Hybris</a></li>
+                        <li><a href="kapitel4_6.html">6. Theorie der Praktiken der Hybris</a></li>
+                        <li><a href="kapitel4_7.html">7. Kartierung der Hybris</a></li>
+                        <li><a href="kapitel4_8.html">8. Eine Karte des Raums der Hybris</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown">Kapitel V: Die Hybris einhegen</a>
+                    <ul>
+                        <li><a href="kapitel5_1.html">1. Strafe, Gefängnis, Rehabilitation</a></li>
+                        <li><a href="kapitel5_2.html">2. Kultur der Demut</a></li>
+                        <li><a href="kapitel5_3.html">3. Das Scherbengericht</a></li>
+                        <li><a href="kapitel5_4.html">4. Demütige Sorge für Kinder</a></li>
+                        <li><a href="kapitel5_5.html">5. Hoffnung</a></li>
+                        <li><a href="kapitel5_6.html">6. Psychopathen in der Postknappheitsgesellschaft</a></li>
+                        <li><a href="kapitel5_7.html">7. Pull the tapeworm out of your ass</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown">Kapitel VI: Demut</a>
+                    <ul>
+                        <li><a href="kapitel6_1.html">1. Demut als Sklavenmoral</a></li>
+                        <li><a href="kapitel6_2.html">2. Diskurse der Demut</a></li>
+                        <li><a href="kapitel6_3.html">3. Demütige Kollaboration </a></li>
+                        <li><a href="kapitel6_3_1.html">3. Demütige Kollaboration: Das Konzept der Kollaboration </a>
+                        </li>
+                        <li><a href="kapitel6_3_2.html">3. Demütige Kollaboration: Der unkritische
+                                Kollaborations-Diskurs</a></li>
+                        <li><a href="kapitel6_3_3.html">3. Demütige Kollaboration: Versuch der positiven Aneignung </a>
+                        </li>
+                        <li><a href="kapitel6_3_4.html">3. Demütige Kollaboration: Generalisierung des Interaktionsmodus
+                            </a></li>
+                        <li><a href="kapitel6_3_5.html">3. Demütige Kollaboration: Erläuterungen zum
+                                Kollaborationsbegriff </a></li>
+                        <li><a href="kapitel6_3_6.html">3. Demütige Kollaboration: Kollaboration als utopisches Projekt
+                            </a></li>
+                        <li><a href="kapitel6_3_7.html">3. Demütige Kollaboration: Die Grenzen demütiger Kollaboration
+                            </a></li>
+                        <li><a href="kapitel6_4.html">4. Askese</a></li>
+                        <li><a href="kapitel6_5_1.html">5. Demut und Universalismus: Universalismus statt
+                                Identitätspolitik</a></li>
+                        <li><a href="kapitel6_5_2.html">5. Demut und Universalismus: Universalismus der Demut</a></li>
+                        <li><a href="kapitel6_5_3.html">5. Demut und Universalismus: Sexuelle Selbstbestimmung</a></li>
+                        <li><a href="kapitel6_5_4.html">5. Demut und Universalismus: Eine politische Bewegung für die
+                                Demut</a></li>
+                        <li><a href="kapitel6_5_5.html">5. Demut und Universalismus: Phronesis</a></li>
+                        <li><a href="kapitel6_6.html">6. Demokratie als demütige Lebensform</a></li>
+                    </ul>
+
+                </li>
+                <li>
+                    <a href="#" class="dropdown">Kapitel VII: Wille und Einsicht</a>
+                    <ul>
+                        <li><a href="kapitel7_1.html">1. Einsicht</a></li>
+                        <li><a href="kapitel7_2.html">2. Nah dran</a></li>
+                        <li><a href="kapitel7_3.html">3. Intuition</a></li>
+                        <li><a href="kapitel7_4.html">4. Die Spinne</a></li>
+                        <li><a href="kapitel7_5.html">5. Mystische Erfahrungen</a></li>
+                        <li><a href="kapitel7_6.html">6. Emotionen der Demut</a></li>
+                        <li><a href="kapitel7_7.html">7. Klassenbewusstsein</a></li>
+                        <li><a href="kapitel7_8.html">8. Kollektive Einsicht</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown">Kapitel VIII: Zusammenhalt</a>
+                    <ul>
+                        <li><a href="kapitel8_1.html">1. Normativer Zusammenhalt</a></li>
+                        <li><a href="kapitel8_2.html">2. Doing cohesion</a></li>
+                        <li><a href="kapitel8_3.html">3. Zusammenhaltsorientierung</a></li>
+                        <li><a href="kapitel8_4.html">4. Die diskursive Ebene des Zusammenhalts</a></li>
+                        <li><a href="kapitel8_5.html">5. Zusammenhalt in Deutschland</a></li>
+                        <li><a href="kapitel8_6.html">6. Die Gesellschaft als Mosaik sozialer Welten</a></li>
+                        <li><a href="kapitel8_7.html">7. Die Einbettung von Individuen in die Gesamtgesellschaft</a>
+                        </li>
+                        <li><a href="kapitel8_8.html">8. Verbindungen zwischen sozialen Welten</a></li>
+                        <li><a href="kapitel8_9.html">9. Trägheit der Zusammenhaltskrisen</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown">Kapitel IX: Antifragilität</a>
+                    <ul>
+                        <li><a href="kapitel9_0.html">Antifragilität</a></li>
+                        <li><a href="kapitel9_1.html">1. Die kurzfristige Antifragilität und langfristige Fragilität des
+                                Individualismus</a></li>
+                        <li><a href="kapitel9_2.html">2. Antifragilität als Lernprozess</a></li>
+                        <li><a href="kapitel9_3.html">3. Soziale Welten als Lebensformen</a></li>
+                        <li><a href="kapitel9_4.html">4. Irrationales und rationales Lernen</a></li>
+                        <li><a href="kapitel9_5.html">5. Interkultur</a></li>
+                        <li><a href="kapitel9_6.html">6. Interkultur als soziale Innovation</a></li>
+                        <li><a href="kapitel9_7.html">7. Vorsorge als Bedingung für Resilienz und Lernfähigkeit</a></li>
+                        <li><a href="kapitel9_8.html">8. Vorsorge, nicht Prognose</a></li>
+                        <li><a href="kapitel9_9.html">9. Demokratische Kultur</a></li>
+                        <li><a href="kapitel9_10.html">10. Institutionelles Lernen</a></li>
+                        <li><a href="kapitel9_11.html">11. Regieren als Experimentieren</a></li>
+                        <li><a href="kapitel9_12.html">12. Fragilität der Herrschaft</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown">Kapitel X: Antifragiler Zusammenhalt durch Demut</a>
+                    <ul>
+                        <li><a href="kapitel10_1.html">1. Antifragilität als politisches Programm</a></li>
+                        <li><a href="kapitel10_2.html">2. Mobilisierung</a></li>
+                        <li><a href="kapitel10_3.html">3. Medien als vierte Gewalt</a></li>
+                        <li><a href="kapitel10_4.html">4. Soziale Medien als Infrastruktur</a></li>
+                        <li><a href="kapitel10_5.html">5. Medienbildung</a></li>
+                        <li><a href="kapitel10_6.html">6. Interkultur und Zivilgesellschaft</a></li>
+                        <li><a href="kapitel10_7.html">7. Partizipationskultur</a></li>
+                        <li><a href="kapitel10_8.html">8. Neue Koalitionen für die Antifragilität</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown">Kapitel XI: Theorie der Demut</a>
+                    <ul>
+                        <li><a href="kapitel11_1.html">1. Ursprüngliche Bedingungen</a></li>
+                        <li><a href="kapitel11_2.html">2. Kontexte</a></li>
+                        <li><a href="kapitel11_3.html">3. Strategien</a></li>
+                        <li><a href="kapitel11_4.html">4. Konsequenzen</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="kapitel12.html">Kapitel XII: Schluss</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Inhaltsbereich -->
+        <main id="content">
+
+        </main>
+        <footer id="chapter-navigation">
             <a id="prev-chapter" href="#" style="visibility: hidden;">&#8592; Vorheriges Kapitel</a>
+            &copy; 2025 Ole Hinrich Bassen
             <a id="next-chapter" href="#" style="visibility: hidden;">Nächstes Kapitel &#8594;</a>
-    </div>            
-    <!-- Inhaltsbereich -->
-    <main id="content">
-                
-    </main>
-    <div id="chapter-navigation">
-            <a id="prev-chapter" href="#" style="visibility: hidden;">&#8592; Vorheriges Kapitel</a>
-            <a id="next-chapter" href="#" style="visibility: hidden;">Nächstes Kapitel &#8594;</a>
-    </div>            
-    <footer>
-        &copy; 2025 Ole Hinrich Bassen
-    </footer>
-    <script src="js/menu1.js"></script> <!-- JavaScript für Interaktionen -->
+        </footer>
+        <script src="js/menu1.js"></script> <!-- JavaScript für Interaktionen -->
+
 </html>
