@@ -410,3 +410,11 @@ blockquote {
     font-style: italic;
     font-size: smaller;
 }
+
+#prev-chapter-top,
+#next-chapter-top,
+#prev-chapter-bottom,
+#next-chapter-bottom {
+    visibility: visible;
+    display: inline-block;
+}

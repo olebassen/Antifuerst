@@ -3,7 +3,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const burgerButton = document.getElementById("burger-menu-button");
     const burgerMenu = document.querySelector("nav");
     const contentArea = document.getElementById("content");
-
+    const prevLinkTop = document.getElementById("prev-chapter-top");
+    const nextLinkTop = document.getElementById("next-chapter-top");
+    const prevLinkBottom = document.getElementById("prev-chapter-bottom");
+    const nextLinkBottom = document.getElementById("next-chapter-bottom");
+    
     // Beim Laden der Seite die zuletzt geladene Seite anzeigen
     const savedPage = sessionStorage.getItem("currentPage");
     if (savedPage) {
@@ -272,7 +276,11 @@ function updateChapterNavigation(newIndex) {
 
     const prevChapterUrl = newIndex > 0 ? chapters[newIndex - 1] : chapters[0];
     const nextChapterUrl = newIndex < chapters.length - 1 ? chapters[newIndex + 1] : chapters[chapters.length - 1];
-
+    prevLinkTop.onclick = null;
+    prevLinkBottom.onclick = null;
+    nextLinkTop.onclick = null;
+    nextLinkBottom.onclick = null;
+    
     prevLinkTop.onclick = (e) => {
         e.preventDefault();
         loadPage(prevChapterUrl);
