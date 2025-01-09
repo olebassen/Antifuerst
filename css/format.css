@@ -54,6 +54,7 @@ main {
     /* Maximale Breite des Inhalts */
     margin: auto;
     /* Zentrierung auf der Seite */
+    background-color: #111111;
 }
 #content {
     background-color: #eeeeee; /* Textblock-Hintergrundfarbe */
