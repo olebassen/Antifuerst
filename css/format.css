@@ -122,18 +122,6 @@ footer a:hover {
     }
 }
 
-/* ====== Sticky Div ====== */
-.sticky-div {
-    position: sticky;
-    /* Festkleben am oberen Rand beim Scrollen */
-    top: 0;
-    /* Abstand vom oberen Rand */
-    padding: 10px;
-    /* Innenabstand */
-    z-index: 1000;
-    /* Über anderen Elementen anzeigen */
-}
-
 /* ====== Flexbox-Div ====== */
 div {
     display: flex;
@@ -278,7 +266,7 @@ nav ul li ul.open {
     }
 
     main {
-        margin-left: 20%;
+        margin-left: 0;
         /* Platz für Navigation schaffen */
     }
 }
