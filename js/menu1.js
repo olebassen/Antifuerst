@@ -220,3 +220,14 @@ document.addEventListener("DOMContentLoaded", function () {
     // Initiale Navigation aktualisieren
     updateNavigationLinks();
 });
+
+document.addEventListener("click", function (event) {
+    if (event.target && event.target.classList.contains("toggle-button")) {
+        const infobox = event.target.nextElementSibling;
+        if (infobox && infobox.style.display === "none") {
+            infobox.style.display = "block"; // Infobox einblenden
+        } else if (infobox) {
+            infobox.style.display = "none"; // Infobox ausblenden
+        }
+    }
+});
