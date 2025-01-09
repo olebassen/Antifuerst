@@ -54,10 +54,9 @@ main {
     /* Maximale Breite des Inhalts */
     margin: auto;
     /* Zentrierung auf der Seite */
-    background-color: #111111;
 }
 #content {
-    background-color: #eeeeee; /* Textblock-Hintergrundfarbe */
+    background-color: #fefefe; /* Textblock-Hintergrundfarbe */
     width: 60%; /* Breite des Textblocks, anpassbar */
     max-width: 800px; /* Maximalbreite für große Bildschirme */
     min-width: 300px; /* Minimalbreite für kleine Bildschirme */
