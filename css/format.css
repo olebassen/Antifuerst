@@ -7,7 +7,7 @@ body {
     /* Kein äußerer Abstand */
     padding: 0;
     /* Kein innerer Abstand */
-    background: linear-gradient(to bottom, #f0f8ff, #ffffff);
+    background: #111111;
     /* Farbverlauf als Hintergrund */
     color: #333;
     /* Textfarbe */
