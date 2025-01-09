@@ -259,7 +259,7 @@ burgerButton.addEventListener("click", function () {
         } else {
             burgerMenu.style.display = "none"; // Menü auf Mobilgeräten ausblenden
         }
-    });
+
     // Beim Laden der Seite die zuletzt geladene Seite anzeigen
     const savedPage = sessionStorage.getItem("currentPage");
     if (savedPage) {
@@ -272,3 +272,4 @@ burgerButton.addEventListener("click", function () {
     } else {
         loadContent('home.html'); // Standardseite laden
     }
+});
