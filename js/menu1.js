@@ -207,7 +207,16 @@ document.addEventListener("DOMContentLoaded", function () {
             loadContent(chapters[currentIndex + 1]);
         }
     });
-
+    const menuLinks = document.querySelectorAll("#burger-menu a");
+    menuLinks.forEach(link => {
+        link.addEventListener("click", function (event) {
+            const href = link.getAttribute("href");
+            if (href && !href.startsWith("#")) {
+                event.preventDefault();
+                loadContent(href);
+            }
+        });
+    });
     // Initiale Navigation aktualisieren
     updateNavigationLinks();
 });
