@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const nextTopLink = document.getElementById("next-chapter-top");
     const prevBottomLink = document.getElementById("prev-chapter-bottom");
     const nextBottomLink = document.getElementById("next-chapter-bottom");
-    loadPage('home.html'); // Standardseite laden
+ 
 
     function updateNavigationLinks() {
         if (currentIndex > 0) {
@@ -260,3 +260,15 @@ burgerButton.addEventListener("click", function () {
             burgerMenu.style.display = "none"; // Menü auf Mobilgeräten ausblenden
         }
     });
+    // Beim Laden der Seite die zuletzt geladene Seite anzeigen
+    const savedPage = sessionStorage.getItem("currentPage");
+    if (savedPage) {
+        const savedIndex = chapters.indexOf(savedPage);
+        if (savedIndex !== -1) {
+            currentIndex = savedIndex;
+            sessionStorage.setItem("currentIndex", currentIndex); // Synchronisiere Index
+        }
+        loadContent(savedPage);
+    } else {
+        loadContent('home.html'); // Standardseite laden
+    }
