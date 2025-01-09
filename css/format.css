@@ -1,7 +1,6 @@
 /* ====== Allgemeine Stile für HTML und Body ====== */
 html,
 body {
-    display: flex;
     font-family: 'Roboto', Arial, sans-serif;
     /* Schriftart für die gesamte Seite */
     margin: 0;
@@ -18,29 +17,8 @@ body {
     /* Höhe automatisch anpassen */
     overflow-y: auto;
     /* Vertikales Scrollen erlauben */
-    flex-direction: column;
-    background-color: #111111;
-}
-main {
-    display: flex; /* Flexbox innerhalb des Hauptinhalts */
-    justify-content: center; /* Zentriert den Textblock horizontal */
-    padding: 20px; /* Abstand innerhalb des Hauptinhalts */
 }
 
-#content {
-    background-color: #111111; /* Textblock-Hintergrundfarbe */
-    width: 60%; /* Breite des Textblocks, anpassbar */
-    max-width: 800px; /* Maximalbreite für große Bildschirme */
-    min-width: 300px; /* Minimalbreite für kleine Bildschirme */
-    padding: 20px; /* Innenabstand für Lesbarkeit */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Optionaler Schatteneffekt */
-}
-
-@media (max-width: 768px) {
-    #content {
-        width: 90%; /* Auf mobilen Geräten den Textblock fast vollständig füllen */
-    }
-}
 /* ====== Header ====== */
 header {
     background-color: #111111;
