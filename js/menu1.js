@@ -214,10 +214,11 @@ document.addEventListener("DOMContentLoaded", function () {
             if (href && !href.startsWith("#")) {
                 event.preventDefault();
                 loadContent(href);
+                if (window.innerWidth <= 767) {
+                    burgerMenu.style.display = "none"; // Menü schließen, wenn auf mobilen Geräten
+                }
             }
-            if (window.innerWidth <= 767) {
-                burgerMenu.style.display = "none"; // Menü schließen, wenn auf mobilen Geräten
-            }
+
         });
     });
     // Initiale Navigation aktualisieren
@@ -258,3 +259,16 @@ burgerButton.addEventListener("click", function () {
             burgerMenu.style.display = "none"; // Menü auf Mobilgeräten ausblenden
         }
     });
+
+        // Beim Laden der Seite die zuletzt geladene Seite anzeigen
+        const savedPage = sessionStorage.getItem("currentPage");
+        if (savedPage) {
+            const savedIndex = chapters.indexOf(savedPage);
+            if (savedIndex !== -1) {
+                currentIndex = savedIndex;
+                sessionStorage.setItem("currentIndex", currentIndex); // Synchronisiere Index
+            }
+            loadPage(savedPage);
+        } else {
+            loadPage('home.html'); // Standardseite laden
+        }
