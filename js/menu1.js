@@ -231,3 +231,9 @@ document.addEventListener("click", function (event) {
         }
     }
 });
+// Burger-Menü Funktionalität
+const burgerButton = document.getElementById("burger-menu-button");
+const burgerMenu = document.getElementById("burger-menu");
+burgerButton.addEventListener("click", function () {
+    burgerMenu.classList.toggle("active");
+});
