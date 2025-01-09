@@ -17,6 +17,8 @@ body {
     /* Höhe automatisch anpassen */
     overflow-y: auto;
     /* Vertikales Scrollen erlauben */
+    flex-direction: column;
+    background-color: #111111;
 }
 
 /* ====== Header ====== */
