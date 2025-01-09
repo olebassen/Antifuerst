@@ -54,7 +54,14 @@ main {
     margin: auto;
     /* Zentrierung auf der Seite */
 }
-
+#content {
+    background-color: #111111; /* Textblock-Hintergrundfarbe */
+    width: 60%; /* Breite des Textblocks, anpassbar */
+    max-width: 800px; /* Maximalbreite für große Bildschirme */
+    min-width: 300px; /* Minimalbreite für kleine Bildschirme */
+    padding: 20px; /* Innenabstand für Lesbarkeit */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Optionaler Schatteneffekt */
+}
 /* ====== Absätze ====== */
 p {
     margin-bottom: 1.5rem;
