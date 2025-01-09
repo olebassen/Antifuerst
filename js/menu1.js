@@ -237,3 +237,12 @@ const burgerMenu = document.getElementById("burger-menu");
 burgerButton.addEventListener("click", function () {
     burgerMenu.classList.toggle("active");
 });
+
+    // Umschalten des Burger-Menüs (für mobile Geräte)
+    burgerButton.addEventListener("click", () => {
+        if (burgerMenu.style.display === "block") {
+            burgerMenu.style.display = "none"; // Menü schließen
+        } else {
+            burgerMenu.style.display = "block"; // Menü öffnen
+        }
+    });
