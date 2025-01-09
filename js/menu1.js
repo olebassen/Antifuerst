@@ -179,7 +179,8 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .catch(error => console.error(error));
     }
-
+    loadContent('home.html'); // Standardseite laden
+    
     // Navigation
     prevTopLink.addEventListener("click", function (event) {
         event.preventDefault();
@@ -260,4 +261,3 @@ burgerButton.addEventListener("click", function () {
             burgerMenu.style.display = "none"; // Menü auf Mobilgeräten ausblenden
         }   
 });
-loadContent('home.html'); // Standardseite laden
