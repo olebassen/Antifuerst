@@ -122,9 +122,8 @@ document.addEventListener("DOMContentLoaded", function () {
  
 
     function updateNavigationLinks() {
-        if (currentIndex > 0) {
-            const prevPage = chapters[currentIndex - 1];
-            prevTopLink.href = prevPage;
+        if (currentIndex > 0 || chapters[currentIndex] === "home.html") {
+            const prevPage = chapters[currentIndex] === "home.html" ? "blog.html" : chapters[currentIndex - 1];            prevTopLink.href = prevPage;
             prevBottomLink.href = prevPage;
             prevTopLink.style.visibility = "visible";
             prevBottomLink.style.visibility = "visible";
@@ -180,7 +179,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .catch(error => console.error(error));
     }
     loadContent('home.html'); // Standardseite laden
-    
+
     // Navigation
     prevTopLink.addEventListener("click", function (event) {
         event.preventDefault();
