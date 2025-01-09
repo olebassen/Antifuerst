@@ -215,6 +215,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 event.preventDefault();
                 loadContent(href);
             }
+            if (window.innerWidth <= 767) {
+                burgerMenu.style.display = "none"; // Menü schließen, wenn auf mobilen Geräten
+            }
         });
     });
     // Initiale Navigation aktualisieren
