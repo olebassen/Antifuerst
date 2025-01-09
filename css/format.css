@@ -54,6 +54,7 @@ main {
     /* Maximale Breite des Inhalts */
     margin: auto;
     /* Zentrierung auf der Seite */
+    background: linear-gradient(to bottom, #f0f8ff, #ffffff);;
 }
 
 /* ====== Absätze ====== */
