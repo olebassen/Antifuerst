@@ -264,11 +264,6 @@ nav ul li ul.open {
         display: none;
         /* Burger-Menü ausblenden */
     }
-
-    main {
-        margin-left: 0;
-        /* Platz für Navigation schaffen */
-    }
 }
 
 /* ====== Mobile-Ansicht der Navigation ====== */
