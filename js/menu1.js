@@ -249,3 +249,12 @@ burgerButton.addEventListener("click", function () {
             burgerMenu.style.display = "block"; // Menü öffnen
         }
     });
+
+    window.addEventListener("resize", () => {
+        if (window.innerWidth >= 768) {
+            burgerMenu.style.display = "block"; // Menü immer sichtbar auf Desktops
+            document.querySelectorAll("nav ul ul").forEach(ul => ul.style.display = "none"); // Untermenüs schließen
+        } else {
+            burgerMenu.style.display = "none"; // Menü auf Mobilgeräten ausblenden
+        }
+    });
