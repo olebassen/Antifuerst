@@ -17,6 +17,7 @@ body {
     /* Höhe automatisch anpassen */
     overflow-y: auto;
     /* Vertikales Scrollen erlauben */
+    background-color: #111111;
 }
 
 /* ====== Header ====== */
@@ -55,7 +56,7 @@ main {
     /* Zentrierung auf der Seite */
 }
 #content {
-    background-color: #111111; /* Textblock-Hintergrundfarbe */
+    background-color: #eeeeee; /* Textblock-Hintergrundfarbe */
     width: 60%; /* Breite des Textblocks, anpassbar */
     max-width: 800px; /* Maximalbreite für große Bildschirme */
     min-width: 300px; /* Minimalbreite für kleine Bildschirme */
