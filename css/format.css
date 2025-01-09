@@ -31,6 +31,10 @@ header {
     /* Zentrierter Text */
 }
 
+header a {
+    color: #ffffff;
+}
+
 /* ====== Hauptüberschrift im Main-Bereich ====== */
 main h1 {
     font-family: 'Verdana', sans-serif;
