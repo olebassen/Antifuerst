@@ -178,6 +178,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 updateNavigationLinks();
             })
             .catch(error => console.error(error));
+window.scrollTo({
+      top: 0,
+      behavior: 'smooth' // für einen weichen Scroll-Effekt, optional
+    });
     }
     loadContent('home.html'); // Standardseite laden
 
