@@ -178,6 +178,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 updateNavigationLinks();
             })
             .catch(error => console.error(error));
+window.scrollTo({
+      top: 0,
+    });
     }
     loadContent('home.html'); // Standardseite laden
 
