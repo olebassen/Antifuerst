@@ -2,34 +2,21 @@
 html,
 body {
     font-family: 'Roboto', Arial, sans-serif;
-    /* Schriftart für die gesamte Seite */
     margin: 0;
-    /* Kein äußerer Abstand */
     padding: 0;
-    /* Kein innerer Abstand */
-    background: #111111;
-    /* Farbverlauf als Hintergrund */
-    color: #333;
-    /* Textfarbe */
-    line-height: 1.6;
-    /* Zeilenhöhe für bessere Lesbarkeit */
-    height: auto;
-    /* Höhe automatisch anpassen */
-    overflow-y: auto;
-    /* Vertikales Scrollen erlauben */
     background-color: #111111;
+    color: #333;
+    line-height: 1.6;
+    height: auto;
+    overflow-y: auto;
 }
 
 /* ====== Header ====== */
 header {
     background-color: #111111;
-    /* Hintergrundfarbe des Headers */
     color: #ffffff;
-    /* Schriftfarbe */
     padding: 20px;
-    /* Innenabstand */
     text-align: center;
-    /* Zentrierter Text */
 }
 
 header a {
@@ -39,309 +26,180 @@ header a {
 /* ====== Hauptüberschrift im Main-Bereich ====== */
 main h1 {
     font-family: 'Verdana', sans-serif;
-    /* Alternative Schriftart für H1 */
     margin: 0;
-    /* Kein äußerer Abstand */
     font-size: 2.5rem;
-    /* Schriftgröße */
 }
 
 /* ====== Hauptinhalt ====== */
 main {
     padding: 20px;
-    /* Innenabstand */
     max-width: 800px;
-    /* Maximale Breite des Inhalts */
     margin: auto;
-    /* Zentrierung auf der Seite */
-    background: linear-gradient(to bottom, #f0f8ff, #ffffff);;
+    background: linear-gradient(to bottom, #f0f8ff, #ffffff);
 }
 
 /* ====== Absätze ====== */
-p {
-    margin-bottom: 1.5rem;
-    /* Abstand nach unten */
-}
+p { margin-bottom: 1.5rem; }
 
 /* ====== Geordnete Listen ====== */
 ol {
     margin-left: 1.5rem;
-    /* Linker Abstand */
     padding-left: 1rem;
-    /* Innerer linker Abstand */
 }
-
-ol li {
-    margin-bottom: 0.5rem;
-    /* Abstand zwischen Listenelementen */
-}
+ol li { margin-bottom: 0.5rem; }
 
 /* ====== Footer ====== */
 footer {
     background-color: #111111;
-    /* Hintergrundfarbe */
     color: #ffffff;
-    /* Schriftfarbe */
     text-align: center;
-    /* Zentrierter Text */
     padding: 10px 0;
-    /* Vertikaler Innenabstand */
     position: relative;
-    /* Position des Footers */
     bottom: 0;
-    /* Am unteren Rand des Containers */
     width: 100%;
-    /* Volle Breite */
 }
 
-/* ====== Links im Footer ====== */
 footer a {
     color: #ffffff;
-    /* Linkfarbe */
     text-decoration: none;
-    /* Keine Unterstreichung */
     margin: 0 10px;
-    /* Abstand zwischen Links */
 }
-
-footer a:hover {
-    text-decoration: underline;
-    /* Unterstreichung beim Hover */
-}
+footer a:hover { text-decoration: underline; }
 
 /* ====== Responsiver Header für kleinere Bildschirme ====== */
 @media (max-width: 600px) {
-    header h1 {
-        font-size: 2rem;
-        /* Kleinere Schriftgröße für Header */
-    }
-
-    main {
-        padding: 10px;
-        /* Weniger Innenabstand */
-    }
+    header h1 { font-size: 2rem; }
+    main { padding: 10px; }
 }
 
-/* ====== Flexbox-Div ====== */
-div {
+/* ====== Utility: Flex-Bar (statt globales div{...}) ====== */
+.bar-flex {
     display: flex;
-    /* Flexbox-Layout aktivieren */
     align-items: center;
-    /* Vertikale Zentrierung */
     justify-content: space-between;
-    /* Elemente verteilen */
     padding: 10px;
-    /* Innenabstand */
     background-color: black;
-    /* Hintergrundfarbe */
 }
-
-div span {
+.bar-flex span {
     color: white;
-    /* Schriftfarbe */
     font-size: 18px;
-    /* Schriftgröße */
     font-weight: bold;
-    /* Fettschrift */
 }
 
 /* ====== Burger-Menü-Button ====== */
 #burger-menu-button {
     background: none;
-    /* Kein Hintergrund */
     border: none;
-    /* Kein Rahmen */
     font-size: 24px;
-    /* Schriftgröße */
     color: white;
-    /* Schriftfarbe */
     cursor: pointer;
-    /* Zeiger anzeigen */
-    display: none;
-    /* Standardmäßig versteckt */
+    display: none; /* Desktop: versteckt */
 }
 
-/* ====== Navigation ====== */
-nav {
-    display: none;
-    /* Navigation sichtbar */
+/* ====== Navigation: auf das konkrete Menü (#burger-menu) einschränken ====== */
+#burger-menu {
+    display: none;          /* mobil: standardmäßig zu */
     position: fixed;
-    /* Fixiert an der Seite */
     top: 0;
-    /* Oben beginnen */
     left: 0;
-    /* Linksbündig */
     width: 20%;
-    /* Breite der Navigation */
     height: 100%;
-    /* Höhe über den gesamten Bildschirm */
     overflow-y: auto;
-    /* Vertikales Scrollen aktivieren */
     overflow-x: hidden;
-    /* Horizontales Scrollen deaktivieren */
     background-color: #111111;
-    /* Hintergrundfarbe */
-    opacity: 1;
-    /* Keine Transparenz */
     z-index: 1000;
-    /* Über anderen Elementen anzeigen */
 }
 
-/* ====== Listen in der Navigation ====== */
-nav ul {
+/* Offen-Zustand NUR fürs Menü */
+#burger-menu.is-open { display: block; }
+
+/* Listen im Menü */
+#burger-menu ul {
     list-style-type: none;
-    /* Keine Standardpunkte */
     margin: 0;
-    /* Kein äußerer Abstand */
     padding: 0;
-    /* Kein innerer Abstand */
 }
-
-nav ul li {
+#burger-menu ul li {
     border-bottom: 1px solid #ffffff33;
-    /* Trennlinien zwischen Elementen */
 }
-
-nav ul li a {
+#burger-menu ul li a {
     display: block;
-    /* Block-Level für Links */
     color: white;
-    /* Schriftfarbe */
     text-decoration: none;
-    /* Keine Unterstreichung */
     padding: 10px;
-    /* Innenabstand */
     transition: background-color 0.3s ease, color 0.3s ease;
-    /* Hover-Effekte */
 }
-
-nav ul li a:hover {
+#burger-menu ul li a:hover {
     background-color: #ffffff;
-    /* Hintergrundfarbe beim Hover */
     color: #111111;
-    /* Schriftfarbe beim Hover */
 }
 
-/* ====== Aktive Links ====== */
-.active {
+/* Aktive Links (nur Links, NICHT das ganze Menü) */
+#burger-menu a.active {
     background-color: #ffffff;
-    /* Hintergrundfarbe des aktiven Links */
     color: #111111;
-    /* Schriftfarbe des aktiven Links */
 }
 
-/* ====== Dropdown-Menüs in der Navigation ====== */
-nav ul li ul {
+/* Dropdown-Menüs im Menü */
+#burger-menu ul li ul {
     display: none;
-    /* Dropdown standardmäßig verstecken */
     margin-left: 20px;
-    /* Linker Abstand */
     background-color: #111111;
-    /* Hintergrundfarbe */
-    opacity: 1;
-    /* Keine Transparenz */
     overflow-y: auto;
-    /* Scrollen im Dropdown aktivieren */
 }
+#burger-menu ul li ul.open { display: block; }
 
-nav ul li ul.open {
-    display: block;
-    /* Dropdown sichtbar */
-}
-
-/* ====== Desktop-Ansicht der Navigation ====== */
+/* ====== Desktop-Ansicht ====== */
 @media (min-width: 768px) {
-    nav {
-        display: block;
-        /* Immer sichtbar auf großen Bildschirmen */
+    #burger-menu {
+        display: block;      /* Desktop immer sichtbar */
         position: fixed;
-        /* Fixierte Position */
         width: 20%;
-        /* Navigation nimmt 20% Breite ein */
     }
-
-    #burger-menu-button {
-        display: none;
-        /* Burger-Menü ausblenden */
-    }
+    #burger-menu-button { display: none; }
+    main { margin-left: 20%; } /* Platz für die fixe Sidebar */
 }
 
-/* ====== Mobile-Ansicht der Navigation ====== */
+/* ====== Mobile-Ansicht ====== */
 @media (max-width: 767px) {
-    nav {
+    #burger-menu {
         position: absolute;
-        /* Über anderen Elementen */
         top: 50px;
-        /* Abstand von oben */
         width: 100%;
-        /* Navigation füllt die Breite aus */
         height: auto;
-        /* Höhe dynamisch basierend auf Inhalt */
         max-height: calc(100vh - 50px);
-        /* Maximale Höhe beschränken */
         overflow-y: auto;
-        /* Scrollen erlauben */
-        display: none;
+        display: none; /* via .is-open sichtbar */
     }
-
-    #burger-menu-button {
-        display: block;
-        /* Burger-Menü sichtbar */
-    }
-
-    main {
-        margin-left: 0;
-        /* Kein zusätzlicher Abstand */
-    }
+    #burger-menu-button { display: block; }
+    main { margin-left: 0; }
 }
 
 /* ====== Infobox ====== */
 .infobox {
     border: 1px solid #ccc;
-    /* Rahmen */
     padding: 10px;
-    /* Innenabstand */
     margin: 10px 0;
-    /* Abstand nach oben und unten */
     background-color: #f9f9f9;
-    /* Hintergrundfarbe */
     border-radius: 5px;
-    /* Abgerundete Ecken */
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-    /* Schatteneffekt */
     column-count: 1;
     font-size: 0.7em;
-    /* Schriftgröße */
     color: #666;
-    /* Textfarbe */
 }
-
 .infobox h3 {
     margin: 0;
-    /* Kein äußerer Abstand */
     font-size: 1.2em;
-    /* Schriftgröße */
     color: #333;
-    /* Textfarbe */
 }
-
-.infobox p {
-    margin: 5px 0 0;
-    /* Abstand nur oben */
-}
-
-.infobox ul {
-    margin-left: 10px;
-}
+.infobox p { margin: 5px 0 0; }
+.infobox ul { margin-left: 10px; }
 
 /* ====== Allgemeine Resets ====== */
 * {
     margin: 0;
-    /* Standardabstände entfernen */
     padding: 0;
-    /* Standard-Innenabstände entfernen */
     box-sizing: border-box;
-    /* Box-Modell auf Inhalt und Padding beschränken */
 }
 
 .toggle-button {
@@ -353,6 +211,7 @@ nav ul li ul.open {
     font-family: monospace;
 }
 
+/* ====== Tabellen ====== */
 table {
     border-collapse: collapse;
     width: 100%;
@@ -360,18 +219,14 @@ table {
     background-color: #333;
     margin-bottom: 1.5rem;
 }
-
-th,
-td {
+th, td {
     border: 1px solid #444;
     padding: 8px;
     text-align: center;
 }
+th { background-color: #222; }
 
-th {
-    background-color: #222;
-}
-
+/* ====== Blog-Artikel/Card-Layout ====== */
 .container {
     width: 80%;
     margin: 20px auto;
@@ -380,7 +235,6 @@ th {
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
 .article {
     margin-bottom: 20px;
     padding-bottom: 20px;
@@ -400,6 +254,7 @@ blockquote {
     font-size: smaller;
 }
 
+/* ====== Kapitel-Navi-Buttons ====== */
 #prev-chapter-top,
 #next-chapter-top,
 #prev-chapter-bottom,
@@ -407,4 +262,3 @@ blockquote {
     visibility: visible;
     display: inline-block;
 }
-
