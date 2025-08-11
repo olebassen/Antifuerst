@@ -144,7 +144,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Burger-Menü Funktionalität
+    // Burger-Menü
     const burgerButton = document.getElementById("burger-menu-button");
     const burgerMenu = document.getElementById("burger-menu");
     if (burgerButton && burgerMenu) {
@@ -165,14 +165,15 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Dynamisches Laden der Inhalte mit Pfadfix für GitHub Pages
+    // Pfad-Resolver für GitHub Pages
     const basePath = window.location.pathname.replace(/[^/]*$/, '');
     function resolved(page) {
         return new URL(page, window.location.origin + basePath).toString();
     }
 
+    // Dynamisches Laden
     function loadContent(page) {
-        fetch(resolved(page))
+        return fetch(resolved(page)) // <-- gibt Promise zurück
             .then(response => {
                 if (!response.ok) throw new Error("Seite konnte nicht geladen werden");
                 return response.text();
@@ -181,17 +182,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 document.getElementById("content").innerHTML = html;
                 currentIndex = chapters.indexOf(page);
                 updateNavigationLinks();
-            })
-            .catch(error => console.error(error));
-        window.scrollTo({ top: 0 });
+                window.scrollTo({ top: 0 });
+            });
     }
 
-    // Wiederaufnahme letztes Kapitel
+    // Wiederaufnahme-Funktion
     (function setupLastPageRestore() {
         const STORAGE_KEY = "af_last_page";
+
         function isValidChapter(href) {
             return typeof href === "string" && chapters.includes(href);
         }
+
         // Klicks mitschneiden
         document.addEventListener("click", function (event) {
             const link = event.target && event.target.closest("a[href]");
@@ -201,6 +203,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 try { localStorage.setItem(STORAGE_KEY, href); } catch (e) {}
             }
         }, true);
+
         // loadContent wrappen
         const origLoadContent = loadContent;
         loadContent = function (page) {
@@ -209,15 +212,18 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             return origLoadContent(page);
         };
-        // Beim ersten Laden gespeicherte Seite laden
+
+        // Gespeicherte Seite versuchen zu laden, sonst home.html
         try {
             const saved = localStorage.getItem(STORAGE_KEY);
             if (saved && isValidChapter(saved)) {
-                loadContent(saved);
-                return; // kein home.html-Load mehr nötig
+                loadContent(saved).catch(() => {
+                    try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+                    loadContent('home.html');
+                });
+                return;
             }
         } catch (e) {}
-        // Falls nichts gespeichert
         loadContent('home.html');
     })();
 
