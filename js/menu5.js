@@ -1,0 +1,320 @@
+// js/menu.js — Navigation + Wiederaufnahme + GitHub-Pages-Resolver
+document.addEventListener("DOMContentLoaded", function () {
+  // -----------------------------
+  // Kapitel-Liste
+  // -----------------------------
+  const chapters = [
+    "home.html",
+    "kapitel1_1.html",
+    "kapitel1_2_1.html",
+    "kapitel1_2_2.html",
+    "kapitel1_2_3.html",
+    "kapitel1_2_4.html",
+    "kapitel1_2_5.html",
+    "kapitel2_1.html",
+    "kapitel2_2.html",
+    "kapitel2_3.html",
+    "kapitel2_4.html",
+    "kapitel2_5.html",
+    "kapitel2_6.html",
+    "kapitel3_1.html",
+    "kapitel3_2.html",
+    "kapitel3_3.html",
+    "kapitel3_4.html",
+    "kapitel3_5.html",
+    "kapitel3_6.html",
+    "kapitel3_7.html",
+    "kapitel3_8.html",
+    "kapitel3_9.html",
+    "kapitel3_10.html",
+    "kapitel3_11.html",
+    "kapitel3_12.html",
+    "kapitel3_13.html",
+    "kapitel4_1.html",
+    "kapitel4_1_1.html",
+    "kapitel4_1_2.html",
+    "kapitel4_1_3.html",
+    "kapitel4_2_1.html",
+    "kapitel4_2_2.html",
+    "kapitel4_2_3.html",
+    "kapitel4_2_4.html",
+    "kapitel4_2_5.html",
+    "kapitel4_2_6.html",
+    "kapitel4_2_7.html",
+    "kapitel4_3.html",
+    "kapitel4_4.html",
+    "kapitel4_5.html",
+    "kapitel4_6.html",
+    "kapitel4_7.html",
+    "kapitel4_8.html",
+    "kapitel5_1.html",
+    "kapitel5_2.html",
+    "kapitel5_3.html",
+    "kapitel5_4.html",
+    "kapitel5_5.html",
+    "kapitel5_6.html",
+    "kapitel5_7.html",
+    "kapitel6_1.html",
+    "kapitel6_2.html",
+    "kapitel6_3.html",
+    "kapitel6_3_1.html",
+    "kapitel6_3_2.html",
+    "kapitel6_3_3.html",
+    "kapitel6_3_4.html",
+    "kapitel6_3_5.html",
+    "kapitel6_3_6.html",
+    "kapitel6_3_7.html",
+    "kapitel6_4.html",
+    "kapitel6_5_1.html",
+    "kapitel6_5_2.html",
+    "kapitel6_5_3.html",
+    "kapitel6_5_4.html",
+    "kapitel6_5_5.html",
+    "kapitel6_6.html",
+    "kapitel7_1.html",
+    "kapitel7_2.html",
+    "kapitel7_3.html",
+    "kapitel7_4.html",
+    "kapitel7_5.html",
+    "kapitel7_6.html",
+    "kapitel7_7.html",
+    "kapitel7_8.html",
+    "kapitel8_1.html",
+    "kapitel8_2.html",
+    "kapitel8_3.html",
+    "kapitel8_4.html",
+    "kapitel8_5.html",
+    "kapitel8_6.html",
+    "kapitel8_7.html",
+    "kapitel8_8.html",
+    "kapitel8_9.html",
+    "kapitel9_0.html",
+    "kapitel9_1.html",
+    "kapitel9_2.html",
+    "kapitel9_3.html",
+    "kapitel9_4.html",
+    "kapitel9_5.html",
+    "kapitel9_6.html",
+    "kapitel9_7.html",
+    "kapitel9_8.html",
+    "kapitel9_9.html",
+    "kapitel9_10.html",
+    "kapitel9_11.html",
+    "kapitel9_12.html",
+    "kapitel10_1.html",
+    "kapitel10_2.html",
+    "kapitel10_3.html",
+    "kapitel10_4.html",
+    "kapitel10_5.html",
+    "kapitel10_6.html",
+    "kapitel10_7.html",
+    "kapitel10_8.html",
+    "kapitel11_1.html",
+    "kapitel11_2.html",
+    "kapitel11_3.html",
+    "kapitel11_4.html",
+    "kapitel12.html",
+    "blog.html"
+  ];
+
+  // -----------------------------
+  // Zustand + Controls
+  // -----------------------------
+  let currentIndex = chapters.indexOf(window.location.pathname.split("/").pop());
+
+  const prevTopLink    = document.getElementById("prev-chapter-top");
+  const nextTopLink    = document.getElementById("next-chapter-top");
+  const prevBottomLink = document.getElementById("prev-chapter-bottom");
+  const nextBottomLink = document.getElementById("next-chapter-bottom");
+
+  function updateNavigationLinks() {
+    if (currentIndex > 0) {
+      const prevPage = chapters[currentIndex - 1];
+      prevTopLink.href = prevPage;
+      prevBottomLink.href = prevPage;
+      prevTopLink.style.visibility = "visible";
+      prevBottomLink.style.visibility = "visible";
+    } else {
+      prevTopLink.style.visibility = "hidden";
+      prevBottomLink.style.visibility = "hidden";
+    }
+
+    if (currentIndex < chapters.length - 1) {
+      const nextPage = chapters[currentIndex + 1];
+      nextTopLink.href = nextPage;
+      nextBottomLink.href = nextPage;
+      nextTopLink.style.visibility = "visible";
+      nextBottomLink.style.visibility = "visible";
+    } else {
+      nextTopLink.style.visibility = "hidden";
+      nextBottomLink.style.visibility = "hidden";
+    }
+  }
+
+  // -----------------------------
+  // Burger-Menü + Dropdowns (mit .is-open)
+  // -----------------------------
+  const burgerButton = document.getElementById("burger-menu-button");
+  const burgerMenu   = document.getElementById("burger-menu");
+
+  if (burgerButton && burgerMenu) {
+    burgerButton.addEventListener("click", function () {
+      burgerMenu.classList.toggle("is-open");
+    });
+  }
+
+  // Dropdown-Untermenüs ein/ausklappen
+  const dropdownLinks = document.querySelectorAll("a.dropdown");
+  dropdownLinks.forEach(link => {
+    link.addEventListener("click", function (event) {
+      event.preventDefault();
+      const subMenu = link.nextElementSibling;
+      if (subMenu) {
+        subMenu.style.display = subMenu.style.display === "block" ? "none" : "block";
+      }
+    });
+  });
+
+  // Responsives Verhalten: Desktop immer offen, mobil geschlossen
+  window.addEventListener("resize", () => {
+    if (!burgerMenu) return;
+    if (window.innerWidth >= 768) {
+      burgerMenu.classList.add("is-open");
+      document.querySelectorAll("#burger-menu ul ul").forEach(ul => ul.style.display = "none");
+    } else {
+      burgerMenu.classList.remove("is-open");
+    }
+  });
+
+  // -----------------------------
+  // GitHub Pages: robuster Pfad-Resolver
+  // -----------------------------
+  const baseURL = new URL('.', window.location.href); // Verzeichnis der aktuellen Seite
+  function resolved(page) {
+    return new URL(page, baseURL).toString();
+  }
+
+  // -----------------------------
+  // Dynamisches Laden (Promise!)
+  // -----------------------------
+  function loadContent(page) {
+    return fetch(resolved(page))
+      .then(response => {
+        if (!response.ok) throw new Error("Seite konnte nicht geladen werden");
+        return response.text();
+      })
+      .then(html => {
+        const container = document.getElementById("content");
+        if (!container) throw new Error("#content nicht gefunden");
+        container.innerHTML = html;
+        currentIndex = chapters.indexOf(page);
+        updateNavigationLinks();
+        window.scrollTo({ top: 0 });
+      });
+  }
+
+  // -----------------------------
+  // Wiederaufnahme letzter Seite
+  // -----------------------------
+  (function setupLastPageRestore() {
+    const STORAGE_KEY = "af_last_page";
+
+    function isValidChapter(href) {
+      return typeof href === "string" && chapters.includes(href);
+    }
+
+    // Klicks mitschneiden (Capture), Zielseite speichern
+    document.addEventListener("click", function (event) {
+      const link = event.target && event.target.closest("a[href]");
+      if (!link) return;
+      const href = link.getAttribute("href");
+      if (isValidChapter(href)) {
+        try { localStorage.setItem(STORAGE_KEY, href); } catch (e) {}
+      }
+    }, true);
+
+    // Programmatische Aufrufe ebenfalls speichern
+    const origLoadContent = loadContent;
+    loadContent = function (page) {
+      if (isValidChapter(page)) {
+        try { localStorage.setItem(STORAGE_KEY, page); } catch (e) {}
+      }
+      return origLoadContent(page);
+    };
+
+    // Beim Start: gespeicherte Seite versuchen, sonst home.html
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved && isValidChapter(saved)) {
+        loadContent(saved).catch(() => {
+          try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+          loadContent('home.html');
+        });
+        return; // kein zweiter Initial-Load
+      }
+    } catch (e) {}
+    loadContent('home.html');
+  })();
+
+  // -----------------------------
+  // Navigation (vor/zurück Buttons)
+  // -----------------------------
+  prevTopLink.addEventListener("click", function (event) {
+    event.preventDefault();
+    if (currentIndex > 0) {
+      loadContent(chapters[currentIndex - 1]);
+    }
+  });
+
+  nextTopLink.addEventListener("click", function (event) {
+    event.preventDefault();
+    if (currentIndex < chapters.length - 1) {
+      loadContent(chapters[currentIndex + 1]);
+    }
+  });
+
+  prevBottomLink.addEventListener("click", function (event) {
+    event.preventDefault();
+    if (currentIndex > 0) {
+      loadContent(chapters[currentIndex - 1]);
+    }
+  });
+
+  nextBottomLink.addEventListener("click", function (event) {
+    event.preventDefault();
+    if (currentIndex < chapters.length - 1) {
+      loadContent(chapters[currentIndex + 1]);
+    }
+  });
+
+  // -----------------------------
+  // Menü-Links: Content laden + Menü schließen (mobil)
+  // -----------------------------
+  const menuLinks = document.querySelectorAll("#burger-menu a");
+  menuLinks.forEach(link => {
+    link.addEventListener("click", function (event) {
+      const href = link.getAttribute("href");
+      if (href && !href.startsWith("#")) {
+        event.preventDefault();
+        loadContent(href);
+        if (window.innerWidth <= 767 && burgerMenu) {
+          burgerMenu.classList.remove("is-open");
+        }
+      }
+    });
+  });
+
+  // -----------------------------
+  // Infobox-Toggle (Delegation, auch für dynamischen Content)
+  // -----------------------------
+  document.addEventListener("click", function (event) {
+    if (event.target && event.target.classList.contains("toggle-button")) {
+      const infobox = event.target.nextElementSibling;
+      if (!infobox) return;
+      infobox.style.display = (infobox.style.display === "none" || !infobox.style.display) ? "block" : "none";
+    }
+  });
+
+  // Initiale Nav-Anzeige (falls Content noch lädt)
+  updateNavigationLinks();
+});
