@@ -297,6 +297,7 @@ blockquote {
 .eingerueckt {
   padding-left: 2em; /* ganze Liste einrücken */
   list-style-position: outside;
+  padding-bottom: 1em;
 }
 
 .eingerueckt li {
