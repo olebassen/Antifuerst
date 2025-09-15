@@ -1,257 +1,286 @@
 /* ====== Allgemeine Stile für HTML und Body ====== */
 html,
 body {
-    font-family: 'Roboto', Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #111111;
-    color: #333;
-    line-height: 1.6;
-    height: auto;
-    overflow-y: auto;
+  font-family: "Roboto", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #111111;
+  color: #333;
+  line-height: 1.6;
+  height: auto;
+  overflow-y: auto;
 }
 
 /* ====== Header ====== */
 header {
-    background-color: #111111;
-    color: #ffffff;
-    padding: 20px;
-    text-align: center;
+  background-color: #111111;
+  color: #ffffff;
+  padding: 20px;
+  text-align: center;
 }
 
 header a {
-    color: #ffffff;
+  color: #ffffff;
 }
 
 /* ====== Hauptüberschrift im Main-Bereich ====== */
 main h1 {
-    font-family: 'Verdana', sans-serif;
-    margin: 0;
-    font-size: 2.5rem;
+  font-family: "Verdana", sans-serif;
+  margin: 0;
+  font-size: 2.5rem;
 }
 
 /* ====== Hauptinhalt ====== */
 main {
-    padding: 20px;
-    max-width: 800px;
-    margin: auto;
-    background: linear-gradient(to bottom, #f0f8ff, #ffffff);
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+  background: linear-gradient(to bottom, #f0f8ff, #ffffff);
 }
 
 /* ====== Absätze ====== */
-p { margin-bottom: 1.5rem; }
+p {
+  margin-bottom: 1.5rem;
+}
 
 /* ====== Geordnete Listen ====== */
 ol {
-    margin-left: 1.5rem;
-    padding-left: 1rem;
+  margin-left: 1.5rem;
+  padding-left: 1rem;
 }
-ol li { margin-bottom: 0.5rem; }
+ol li {
+  margin-bottom: 0.5rem;
+}
 
 /* ====== Footer ====== */
 footer {
-    background-color: #111111;
-    color: #ffffff;
-    text-align: center;
-    padding: 10px 0;
-    position: relative;
-    bottom: 0;
-    width: 100%;
+  background-color: #111111;
+  color: #ffffff;
+  text-align: center;
+  padding: 10px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
 }
 
 footer a {
-    color: #ffffff;
-    text-decoration: none;
-    margin: 0 10px;
+  color: #ffffff;
+  text-decoration: none;
+  margin: 0 10px;
 }
-footer a:hover { text-decoration: underline; }
+footer a:hover {
+  text-decoration: underline;
+}
 
 /* ====== Responsiver Header für kleinere Bildschirme ====== */
 @media (max-width: 600px) {
-    header h1 { font-size: 2rem; }
-    main { padding: 10px; }
+  header h1 {
+    font-size: 2rem;
+  }
+  main {
+    padding: 10px;
+  }
 }
 
 /* ====== Utility: Flex-Bar (statt globales div{...}) ====== */
 .bar-flex {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: black;
 }
 .bar-flex span {
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 /* ====== Burger-Menü-Button ====== */
 #burger-menu-button {
-    background: none;
-    border: none;
-    font-size: 24px;
-    color: white;
-    cursor: pointer;
-    display: none; /* Desktop: versteckt */
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+  display: none; /* Desktop: versteckt */
 }
 
 /* ====== Navigation: auf das konkrete Menü (#burger-menu) einschränken ====== */
 #burger-menu {
-    display: none;          /* mobil: standardmäßig zu */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 20%;
-    height: 100%;
-    overflow-y: auto;
-    overflow-x: hidden;
-    background-color: #111111;
-    z-index: 1000;
+  display: none; /* mobil: standardmäßig zu */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: #111111;
+  z-index: 1000;
 }
 
 /* Offen-Zustand NUR fürs Menü */
-#burger-menu.is-open { display: block; }
+#burger-menu.is-open {
+  display: block;
+}
 
 /* Listen im Menü */
 #burger-menu ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 #burger-menu ul li {
-    border-bottom: 1px solid #ffffff33;
+  border-bottom: 1px solid #ffffff33;
 }
 #burger-menu ul li a {
-    display: block;
-    color: white;
-    text-decoration: none;
-    padding: 10px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 #burger-menu ul li a:hover {
-    background-color: #ffffff;
-    color: #111111;
+  background-color: #ffffff;
+  color: #111111;
 }
 
 /* Aktive Links (nur Links, NICHT das ganze Menü) */
 #burger-menu a.active {
-    background-color: #ffffff;
-    color: #111111;
+  background-color: #ffffff;
+  color: #111111;
 }
 
 /* Dropdown-Menüs im Menü */
 #burger-menu ul li ul {
-    display: none;
-    margin-left: 20px;
-    background-color: #111111;
-    overflow-y: auto;
+  display: none;
+  margin-left: 20px;
+  background-color: #111111;
+  overflow-y: auto;
 }
-#burger-menu ul li ul.open { display: block; }
+#burger-menu ul li ul.open {
+  display: block;
+}
 
 /* ====== Desktop-Ansicht ====== */
 @media (min-width: 768px) {
-    #burger-menu {
-        display: block;      /* Desktop immer sichtbar */
-        position: fixed;
-        width: 20%;
-    }
-    #burger-menu-button { display: none; }
-    main { margin-left: 20%; } /* Platz für die fixe Sidebar */
+  #burger-menu {
+    display: block; /* Desktop immer sichtbar */
+    position: fixed;
+    width: 20%;
+  }
+  #burger-menu-button {
+    display: none;
+  }
+  main {
+    margin-left: 20%;
+  } /* Platz für die fixe Sidebar */
 }
 
 /* ====== Mobile-Ansicht ====== */
 @media (max-width: 767px) {
-    #burger-menu {
-        position: absolute;
-        top: 50px;
-        width: 100%;
-        height: auto;
-        max-height: calc(100vh - 50px);
-        overflow-y: auto;
-        display: none; /* via .is-open sichtbar */
-    }
-    #burger-menu-button { display: block; }
-    main { margin-left: 0; }
+  #burger-menu {
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    height: auto;
+    max-height: calc(100vh - 50px);
+    overflow-y: auto;
+    display: none; /* via .is-open sichtbar */
+  }
+  #burger-menu-button {
+    display: block;
+  }
+  main {
+    margin-left: 0;
+  }
 }
 
 /* ====== Infobox ====== */
 .infobox {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin: 10px 0;
-    background-color: #f9f9f9;
-    border-radius: 5px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-    column-count: 1;
-    font-size: 0.7em;
-    color: #666;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  column-count: 1;
+  font-size: 0.7em;
+  color: #666;
 }
 .infobox h3 {
-    margin: 0;
-    font-size: 1.2em;
-    color: #333;
+  margin: 0;
+  font-size: 1.2em;
+  color: #333;
 }
-.infobox p { margin: 5px 0 0; }
-.infobox ul { margin-left: 10px; }
+.infobox p {
+  margin: 5px 0 0;
+}
+.infobox ul {
+  margin-left: 10px;
+}
 
 /* ====== Allgemeine Resets ====== */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .toggle-button {
-    width: 100%;
-    margin-bottom: 20px;
-    display: block;
-    background-color: #111111;
-    color: #eeeeee;
-    font-family: monospace;
+  width: 100%;
+  margin-bottom: 20px;
+  display: block;
+  background-color: #111111;
+  color: #eeeeee;
+  font-family: monospace;
 }
 
 /* ====== Tabellen ====== */
 table {
-    border-collapse: collapse;
-    width: 100%;
-    color: #fff;
-    background-color: #333;
-    margin-bottom: 1.5rem;
+  border-collapse: collapse;
+  width: 100%;
+  color: #fff;
+  background-color: #333;
+  margin-bottom: 1.5rem;
 }
-th, td {
-    border: 1px solid #444;
-    padding: 8px;
-    text-align: center;
+th,
+td {
+  border: 1px solid #444;
+  padding: 8px;
+  text-align: center;
 }
-th { background-color: #222; }
+th {
+  background-color: #222;
+}
 
 /* ====== Blog-Artikel/Card-Layout ====== */
 .container {
-    width: 80%;
-    margin: 20px auto;
-    background: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  margin: 20px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 .article {
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #ddd;
-    background-color: #eee;
-    color: #111;
-    column-count: 1;
-    display: flex;
-    flex-direction: column;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+  background-color: #eee;
+  color: #111;
+  column-count: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 blockquote {
-    width: 80%;
-    margin: 20px auto;
-    background: #fff;
-    font-style: italic;
-    font-size: smaller;
+  width: 80%;
+  margin: 20px auto;
+  background: #fff;
+  font-style: italic;
+  font-size: smaller;
 }
 
 /* ====== Kapitel-Navi-Buttons ====== */
@@ -259,6 +288,15 @@ blockquote {
 #next-chapter-top,
 #prev-chapter-bottom,
 #next-chapter-bottom {
-    visibility: visible;
-    display: inline-block;
+  visibility: visible;
+  display: inline-block;
+}
+
+.eingerueckt {
+  padding-left: 2em; /* ganze Liste einrücken */
+  list-style-position: outside;
+}
+
+.eingerueckt li {
+  padding-left: 0.5em; /* Text zusätzlich einrücken */
 }
