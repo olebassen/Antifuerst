@@ -173,9 +173,9 @@ footer a:hover {
   #burger-menu-button {
     display: none;
   }
-  main {
+  body[data-page="index"] main {
     margin-left: 20%;
-  } /* Platz für die fixe Sidebar */
+  }
 }
 
 /* ====== Mobile-Ansicht ====== */

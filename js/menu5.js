@@ -114,16 +114,17 @@ document.addEventListener("DOMContentLoaded", function () {
     "kapitel11_3.html",
     "kapitel11_4.html",
     "kapitel12.html",
-    "blog.html"
   ];
 
   // -----------------------------
   // Zustand + Controls
   // -----------------------------
-  let currentIndex = chapters.indexOf(window.location.pathname.split("/").pop());
+  let currentIndex = chapters.indexOf(
+    window.location.pathname.split("/").pop()
+  );
 
-  const prevTopLink    = document.getElementById("prev-chapter-top");
-  const nextTopLink    = document.getElementById("next-chapter-top");
+  const prevTopLink = document.getElementById("prev-chapter-top");
+  const nextTopLink = document.getElementById("next-chapter-top");
   const prevBottomLink = document.getElementById("prev-chapter-bottom");
   const nextBottomLink = document.getElementById("next-chapter-bottom");
 
@@ -155,7 +156,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Burger-Menü + Dropdowns (mit .is-open)
   // -----------------------------
   const burgerButton = document.getElementById("burger-menu-button");
-  const burgerMenu   = document.getElementById("burger-menu");
+  const burgerMenu = document.getElementById("burger-menu");
 
   if (burgerButton && burgerMenu) {
     burgerButton.addEventListener("click", function () {
@@ -165,12 +166,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Dropdown-Untermenüs ein/ausklappen
   const dropdownLinks = document.querySelectorAll("a.dropdown");
-  dropdownLinks.forEach(link => {
+  dropdownLinks.forEach((link) => {
     link.addEventListener("click", function (event) {
       event.preventDefault();
       const subMenu = link.nextElementSibling;
       if (subMenu) {
-        subMenu.style.display = subMenu.style.display === "block" ? "none" : "block";
+        subMenu.style.display =
+          subMenu.style.display === "block" ? "none" : "block";
       }
     });
   });
@@ -180,7 +182,9 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!burgerMenu) return;
     if (window.innerWidth >= 768) {
       burgerMenu.classList.add("is-open");
-      document.querySelectorAll("#burger-menu ul ul").forEach(ul => ul.style.display = "none");
+      document
+        .querySelectorAll("#burger-menu ul ul")
+        .forEach((ul) => (ul.style.display = "none"));
     } else {
       burgerMenu.classList.remove("is-open");
     }
@@ -189,7 +193,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // -----------------------------
   // GitHub Pages: robuster Pfad-Resolver
   // -----------------------------
-  const baseURL = new URL('.', window.location.href); // Verzeichnis der aktuellen Seite
+  const baseURL = new URL(".", window.location.href); // Verzeichnis der aktuellen Seite
   function resolved(page) {
     return new URL(page, baseURL).toString();
   }
@@ -199,11 +203,11 @@ document.addEventListener("DOMContentLoaded", function () {
   // -----------------------------
   function loadContent(page) {
     return fetch(resolved(page))
-      .then(response => {
+      .then((response) => {
         if (!response.ok) throw new Error("Seite konnte nicht geladen werden");
         return response.text();
       })
-      .then(html => {
+      .then((html) => {
         const container = document.getElementById("content");
         if (!container) throw new Error("#content nicht gefunden");
         container.innerHTML = html;
@@ -224,20 +228,28 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Klicks mitschneiden (Capture), Zielseite speichern
-    document.addEventListener("click", function (event) {
-      const link = event.target && event.target.closest("a[href]");
-      if (!link) return;
-      const href = link.getAttribute("href");
-      if (isValidChapter(href)) {
-        try { localStorage.setItem(STORAGE_KEY, href); } catch (e) {}
-      }
-    }, true);
+    document.addEventListener(
+      "click",
+      function (event) {
+        const link = event.target && event.target.closest("a[href]");
+        if (!link) return;
+        const href = link.getAttribute("href");
+        if (isValidChapter(href)) {
+          try {
+            localStorage.setItem(STORAGE_KEY, href);
+          } catch (e) {}
+        }
+      },
+      true
+    );
 
     // Programmatische Aufrufe ebenfalls speichern
     const origLoadContent = loadContent;
     loadContent = function (page) {
       if (isValidChapter(page)) {
-        try { localStorage.setItem(STORAGE_KEY, page); } catch (e) {}
+        try {
+          localStorage.setItem(STORAGE_KEY, page);
+        } catch (e) {}
       }
       return origLoadContent(page);
     };
@@ -247,13 +259,15 @@ document.addEventListener("DOMContentLoaded", function () {
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved && isValidChapter(saved)) {
         loadContent(saved).catch(() => {
-          try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
-          loadContent('home.html');
+          try {
+            localStorage.removeItem(STORAGE_KEY);
+          } catch (e) {}
+          loadContent("home.html");
         });
         return; // kein zweiter Initial-Load
       }
     } catch (e) {}
-    loadContent('home.html');
+    loadContent("home.html");
   })();
 
   // -----------------------------
@@ -291,7 +305,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Menü-Links: Content laden + Menü schließen (mobil)
   // -----------------------------
   const menuLinks = document.querySelectorAll("#burger-menu a");
-  menuLinks.forEach(link => {
+  menuLinks.forEach((link) => {
     link.addEventListener("click", function (event) {
       const href = link.getAttribute("href");
       if (href && !href.startsWith("#")) {
@@ -311,7 +325,10 @@ document.addEventListener("DOMContentLoaded", function () {
     if (event.target && event.target.classList.contains("toggle-button")) {
       const infobox = event.target.nextElementSibling;
       if (!infobox) return;
-      infobox.style.display = (infobox.style.display === "none" || !infobox.style.display) ? "block" : "none";
+      infobox.style.display =
+        infobox.style.display === "none" || !infobox.style.display
+          ? "block"
+          : "none";
     }
   });
 
