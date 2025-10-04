@@ -71,7 +71,7 @@
                     // Übersetzen mit DeepL
                     const translateLink = document.createElement('a');
                     translateLink.textContent = '🌐 Übersetzen';
-                    translateLink.href = `https://www.deepl.com/translator#de/en/${window.location.origin + '/' + postUrl}`;
+                    translateLink.href = `https://www.deepl.com/translator#de/en/${window.location.origin + '/Antifuerst/blog/' + postUrl}`;
                     translateLink.target = '_blank';
                     translateLink.rel = 'noopener noreferrer';
 
@@ -85,7 +85,7 @@
                     const shareBtn = document.createElement('button');
                     shareBtn.textContent = '🔗 Teilen';
                     shareBtn.addEventListener('click', () => {
-                        const shareUrl = window.location.origin + 'Antifuerst/blog/' + postUrl;
+                        const shareUrl = window.location.origin + '/Antifuerst/blog/' + postUrl;
                         if (navigator.share) {
                             navigator.share({
                                 title: 'Antifürst – Blogbeitrag',
