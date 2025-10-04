@@ -6,6 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Antifürst – Blog</title>
     <link rel="stylesheet" href="../css/format.css">
+    <style>
+        .post-menu {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .post-menu a,
+        .post-menu button {
+            background: #222;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 4px 8px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .post-menu a:hover,
+        .post-menu button:hover {
+            background: #444;
+        }
+    </style>
 </head>
 
 <body>
@@ -23,7 +49,6 @@
 
     <script>
         // === Alle Posts nacheinander in die Startseite einbetten ===
-
         const feed = document.getElementById('feed');
         const postsFolder = 'posts/';
         const latestPostNumber = 10; // <-- aktuelle höchste Postnummer eintragen
@@ -31,12 +56,59 @@
 
         // Posts rückwärts laden (neuster zuerst)
         for (let i = latestPostNumber; i >= 1; i--) {
-            fetch(postsFolder + i + '.html')
+            const postUrl = postsFolder + i + '.html';
+
+            fetch(postUrl)
                 .then(res => res.text())
                 .then(html => {
                     const wrapper = document.createElement('article');
                     wrapper.className = 'article';
-                    wrapper.innerHTML = html;
+
+                    // Menüleiste über jedem Beitrag
+                    const menu = document.createElement('div');
+                    menu.className = 'post-menu';
+
+                    // Übersetzen mit DeepL
+                    const translateLink = document.createElement('a');
+                    translateLink.textContent = '🌐 Übersetzen';
+                    translateLink.href = `https://www.deepl.com/translator#de/en/${window.location.origin + '/' + postUrl}`;
+                    translateLink.target = '_blank';
+                    translateLink.rel = 'noopener noreferrer';
+
+                    // Einzelansicht öffnen
+                    const viewLink = document.createElement('a');
+                    viewLink.textContent = '🔍 Beitrag anzeigen';
+                    viewLink.href = postUrl;
+                    viewLink.target = '_blank';
+
+                    // Teilen (via Web Share API oder Clipboard)
+                    const shareBtn = document.createElement('button');
+                    shareBtn.textContent = '🔗 Teilen';
+                    shareBtn.addEventListener('click', () => {
+                        const shareUrl = window.location.origin + '/' + postUrl;
+                        if (navigator.share) {
+                            navigator.share({
+                                title: 'Antifürst – Blogbeitrag',
+                                url: shareUrl
+                            }).catch(err => console.warn('Share abgebrochen:', err));
+                        } else {
+                            navigator.clipboard.writeText(shareUrl)
+                                .then(() => alert('Link kopiert: ' + shareUrl))
+                                .catch(() => alert('Link: ' + shareUrl));
+                        }
+                    });
+
+                    menu.appendChild(translateLink);
+                    menu.appendChild(viewLink);
+                    menu.appendChild(shareBtn);
+
+                    // Beitrag selbst
+                    const content = document.createElement('div');
+                    content.innerHTML = html;
+
+                    // Zusammenbauen
+                    wrapper.appendChild(menu);
+                    wrapper.appendChild(content);
                     feed.appendChild(wrapper);
                 })
                 .catch(err => {
