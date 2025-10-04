@@ -51,16 +51,21 @@
         // === Alle Posts nacheinander in die Startseite einbetten ===
         const feed = document.getElementById('feed');
         const postsFolder = 'posts/';
-        const latestPostNumber = 10; // <-- aktuelle höchste Postnummer eintragen
+        const latestPostNumber = 10; // <-- höchste Postnummer
         feed.innerHTML = '';
 
-        // Posts rückwärts laden (neuster zuerst)
-        for (let i = latestPostNumber; i >= 1; i--) {
-            const postUrl = postsFolder + i + '.html';
+        // Hilfsfunktion für saubere Reihenfolge
+        async function loadPostsSequentially() {
+            for (let i = latestPostNumber; i >= 1; i--) {
+                const postUrl = postsFolder + i + '.html';
+                try {
+                    const res = await fetch(postUrl);
+                    if (!res.ok) {
+                        console.warn(`Beitrag ${i} nicht gefunden (${res.status})`);
+                        continue;
+                    }
+                    const html = await res.text();
 
-            fetch(postUrl)
-                .then(res => res.text())
-                .then(html => {
                     const wrapper = document.createElement('article');
                     wrapper.className = 'article';
 
@@ -68,24 +73,24 @@
                     const menu = document.createElement('div');
                     menu.className = 'post-menu';
 
-                    // Übersetzen mit DeepL
+                    // 🌐 Übersetzen mit Google Translate
                     const translateLink = document.createElement('a');
-                    translateLink.textContent = '🌐 Übersetzen';
-                    translateLink.href = `https://translate.google.com/translate?sl=de&tl=en&u=` + window.location.origin + '/Antifuerst/blog/' + postUrl;
+                    translateLink.textContent = 'Translate';
+                    translateLink.href = `https://translate.google.com/translate?sl=de&tl=en&u=${encodeURIComponent(window.location.origin + window.location.pathname.replace(/\/[^/]*$/, '/') + postUrl)}`;
                     translateLink.target = '_blank';
                     translateLink.rel = 'noopener noreferrer';
 
-                    // Einzelansicht öffnen
+                    // 🔍 Beitrag anzeigen
                     const viewLink = document.createElement('a');
-                    viewLink.textContent = '🔍 Beitrag anzeigen';
+                    viewLink.textContent = 'Show';
                     viewLink.href = postUrl;
                     viewLink.target = '_blank';
 
-                    // Teilen (via Web Share API oder Clipboard)
+                    // 🔗 Teilen
                     const shareBtn = document.createElement('button');
-                    shareBtn.textContent = '🔗 Teilen';
+                    shareBtn.textContent = 'Share';
                     shareBtn.addEventListener('click', () => {
-                        const shareUrl = window.location.origin + '/Antifuerst/blog/' + postUrl;
+                        const shareUrl = window.location.origin + window.location.pathname.replace(/\/[^/]*$/, '/') + postUrl;
                         if (navigator.share) {
                             navigator.share({
                                 title: 'Antifürst – Blogbeitrag',
@@ -93,7 +98,8 @@
                             }).catch(err => console.warn('Share abgebrochen:', err));
                         } else {
                             navigator.clipboard.writeText(shareUrl)
-
+                                .then(() => alert('Link kopiert: ' + shareUrl))
+                                .catch(() => alert('Link: ' + shareUrl));
                         }
                     });
 
@@ -105,16 +111,20 @@
                     const content = document.createElement('div');
                     content.innerHTML = html;
 
-                    // Zusammenbauen
                     wrapper.appendChild(menu);
                     wrapper.appendChild(content);
                     feed.appendChild(wrapper);
-                })
-                .catch(err => {
+
+                } catch (err) {
                     console.warn('Fehler beim Laden von Post ' + i + ':', err);
-                });
+                }
+            }
         }
+
+        // Posts sequentiell laden
+        loadPostsSequentially();
     </script>
+
 </body>
 
 </html>
