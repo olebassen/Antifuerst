@@ -258,9 +258,9 @@ th {
 /* ====== Blog-Artikel/Card-Layout ====== */
 .container {
   width: 90%;
-  margin: 20px auto;
+  margin: 10px auto;
   background: #fff;
-  padding: 20px;
+  padding: 10px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
