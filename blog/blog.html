@@ -1,1 +1,50 @@
-m
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antifürst – Blog</title>
+    <link rel="stylesheet" href="../css/format.css">
+</head>
+
+<body>
+    <header style="background-color:#111111; color:#fff; text-align:center; padding:1em;">
+        <h1>Antifürst – Blog</h1>
+        <p>Gedanken, Beobachtungen, Fragmente</p>
+    </header>
+
+    <main class="container" id="feed">
+        <p>Beiträge werden geladen...</p>
+    </main>
+
+    <footer style="background-color:#111111; color:#fff; text-align:center; padding:1em;">
+        <p>© 2025 Ole Hinrich Bassen</p>
+    </footer>
+
+    <script>
+        // === Alle Posts nacheinander in die Startseite einbetten ===
+
+        const feed = document.getElementById('feed');
+        const postsFolder = 'posts/';
+        const latestPostNumber = 10; // <-- aktuelle höchste Postnummer eintragen
+        feed.innerHTML = '';
+
+        // Posts rückwärts laden (neuster zuerst)
+        for (let i = latestPostNumber; i >= 1; i--) {
+            fetch(postsFolder + i + '.html')
+                .then(res => res.text())
+                .then(html => {
+                    const wrapper = document.createElement('article');
+                    wrapper.className = 'article';
+                    wrapper.innerHTML = html;
+                    feed.appendChild(wrapper);
+                })
+                .catch(err => {
+                    console.warn('Fehler beim Laden von Post ' + i + ':', err);
+                });
+        }
+    </script>
+</body>
+
+</html>
