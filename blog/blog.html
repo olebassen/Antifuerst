@@ -31,6 +31,33 @@
         .post-menu button:hover {
             background: #444;
         }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin: 2em 0;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .pagination button {
+            background: #111;
+            color: #fff;
+            border: 1px solid #333;
+            border-radius: 3px;
+            padding: 6px 12px;
+            cursor: pointer;
+            font-family: monospace;
+        }
+
+        .pagination button.active {
+            background: #444;
+            border-color: #666;
+        }
+
+        .pagination button:hover:not(.active) {
+            background: #333;
+        }
     </style>
 </head>
 
@@ -43,33 +70,35 @@
         <p>Beiträge werden geladen...</p>
     </main>
 
+    <div class="pagination" id="pagination"></div>
+
     <footer style="background-color:#111111; color:#fff; text-align:center; padding:1em;">
         <p>© 2025 Ole Hinrich Bassen</p>
     </footer>
 
     <script>
-        // === Alle Posts nacheinander in die Startseite einbetten ===
         const feed = document.getElementById('feed');
+        const pagination = document.getElementById('pagination');
         const postsFolder = 'posts/';
-        const latestPostNumber = 10; // <-- höchste Postnummer
-        feed.innerHTML = '';
+        const latestPostNumber = 11; // <-- höchste Postnummer
+        const postsPerPage = 5;
+        const totalPages = Math.ceil(latestPostNumber / postsPerPage);
 
-        // Hilfsfunktion für saubere Reihenfolge
-        async function loadPostsSequentially() {
-            for (let i = latestPostNumber; i >= 1; i--) {
+        async function loadPage(page) {
+            feed.innerHTML = ''; // leeren
+            const start = latestPostNumber - (page - 1) * postsPerPage;
+            const end = Math.max(start - postsPerPage + 1, 1);
+
+            for (let i = start; i >= end; i--) {
                 const postUrl = postsFolder + i + '.html';
                 try {
                     const res = await fetch(postUrl);
-                    if (!res.ok) {
-                        console.warn(`Beitrag ${i} nicht gefunden (${res.status})`);
-                        continue;
-                    }
+                    if (!res.ok) continue;
                     const html = await res.text();
 
                     const wrapper = document.createElement('article');
                     wrapper.className = 'article';
 
-                    // Menüleiste über jedem Beitrag
                     const menu = document.createElement('div');
                     menu.className = 'post-menu';
 
@@ -107,7 +136,6 @@
                     menu.appendChild(viewLink);
                     menu.appendChild(shareBtn);
 
-                    // Beitrag selbst
                     const content = document.createElement('div');
                     content.innerHTML = html;
 
@@ -119,12 +147,23 @@
                     console.warn('Fehler beim Laden von Post ' + i + ':', err);
                 }
             }
+
+            renderPagination(page);
         }
 
-        // Posts sequentiell laden
-        loadPostsSequentially();
-    </script>
+        function renderPagination(currentPage) {
+            pagination.innerHTML = '';
+            for (let i = 1; i <= totalPages; i++) {
+                const btn = document.createElement('button');
+                btn.textContent = i;
+                if (i === currentPage) btn.classList.add('active');
+                btn.addEventListener('click', () => loadPage(i));
+                pagination.appendChild(btn);
+            }
+        }
 
+        loadPage(1); // erste Seite laden
+    </script>
 </body>
 
 </html>
