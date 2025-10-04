@@ -71,7 +71,7 @@
                     // Übersetzen mit DeepL
                     const translateLink = document.createElement('a');
                     translateLink.textContent = '🌐 Übersetzen';
-                    translateLink.href = `https://translate.google.com/translate?sl=de&tl=en&u=${window.location.origin + '/Antifuerst/blog/' + postUrl}`;
+                    translateLink.href = `https://translate.google.com/translate?sl=de&tl=en&u=` + window.location.origin + '/Antifuerst/blog/' + postUrl;
                     translateLink.target = '_blank';
                     translateLink.rel = 'noopener noreferrer';
 
