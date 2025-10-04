@@ -93,8 +93,7 @@
                             }).catch(err => console.warn('Share abgebrochen:', err));
                         } else {
                             navigator.clipboard.writeText(shareUrl)
-                                .then(() => alert('Link kopiert: ' + shareUrl))
-                                .catch(() => alert('Link: ' + shareUrl));
+
                         }
                     });
 
