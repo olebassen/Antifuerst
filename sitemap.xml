@@ -1,7 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Startseite -->
   <url>
-    <loc>https://olebassen.github.io/Antifuerst/</loc>
+    <loc>https://olebassen.github.io/Antifuerst/index.html</loc>
     <lastmod>2026-02-16</lastmod>
+    <priority>1.0</priority>
   </url>
+  <url>
+    <loc>https://olebassen.github.io/Antifuerst/home.html</loc>
+    <lastmod>2026-02-16</lastmod>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Blogübersicht -->
+  <url>
+    <loc>https://olebassen.github.io/Antifuerst/blog</loc>
+    <lastmod>2026-02-16</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://olebassen.github.io/Antifuerst/blog/posts</loc>
+    <lastmod>2026-02-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://olebassen.github.io/Antifuerst/blog/blog.html</loc>
+    <lastmod>2026-02-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://olebassen.github.io/Antifuerst/blog/posts/muster.html</loc>
+    <lastmod>2026-02-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Blogbeiträge 1–14 -->
+  <url><loc>https://olebassen.github.io/Antifuerst/blog/posts/1.html</loc><lastmod>2026-02-16</lastmod><priority>0.8</priority></url>
+  <url><loc>https://olebassen.github.io/Antifuerst/blog/posts/2.html</loc><lastmod>2026-02-16</lastmod><priority>0.8</priority></url>
+  <url><loc>https://olebassen.github.io/Antifuerst/blog/posts/3.html</loc><lastmod>2026-02-16</lastmod><priority>0.8</priority></url>
+  <url><loc>https://olebassen.github.io/Antifuerst/blog/posts/4.html</loc><lastmod>2026-02-16</lastmod><priority>0.8</priority></url>
+  <url><loc>https://olebassen.github.io/Antifuerst/blog/posts/5.html</loc><lastmod>2026-02-16</lastmod><priority>0.8</priority></url>
+  <url><loc>https://olebassen.github.io/Antifuerst/blog/posts/6.html</loc><lastmod>2026-02-16</lastmod><priority>0.8</priority></url>
+  <url><loc>https://olebassen.github.io/Antifuerst/blog/posts/7.html</loc><lastmod>2026-02-16</lastmod><priority>0.8</priority></url>
+  <url><loc>https://olebassen.github.io/Antifuerst/blog/posts/8.html</loc><lastmod>2026-02-16</lastmod><priority>0.8</priority></url>
+  <url><loc>https://olebassen.github.io/Antifuerst/blog/posts/9.html</loc><lastmod>2026-02-16</lastmod><priority>0.8</priority></url>
+  <url><loc>https://olebassen.github.io/Antifuerst/blog/posts/10.html</loc><lastmod>2026-02-16</lastmod><priority>0.8</priority></url>
+  <url><loc>https://olebassen.github.io/Antifuerst/blog/posts/11.html</loc><lastmod>2026-02-16</lastmod><priority>0.8</priority></url>
+  <url><loc>https://olebassen.github.io/Antifuerst/blog/posts/12.html</loc><lastmod>2026-02-16</lastmod><priority>0.8</priority></url>
+  <url><loc>https://olebassen.github.io/Antifuerst/blog/posts/13.html</loc><lastmod>2026-02-16</lastmod><priority>0.8</priority></url>
+  <url><loc>https://olebassen.github.io/Antifuerst/blog/posts/14.html</loc><lastmod>2026-02-16</lastmod><priority>0.8</priority></url>
+
+  <!-- PDFs -->
+  <url><loc>https://olebassen.github.io/Antifuerst/antiprincess.pdf</loc><lastmod>2026-02-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://olebassen.github.io/Antifuerst/blog/Antifürst II_Institutionelle Demut.pdf</loc><lastmod>2026-02-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://olebassen.github.io/Antifuerst/blog/Antifürst III_Kultur.pdf</loc><lastmod>2026-02-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://olebassen.github.io/Antifuerst/blog/Antifürst IV_Disziplin.pdf</loc><lastmod>2026-02-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://olebassen.github.io/Antifuerst/blog/Antifürst_Strategische Demut.pdf</loc><lastmod>2026-02-16</lastmod><priority>0.5</priority></url>
+
+  <!-- Kapitel- und andere HTML-Seiten -->
+  <url><loc>https://olebassen.github.io/Antifuerst/anmerkungen.html</loc><lastmod>2026-02-16</lastmod><priority>0.7</priority></url>
+  <url><loc>https://olebassen.github.io/Antifuerst/navigation.html</loc><lastmod>2026-02-16</lastmod><priority>0.7</priority></url>
+
 </urlset>
